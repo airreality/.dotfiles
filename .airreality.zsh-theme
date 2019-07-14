@@ -1,1 +1,0 @@
-/usr/share/oh-my-zsh/themes/airreality.zsh-theme
