@@ -16,12 +16,11 @@ alias go="ssh -t sup@ssh.ispsystem.net go"
 alias diff="colordiff"
 alias opti="optirun -c :8"
 alias space="xfconf-query -c xfwm4 -p /general/workspace_count -s"
-alias venv='source venv/bin/activate > /dev/null 2>&1 || source env/bin/activate > /dev/null 2>&1 || (echo No env. Create?; read create; if [[ "$create" == "y" || "$create" == "Y" ]]; then python3 -m virtualenv venv; fi)'
+alias venv='source venv/bin/activate > /dev/null 2>&1 || source env/bin/activate > /dev/null 2>&1 || (echo "No env. Create?"; read create; if [[ "$create" == "y" || "$create" == "Y" ]]; then python3 -m virtualenv venv; fi)'
 alias weather="curl wttr.in"
 alias vim="nvim"
 
-# ls grep
-alias ll="ls -lah"
+# colours
 alias ls="ls --color=auto"
 alias grep="grep --colour=auto"
 alias egrep="egrep --colour=auto"
