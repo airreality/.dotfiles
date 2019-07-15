@@ -106,14 +106,11 @@ let g:python_highlight_all = 1
 let g:ale_virtualenv_dir_names = []
 let g:ale_linters = {
 \  'sh': ['shell'],
-\  'python': ['flake8', 'pylint', 'autopep8']
+\  'python': ['flake8', 'pylint']
 \}
 let g:ale_fixers = {
-\  'python': [
-\    'isort',
-\    'add_blank_lines_for_python_control_statements',
-\    'black'
-\  ]
+\  'sh': ['shfmt'],
+\  'python': ['isort', 'add_blank_lines_for_python_control_statements', 'yapf']
 \}
 
 " markdown preview
