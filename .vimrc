@@ -5,21 +5,22 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'gmarik/Vundle.vim'           " vim package manager
-Plugin 'scrooloose/nerdtree'         " tree of directory files
-Plugin 'majutsushi/tagbar'           " structure of source files
-Plugin 'bling/vim-airline'           " statusbar
-Plugin 'fisadev/FixedTaskList.vim'   " todo list
-Plugin 'tpope/vim-commentary'        " commentaries
-Plugin 'tpope/vim-fugitive'          " git
-Plugin 'tpope/vim-surround'          " add, del, edit brackets, quotes, etc
-Plugin 'Raimondi/delimitMate'        " auto-complete brackets, quotes, etc
-Plugin 'valloric/youcompleteme'      " multi-language autocomplete
-Plugin 'vim-python/python-syntax'    " python highlighting
-Plugin 'pallets/jinja'               " jinja2 highlighting
-Plugin 'ekalinin/dockerfile.vim'     " dockerfile highlighting
-Plugin 'mhinz/vim-signify'           " git diff
-Plugin 'w0rp/ale'                    " linting
+Plugin 'gmarik/Vundle.vim'             " vim package manager
+Plugin 'drewtempelmeyer/palenight.vim' " vim theme
+Plugin 'scrooloose/nerdtree'           " tree of directory files
+Plugin 'majutsushi/tagbar'             " structure of source files
+Plugin 'bling/vim-airline'             " statusbar
+Plugin 'fisadev/FixedTaskList.vim'     " todo list
+Plugin 'tpope/vim-commentary'          " commentaries
+Plugin 'tpope/vim-fugitive'            " git
+Plugin 'tpope/vim-surround'            " add, del, edit brackets, quotes, etc
+Plugin 'Raimondi/delimitMate'          " auto-complete brackets, quotes, etc
+Plugin 'valloric/youcompleteme'        " multi-language autocomplete
+Plugin 'vim-python/python-syntax'      " python highlighting
+Plugin 'pallets/jinja'                 " jinja2 highlighting
+Plugin 'ekalinin/dockerfile.vim'       " dockerfile highlighting
+Plugin 'mhinz/vim-signify'             " git diff
+Plugin 'w0rp/ale'                      " linting
 
 " markdown
 Plugin 'godlygeek/tabular'
@@ -73,6 +74,16 @@ set tabstop=4
 set ttyfast
 set visualbell t_vb=
 set wildmenu
+
+" colors
+colorscheme palenight
+set background=dark
+if (has("termguicolors"))
+    set termguicolors
+endif
+if (has("nvim"))
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
 
 " :W = :w and :Q = :q
 command! W w
