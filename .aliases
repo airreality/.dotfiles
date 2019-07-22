@@ -16,7 +16,13 @@ alias go="ssh -t sup@ssh.ispsystem.net go"
 alias diff="colordiff"
 alias opti="optirun -c :8"
 alias space="xfconf-query -c xfwm4 -p /general/workspace_count -s"
-alias venv='source venv/bin/activate > /dev/null 2>&1 || source env/bin/activate > /dev/null 2>&1 || (echo "No env. Create?"; read create; if [[ "$create" == "y" || "$create" == "Y" ]]; then python3 -m virtualenv venv; fi)'
+alias venv='source venv/bin/activate > /dev/null 2>&1 || \
+            source env/bin/activate > /dev/null 2>&1 || \
+            (echo "No env. Create?"
+            read create
+            if [[ "$create" == "y" ]]; then
+                python3 -m virtualenv venv
+            fi)'
 alias weather="curl wttr.in"
 alias vim="nvim"
 
@@ -29,8 +35,27 @@ alias fgrep="fgrep --colour=auto"
 # docker
 alias dps="docker ps --format='{{.ID}} : {{.Names}}'"
 alias dls="docker image ls --format='{{.ID}} : {{.Repository}}'"
-alias drm="sh ~/BashProjects/aliases/docker_remove.sh"
 alias dirm="sh ~/BashProjects/aliases/docker_images_remove.sh"
-alias dbash="sh ~/BashProjects/aliases/docker_bash.sh"
+
+function drm {
+    if [ $(docker ps | wc -l) -ge 2 ]; then
+        docker kill $(docker ps --format={{.ID}})
+    fi
+    if [ $(docker ps -a | wc -l) -ge 2 ]; then
+        docker rm $(docker ps -a --format={{.ID}})
+    fi
+}
+
+function dirm {
+    if [ $(docker image ls | wc -l) -ge 2 ]; then
+        docker image rm  $(docker image ls --format={{.ID}})
+    fi
+}
+
+function dbash {
+    docker exec -it $@ bash
+}
+
+# dci
 alias dup="b; sh run_dci.sh"
 alias ddown="e; docker-compose -f docker-compose.yaml down"
