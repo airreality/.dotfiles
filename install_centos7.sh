@@ -13,6 +13,6 @@ wget -O /root/.vimrc https://raw.githubusercontent.com/airreality/.dotfiles/mast
 wget -O /root/.bashrc https://raw.githubusercontent.com/airreality/.dotfiles/master/.bashrc
 mkdir -p /root/.config/nvim/
 ln -s /root/.vimrc /root/.config/nvim/init.vim
-nvim +PluginInstall +qall
+nvim +PluginInstall +qall > /dev/null 2>&1
 ( cd /root/.vim/bundle/youcompleteme && python36 install.py --all )
 updatedb
