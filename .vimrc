@@ -84,7 +84,7 @@ endif
 if (has("nvim"))
     let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
-colorscheme palenight
+silent! colorscheme palenight
 
 " :W = :w and :Q = :q
 command! W w
