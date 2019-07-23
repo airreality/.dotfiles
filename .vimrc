@@ -10,6 +10,7 @@ Plugin 'drewtempelmeyer/palenight.vim' " vim theme
 Plugin 'scrooloose/nerdtree'           " tree of directory files
 Plugin 'majutsushi/tagbar'             " structure of source files
 Plugin 'bling/vim-airline'             " statusbar
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'fisadev/FixedTaskList.vim'     " todo list
 Plugin 'tpope/vim-commentary'          " commentaries
 Plugin 'tpope/vim-fugitive'            " git
@@ -76,7 +77,6 @@ set visualbell t_vb=
 set wildmenu
 
 " colors
-colorscheme palenight
 set background=dark
 if (has("termguicolors"))
     set termguicolors
@@ -84,6 +84,7 @@ endif
 if (has("nvim"))
     let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
+colorscheme palenight
 
 " :W = :w and :Q = :q
 command! W w

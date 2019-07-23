@@ -42,6 +42,6 @@ export HISTTIMEFORMAT="%d-%m-%y %T    "
 
 setxkbmap -option ctrl:nocaps
 
-if ! echo $SHELL | grep -q zsh; then
+if which zsh > /dev/null 2>&1 && ! echo $SHELL | grep -q zsh; then
     exec zsh
 fi
