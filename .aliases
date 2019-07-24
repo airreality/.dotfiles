@@ -35,7 +35,6 @@ alias fgrep="fgrep --colour=auto"
 # docker
 alias dps="docker ps --format='{{.ID}} : {{.Names}}'"
 alias dls="docker image ls --format='{{.ID}} : {{.Repository}}'"
-alias dirm="sh ~/BashProjects/aliases/docker_images_remove.sh"
 
 function drm {
     if [ $(docker ps | wc -l) -ge 2 ]; then
