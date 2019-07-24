@@ -1,6 +1,7 @@
 set nocompatible
 
 " vundle package manager
+
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -49,6 +50,7 @@ let no_buffers_menu=1
 
 tab sball
 set backspace=indent,eol,start
+set clipboard+=unnamedplus
 set cmdheight=2
 set confirm
 set completeopt-=preview
@@ -84,7 +86,7 @@ endif
 if (has("nvim"))
     let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
-silent! colorscheme palenight
+colorscheme palenight
 
 " :W = :w and :Q = :q
 command! W w
