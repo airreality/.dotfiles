@@ -163,8 +163,8 @@ let g:Tlist_Ctags_Cmd='/usr/bin/ctags'
 let g:tagbar_autofocus = 0
 
 " F5, F6 = Run python scripts
-autocmd FileType python nmap <F5> :w<CR> :! clear; python %<CR>
-autocmd FileType python nmap <F6> :w<CR> :! clear; python % 
+autocmd FileType python nmap <F5> :w<CR> :! python %<CR>
+autocmd FileType python nmap <F6> :w<CR> :! python % 
 autocmd FileType sh nmap <F5> :w<CR> :! sh %<CR>
 autocmd FileType sh nmap <F6> :w<CR> :! sh % 
 
