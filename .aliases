@@ -26,6 +26,10 @@ alias venv='source venv/bin/activate > /dev/null 2>&1 || \
 alias weather="curl wttr.in"
 alias vim="nvim"
 
+function cheat {
+    curl cheat.sh/$1
+}
+
 # colours
 alias ls="ls --color=auto"
 alias grep="grep --colour=auto"
