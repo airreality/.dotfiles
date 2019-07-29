@@ -6,8 +6,8 @@ exec > $log 2>&1
 # install
 yum install -y epel-release centos-release-scl
 yum install -y wget tree tmux git mlocate setxkbmap zsh
-yum install -y vim neovim python36 python36-devel python36-neovim
-yum install -y make cmake ncurses-devel devtoolset-6
+yum install -y neovim python36 python36-devel python36-neovim
+yum install -y make cmake ncurses-devel devtoolset-6 ctags
 source /opt/rh/devtoolset-6/enable
 
 # vim
