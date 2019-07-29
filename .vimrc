@@ -60,6 +60,7 @@ set expandtab
 set gcr=a:blinkon0
 set hlsearch
 set incsearch
+set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 set list
 set listchars=tab:>-,trail:-
 set ls=2
