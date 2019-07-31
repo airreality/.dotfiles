@@ -12,6 +12,7 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 [[ -f ~/.aliases ]] && . ~/.aliases
+[[ -f ~/.aliases_hidden ]] && . ~/.aliases_hidden
 
 HISTFILE=~/.histfile
 HISTSIZE=10000

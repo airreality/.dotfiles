@@ -32,10 +32,8 @@ colors() {
 }
 
 [[ -f ~/.extend.bashrc ]] && . ~/.extend.bashrc
-
-[ -r /usr/share/bash-completion/bash_completion ] && . /usr/share/bash-completion/bash_completion
-
 [[ -f ~/.aliases ]] && . ~/.aliases
+[[ -f ~/.aliases_hidden ]] && . ~/.aliases_hidden
 
 export EDITOR=nvim
 export HISTTIMEFORMAT="%d-%m-%y %T    "

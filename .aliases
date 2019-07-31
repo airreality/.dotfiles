@@ -1,7 +1,5 @@
 # dirs
 alias b="cd ~/BashProjects/"
-alias d="cd ~/work/dci/"
-alias e="cd ~/work/entrypoint/"
 alias p="cd ~/PythonProjects/"
 
 # scripts
@@ -37,8 +35,8 @@ alias egrep="egrep --colour=auto"
 alias fgrep="fgrep --colour=auto"
 
 # docker
-alias dps="docker ps --format='{{.ID}} : {{.Names}}'"
-alias dls="docker image ls --format='{{.ID}} : {{.Repository}}'"
+alias dps="docker ps --format='{{.ID}}\t{{.Names}}'"
+alias dls="docker image ls --format='{{.ID}}\t{{.Repository}}'"
 
 function drm {
     if [ $(docker ps | wc -l) -ge 2 ]; then
@@ -58,7 +56,3 @@ function dirm {
 function dbash {
     docker exec -it $@ bash
 }
-
-# dci
-alias dup="b; sh run_dci.sh"
-alias ddown="e; docker-compose -f docker-compose.yaml down"
