@@ -7,9 +7,6 @@ alias hi="python ~/PythonProjects/QATS/qats.py hello"
 alias wtime="python ~/PythonProjects/WORKTIME/time.py"
 alias lenses="python ~/PythonProjects/Lenses/lenses.py"
 
-# isp
-alias go="ssh -t sup@ssh.ispsystem.net go"
-
 # system
 alias diff="colordiff"
 alias opti="optirun -c :8"
