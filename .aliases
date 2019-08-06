@@ -32,8 +32,39 @@ alias egrep="egrep --colour=auto"
 alias fgrep="fgrep --colour=auto"
 
 # docker
-alias dps="docker ps --format='{{.ID}}\t{{.Names}}'"
 alias dls="docker image ls --format='{{.ID}}\t{{.Repository}}'"
+
+function dbash {
+    docker exec -it $@ bash
+}
+
+function dps {
+    if [ $# -eq 0 ]; then
+        docker ps --format='{{.ID}}\t{{.Names}}'
+    else
+        args=""
+        filter=".*"
+        for arg in $@; do
+            filter="${filter}${arg}.*"
+        done
+        docker ps ${args} -q --filter "name=$filter"
+    fi
+}
+
+function dgo {
+    if [ $# -eq 0 ]; then
+        echo "No args"
+    else
+        container=$(dps $@)
+        if [ -z $container ]; then
+            echo "No such container"
+        elif [ $(echo $container | wc -l) -gt 1 ]; then
+            echo "Ambigious query"
+        else
+            dbash $container
+        fi
+    fi
+}
 
 function drm {
     if [ $(docker ps | wc -l) -ge 2 ]; then
@@ -48,8 +79,4 @@ function dirm {
     if [ $(docker image ls | wc -l) -ge 2 ]; then
         docker image rm  $(docker image ls --format={{.ID}})
     fi
-}
-
-function dbash {
-    docker exec -it $@ bash
 }
