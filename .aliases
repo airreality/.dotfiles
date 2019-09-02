@@ -45,9 +45,14 @@ function dps {
         args=""
         filter=".*"
         for arg in $@; do
-            filter="${filter}${arg}.*"
+            if [ "$(echo $arg | cut -c 1)" = "-" ]; then
+                args="${args}${arg} "
+            else
+                filter="${filter}${arg}.*"
+            fi
         done
-        docker ps ${args} -q --filter "name=$filter"
+        args=$(echo $args | xargs)
+        echo docker ps ${args} -q --filter \"name=${filter}\" | sh
     fi
 }
 
