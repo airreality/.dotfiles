@@ -3,6 +3,7 @@ alias b="cd ~/BashProjects/"
 alias p="cd ~/PythonProjects/"
 
 # scripts
+alias prename="bash ~/BashProjects/rename_photoes.sh"
 alias hi="python ~/PythonProjects/QATS/qats.py hello"
 alias wtime="python ~/PythonProjects/WORKTIME/time.py"
 alias lenses="python ~/PythonProjects/Lenses/lenses.py"
@@ -19,7 +20,8 @@ alias venv='source venv/bin/activate > /dev/null 2>&1 || \
                 python3 -m virtualenv venv
             fi)'
 alias weather="curl wttr.in"
-alias vim="nvim"
+alias dl="youtube-dl"
+alias dl-mp3="youtube-dl --extract-audio --audio-format mp3 --audio-quality 0"
 
 function cheat {
     curl cheat.sh/$1
@@ -52,7 +54,11 @@ function dps {
             fi
         done
         args=$(echo $args | xargs)
-        echo docker ps ${args} -q --filter \"name=${filter}\" | sh
+        if [ "$filter" = ".*" ]; then
+            docker ps ${args} --format="{{.ID}}\t{{.Names}}"
+        else
+            echo docker ps ${args} -q --filter \"name=${filter}\" | sh
+        fi
     fi
 }
 

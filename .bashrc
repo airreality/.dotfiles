@@ -38,9 +38,7 @@ colors() {
 export EDITOR=nvim
 export HISTTIMEFORMAT="%d-%m-%y %T    "
 
-if [[ -n $DISPLAY ]]; then
-    setxkbmap -option ctrl:nocaps
-fi
+setxkbmap -option ctrl:nocaps
 
 if which zsh > /dev/null 2>&1 && ! echo $SHELL | grep -q zsh; then
     exec zsh

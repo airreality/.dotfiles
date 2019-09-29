@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 log=/root/script.log
 exec > $log 2>&1
@@ -11,7 +11,7 @@ yum install -y make cmake ncurses-devel devtoolset-6 ctags
 source /opt/rh/devtoolset-6/enable
 
 # vim
-( cd /opt/ && git clone https://github.com/vim/vim && cd vim && \
+( cd /tmp/ && git clone https://github.com/vim/vim && cd vim && \
     ./configure --with-features=huge \
                 --enable-python3interp \
                 --prefix=/usr && \
