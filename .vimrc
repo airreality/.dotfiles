@@ -60,7 +60,6 @@ set expandtab
 set gcr=a:blinkon0
 set hlsearch
 set incsearch
-set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 set list
 set listchars=tab:>-,trail:-
 set ls=2
@@ -78,6 +77,7 @@ set tabstop=4
 set ttyfast
 set visualbell t_vb=
 set wildmenu
+set wrap linebreak nolist
 
 " colors
 set background=dark
@@ -128,9 +128,6 @@ let g:ale_fixers = {
 \  'python': ['isort', 'add_blank_lines_for_python_control_statements', 'yapf']
 \}
 
-" markdown preview
-let g:mkdp_auto_start = 1
-
 " snippets
 let g:snippets_dir = "~/.vim/vim-snippets/snippets"
 
@@ -166,8 +163,9 @@ let g:tagbar_autofocus = 0
 " F5, F6 = Run python scripts
 autocmd FileType python nmap <F5> :w<CR> :! python %<CR>
 autocmd FileType python nmap <F6> :w<CR> :! python % 
-autocmd FileType sh nmap <F5> :w<CR> :! sh %<CR>
-autocmd FileType sh nmap <F6> :w<CR> :! sh % 
+autocmd FileType sh nmap <F5> :w<CR> :! bash %<CR>
+autocmd FileType sh nmap <F6> :w<CR> :! bash % 
+autocmd FileType markdown nmap <F5> :MarkdownPreview<CR>
 
 " F8 = ale fixer
 nmap <F8> :ALEFix<CR>
