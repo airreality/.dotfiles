@@ -56,7 +56,6 @@ set confirm
 set completeopt-=preview
 set encoding=utf-8
 set equalalways
-set expandtab
 set gcr=a:blinkon0
 set hlsearch
 set incsearch
@@ -67,17 +66,22 @@ set mousemodel=popup
 set novisualbell
 set nu
 set scrolloff=5
-set shiftwidth=4
 set showcmd
 set showmatch
 set showmode
-set smarttab
 set switchbuf=useopen
-set tabstop=4
 set ttyfast
 set visualbell t_vb=
 set wildmenu
 set wrap linebreak nolist
+
+" tabs
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set smarttab
+set softtabstop=4
+autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
 " colors
 set background=dark
