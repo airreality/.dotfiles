@@ -164,7 +164,7 @@ nmap <F4> :TagbarToggle<CR>
 let g:Tlist_Ctags_Cmd='/usr/bin/ctags'
 let g:tagbar_autofocus = 0
 
-" F5, F6 = Run python scripts
+" F5 F6 = run
 autocmd FileType python nmap <F5> :w<CR> :! python %<CR>
 autocmd FileType python nmap <F6> :w<CR> :! python % 
 autocmd FileType sh nmap <F5> :w<CR> :! bash %<CR>
@@ -173,6 +173,12 @@ autocmd FileType markdown nmap <F5> :MarkdownPreview<CR>
 
 " F8 = ale fixer
 nmap <F8> :ALEFix<CR>
+
+" F12 = nu toggle
+nmap <F12> :set nu!<CR>
+
+" choose buffer
+nmap <C-c> :buffers<CR>:buffer<Space>
 
 " close buffer
 nmap <C-q> :bd<CR>
