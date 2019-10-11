@@ -11,6 +11,8 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+# setxkbmap -option ctrl:nocaps
+
 [[ -f ~/.aliases ]] && . ~/.aliases
 [[ -f ~/.aliases_hidden ]] && . ~/.aliases_hidden
 
@@ -22,4 +24,4 @@ setopt SHARE_HISTORY
 
 zstyle ':completion:*' hosts off
 
-export EDITOR=nvim
+export EDITOR=vim

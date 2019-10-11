@@ -1,7 +1,3 @@
-#
-# ~/.bashrc
-#
-
 [[ $- != *i* ]] && return
 
 colors() {
@@ -31,15 +27,12 @@ colors() {
     done
 }
 
-[[ -f ~/.extend.bashrc ]] && . ~/.extend.bashrc
-[[ -f ~/.aliases ]] && . ~/.aliases
-[[ -f ~/.aliases_hidden ]] && . ~/.aliases_hidden
-
-export EDITOR=nvim
-export HISTTIMEFORMAT="%d-%m-%y %T    "
-
-setxkbmap -option ctrl:nocaps
-
 if which zsh > /dev/null 2>&1 && ! echo $SHELL | grep -q zsh; then
     exec zsh
+else
+    [[ -f ~/.aliases ]] && . ~/.aliases
+    [[ -f ~/.aliases_hidden ]] && . ~/.aliases_hidden
+
+    export EDITOR=vim
+    export HISTTIMEFORMAT="%d-%m-%y %T    "
 fi
