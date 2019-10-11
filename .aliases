@@ -12,16 +12,19 @@ alias lenses="python ~/PythonProjects/Lenses/lenses.py"
 alias diff="colordiff"
 alias opti="optirun -c :8"
 alias space="xfconf-query -c xfwm4 -p /general/workspace_count -s"
-alias venv='source venv/bin/activate > /dev/null 2>&1 || \
-            source env/bin/activate > /dev/null 2>&1 || \
-            (echo "No env. Create?"
-            read create
-            if [[ "$create" == "y" ]]; then
-                python3 -m virtualenv venv
-            fi)'
 alias weather="curl wttr.in"
 alias dl="youtube-dl"
 alias dl-mp3="youtube-dl --extract-audio --audio-format mp3 --audio-quality 0"
+
+function venv {
+    source venv/bin/activate > /dev/null 2>&1 ||
+        source env/bin/activate > /dev/null 2>&1 ||
+        (echo "No env. Create?"
+        read create
+        if [[ "$create" == "y" ]]; then
+            python3 -m virtualenv venv
+        fi)
+}
 
 function cheat {
     curl cheat.sh/$1
@@ -37,7 +40,7 @@ alias fgrep="fgrep --colour=auto"
 alias dls="docker image ls --format='{{.ID}}\t{{.Repository}}'"
 
 function dbash {
-    docker exec -it $@ bash
+    docker exec -it $@ bash || docker exec -it $@ sh
 }
 
 function dps {
@@ -67,6 +70,9 @@ function dgo {
         echo "No args"
     else
         container=$(dps $@)
+        if [ -z $container ]; then
+            container=$(docker ps --filter \"id=${$@}\")
+        fi
         if [ -z $container ]; then
             echo "No such container"
         elif [ $(echo $container | wc -l) -gt 1 ]; then
