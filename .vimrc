@@ -182,3 +182,9 @@ nmap <C-c> :buffers<CR>:buffer<Space>
 
 " close buffer
 nmap <C-q> :bd<CR>
+
+" window movement
+nmap <C-j> <C-W>j
+nmap <C-k> <C-W>k
+nmap <C-h> <C-W>h
+nmap <C-l> <C-W>l
