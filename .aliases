@@ -6,7 +6,7 @@ alias p="cd ~/PythonProjects/"
 alias prename="bash ~/BashProjects/rename_photoes.sh"
 alias hi="python ~/PythonProjects/QATS/qats.py hello"
 alias wtime="python ~/PythonProjects/WORKTIME/time.py"
-alias lenses="python ~/PythonProjects/Lenses/lenses.py"
+alias lenses="python ~/PythonProjects/lenses/lenses.py"
 
 # system
 alias diff="colordiff"
@@ -71,7 +71,7 @@ function dgo {
     else
         container=$(dps $@)
         if [ -z $container ]; then
-            container=$(docker ps --filter \"id=${$@}\")
+            container=$(docker ps --filter "id=$@" --format="{{.ID}}")
         fi
         if [ -z $container ]; then
             echo "No such container"
