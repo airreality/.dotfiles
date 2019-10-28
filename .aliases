@@ -48,7 +48,7 @@ function dps {
         docker ps --format='{{.ID}}\t{{.Names}}'
     else
         args=""
-        filter=".*"
+        filter=""
         for arg in $@; do
             if [ "$(echo $arg | cut -c 1)" = "-" ]; then
                 args="${args}${arg} "
@@ -57,10 +57,10 @@ function dps {
             fi
         done
         args=$(echo $args | xargs)
-        if [ "$filter" = ".*" ]; then
+        if [ -z "$filter" ]; then
             docker ps ${args} --format="{{.ID}}\t{{.Names}}"
         else
-            echo docker ps ${args} -q --filter \"name=${filter}\" | sh
+            docker ps ${args} -q --filter "name=${filter}"
         fi
     fi
 }
