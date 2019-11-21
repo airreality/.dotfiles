@@ -4,14 +4,13 @@ set -e
 log=/root/install_env.log
 exec > $log 2>&1
 
-# install
+# base packages
 yum install -y update
 yum install -y epel-release centos-release-scl \
     wget tree tmux git mlocate setxkbmap zsh \
-    python36 python36-devel \
     make cmake ctags
 
-# vim
+# vim and python
 ( cd /tmp/ && git clone https://github.com/vim/vim && cd vim && \
     ./configure --with-features=huge \
                 --enable-python3interp \
@@ -21,10 +20,11 @@ yum install -y epel-release centos-release-scl \
 git clone https://github.com/VundleVim/Vundle.vim.git /root/.vim/bundle/Vundle.vim
 
 if [[ $1 == '--lite' ]]; then
-    # curl -o /root/.vimrc lite_vimrc
+    curl -o /root/.vimrc https://raw.githubusercontent.com/airreality/.dotfiles/master/.vimrc_lite
     vim +PluginInstall +qall
 else
-    yum install -y ncurses-devel devtoolset-6 
+    yum install -y ncurses-devel devtoolset-6 \
+        python36 python36-devel
     source /opt/rh/devtoolset-6/enable
     curl -o /root/.vimrc https://raw.githubusercontent.com/airreality/.dotfiles/master/.vimrc
     vim +PluginInstall +qall
@@ -39,6 +39,6 @@ curl -o /root/.zshrc https://raw.githubusercontent.com/airreality/.dotfiles/mast
 curl -o /usr/share/oh-my-zsh/themes/airreality.zsh-theme https://raw.githubusercontent.com/airreality/.dotfiles/master/.airreality.zsh-theme
 git clone https://github.com/zsh-users/zsh-autosuggestions /usr/share/oh-my-zsh/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /usr/share/oh-my-zsh/plugins/zsh-syntax-highlighting
-
 chsh -s $(which zsh)
+
 updatedb
