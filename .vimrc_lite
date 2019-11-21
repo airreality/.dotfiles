@@ -14,27 +14,12 @@ Plugin 'bling/vim-airline'             " statusbar
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'fisadev/FixedTaskList.vim'     " todo list
 Plugin 'tpope/vim-commentary'          " commentaries
-Plugin 'tpope/vim-fugitive'            " git
 Plugin 'tpope/vim-surround'            " add, del, edit brackets, quotes, etc
 Plugin 'Raimondi/delimitMate'          " auto-complete brackets, quotes, etc
-Plugin 'valloric/youcompleteme'        " multi-language autocomplete
 Plugin 'vim-python/python-syntax'      " python highlighting
 Plugin 'pallets/jinja'                 " jinja2 highlighting
 Plugin 'ekalinin/dockerfile.vim'       " dockerfile highlighting
-Plugin 'mhinz/vim-signify'             " git diff
 Plugin 'w0rp/ale'                      " linting
-
-" markdown
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'iamcco/markdown-preview.nvim'
-" after install md-preview do :call mkdp#util#install()
-
-" snippets
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
-Plugin 'honza/vim-snippets'
 
 call vundle#end()
 
@@ -105,15 +90,6 @@ augroup END
 " auto-resize splits when Vim gets resized
 autocmd VimResized * wincmd =
 
-" youcompleteme
-let g:ycm_python_interpreter_path = ''
-let g:ycm_python_sys_path = []
-let g:ycm_extra_conf_vim_data = [
-\  'g:ycm_python_interpreter_path',
-\  'g:ycm_python_sys_path'
-\]
-let g:ycm_global_ycm_extra_conf = '~/.global_extra_conf.py'
-
 " python-syntax
 syntax on
 let g:python_highlight_all = 1
@@ -131,9 +107,6 @@ let g:ale_fixers = {
 \  'markdown': ['prettier']
 \}
 
-" snippets
-let g:snippets_dir = "~/.vim/vim-snippets/snippets"
-
 " airline
 set laststatus=2
 let g:airline_theme='behelit'
@@ -144,9 +117,6 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 " signify
 let g:signify_vcs_list = [ 'git' ]
-
-" plasticboy
-let g:vim_markdown_folding_disabled = 1
 
 " F2 = Tasks
 nmap <F2> :TaskList<CR>
@@ -168,7 +138,6 @@ autocmd FileType python nmap <F5> :w<CR> :! python %<CR>
 autocmd FileType python nmap <F6> :w<CR> :! python % 
 autocmd FileType sh nmap <F5> :w<CR> :! bash %<CR>
 autocmd FileType sh nmap <F6> :w<CR> :! bash % 
-autocmd FileType markdown nmap <F5> :MarkdownPreview<CR>
 
 " F8 = ale fixer
 nmap <F8> :ALEFix<CR>
