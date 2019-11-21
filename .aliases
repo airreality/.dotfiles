@@ -36,13 +36,17 @@ alias grep="grep --colour=auto"
 alias egrep="egrep --colour=auto"
 alias fgrep="fgrep --colour=auto"
 
-# docker
+### docker
+
+# list docker images
 alias dls="docker image ls --format='{{.ID}}\t{{.Repository}}'"
 
+# go into container
 function dbash {
     docker exec -it $@ bash || docker exec -it $@ sh
 }
 
+# find container by parts of name
 function dps {
     if [ $# -eq 0 ]; then
         docker ps --format='{{.ID}}\t{{.Names}}'
@@ -65,6 +69,7 @@ function dps {
     fi
 }
 
+# go into container by id or parts of name
 function dgo {
     if [ $# -eq 0 ]; then
         echo "No args"
@@ -83,6 +88,7 @@ function dgo {
     fi
 }
 
+# stop and delete all containers
 function drm {
     if [ $(docker ps | wc -l) -ge 2 ]; then
         docker kill $(docker ps --format={{.ID}})
@@ -92,6 +98,7 @@ function drm {
     fi
 }
 
+# delete all images
 function dirm {
     if [ $(docker image ls | wc -l) -ge 2 ]; then
         docker image rm  $(docker image ls --format={{.ID}})

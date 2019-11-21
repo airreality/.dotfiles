@@ -3,6 +3,7 @@ ZSH_THEME=airreality
 DISABLE_AUTO_UPDATE="true"
 plugins=(
     colored-man-pages
+    copybuffer
     git
     sudo
     zsh-autosuggestions

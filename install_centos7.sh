@@ -1,14 +1,15 @@
 #!/usr/bin/env bash
+set -e
 
-log=/root/script.log
+log=/root/install_env.log
 exec > $log 2>&1
 
 # install
-yum install -y epel-release centos-release-scl
-yum install -y wget tree tmux git mlocate setxkbmap zsh
-yum install -y neovim python36 python36-devel python36-neovim
-yum install -y make cmake ncurses-devel devtoolset-6 ctags
-source /opt/rh/devtoolset-6/enable
+yum install -y update
+yum install -y epel-release centos-release-scl \
+    wget tree tmux git mlocate setxkbmap zsh \
+    python36 python36-devel \
+    make cmake ctags
 
 # vim
 ( cd /tmp/ && git clone https://github.com/vim/vim && cd vim && \
@@ -17,12 +18,18 @@ source /opt/rh/devtoolset-6/enable
                 --prefix=/usr && \
     make && make install
 )
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-curl -o /root/.vimrc https://raw.githubusercontent.com/airreality/.dotfiles/master/.vimrc
-mkdir -p /root/.config/nvim/
-ln -s /root/.vimrc /root/.config/nvim/init.vim
-vim +PluginInstall +qall
-( cd /root/.vim/bundle/youcompleteme && python36 install.py --all )
+git clone https://github.com/VundleVim/Vundle.vim.git /root/.vim/bundle/Vundle.vim
+
+if [[ $1 == '--lite' ]]; then
+    # curl -o /root/.vimrc lite_vimrc
+    vim +PluginInstall +qall
+else
+    yum install -y ncurses-devel devtoolset-6 
+    source /opt/rh/devtoolset-6/enable
+    curl -o /root/.vimrc https://raw.githubusercontent.com/airreality/.dotfiles/master/.vimrc
+    vim +PluginInstall +qall
+    ( cd /root/.vim/bundle/youcompleteme && python36 install.py --all )
+fi
 
 # zsh
 curl -o /root/.bashrc https://raw.githubusercontent.com/airreality/.dotfiles/master/.bashrc
@@ -33,4 +40,5 @@ curl -o /usr/share/oh-my-zsh/themes/airreality.zsh-theme https://raw.githubuserc
 git clone https://github.com/zsh-users/zsh-autosuggestions /usr/share/oh-my-zsh/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /usr/share/oh-my-zsh/plugins/zsh-syntax-highlighting
 
+chsh -s $(which zsh)
 updatedb
