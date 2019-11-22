@@ -6,8 +6,8 @@ exec > $log 2>&1
 
 # base packages
 yum -y update
-yum install -y epel-release centos-release-scl \
-    wget tree the_silver_searcher tmux git zsh \
+yum install -y epel-release centos-release-scl
+yum -y install wget tree the_silver_searcher tmux git zsh \
     make cmake ctags ncurses-devel devtoolset-6 
 source /opt/rh/devtoolset-6/enable
 
