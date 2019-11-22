@@ -33,6 +33,7 @@ fi
 
 # zsh
 curl -o /root/.bashrc https://raw.githubusercontent.com/airreality/.dotfiles/master/.bashrc
+curl -o /root/.aliases https://raw.githubusercontent.com/airreality/.dotfiles/master/.aliases_test_servers
 curl -Lo /root/install.sh https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh
 ( export ZSH=/usr/share/oh-my-zsh && sh /root/install.sh --unattended )
 curl -o /root/.zshrc https://raw.githubusercontent.com/airreality/.dotfiles/master/.zshrc

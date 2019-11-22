@@ -1,0 +1,94 @@
+# system
+alias vi="vim"
+function cheat {
+    curl cheat.sh/$1
+}
+
+# colours
+alias ls="ls --color=auto"
+alias grep="grep --colour=auto"
+alias egrep="egrep --colour=auto"
+alias fgrep="fgrep --colour=auto"
+
+### docker
+
+# list docker images
+alias dls="docker image ls --format='{{.ID}}\t{{.Repository}}'"
+
+# go into container
+function dbash {
+    docker exec -it $@ bash || docker exec -it $@ sh
+}
+
+# find container by parts of name
+function dps {
+    if [ $# -eq 0 ]; then
+        docker ps --format='{{.ID}}\t{{.Names}}'
+    else
+        args=""
+        filter=""
+        for arg in $@; do
+            if [ "$(echo $arg | cut -c 1)" = "-" ]; then
+                args="${args}${arg} "
+            else
+                filter="${filter}${arg}.*"
+            fi
+        done
+        args=$(echo $args | xargs)
+        if [ -z "$filter" ]; then
+            docker ps ${args} --format="{{.ID}}\t{{.Names}}"
+        else
+            docker ps ${args} -q --filter "name=${filter}"
+        fi
+    fi
+}
+
+# go into container by id or parts of name
+function dgo {
+    if [ $# -eq 0 ]; then
+        echo "No args"
+    else
+        container=$(dps $@)
+        if [ -z $container ]; then
+            container=$(docker ps --filter "id=$@" --format="{{.ID}}")
+        fi
+        if [ -z $container ]; then
+            echo "No such container"
+        elif [ $(echo $container | wc -l) -gt 1 ]; then
+            echo "Ambigious query"
+        else
+            dbash $container
+        fi
+    fi
+}
+
+# stop and delete all containers
+function drm {
+    if [ $(docker ps | wc -l) -ge 2 ]; then
+        docker kill $(docker ps --format={{.ID}})
+    fi
+    if [ $(docker ps -a | wc -l) -ge 2 ]; then
+        docker rm $(docker ps -a --format={{.ID}})
+    fi
+}
+
+# delete all images
+function dirm {
+    if [ $(docker image ls | wc -l) -ge 2 ]; then
+        docker image rm  $(docker image ls --format={{.ID}})
+    fi
+}
+
+# go into mysql
+function dmysql {
+    docker exec -it $(dps mysql) mysql -u root -p$(grep -Poe '(?<=MysqlRootPassword\":\")[^"]+' /opt/ispsystem/dci/config.json) $@
+}
+
+# go into redis
+function dredis {
+    db=$(dmysql -NB -e "SHOW DATABASES LIKE 'dci_%';" | grep -v 'Warning' | tr -d '\r')
+    redis_params=($(dmysql -NB $db -e "SELECT JSON_UNQUOTE(params_redis->'$.password'), params_redis->'$.port' FROM dci_location;" | grep -v 'Warning' | tr -d '\r'))
+    redis_password=$(echo $redis_params[1])
+    redis_port=$(echo $redis_params[2])
+    docker exec -it $(dps redis) redis-cli -p $redis_port -a $redis_password $@
+}
