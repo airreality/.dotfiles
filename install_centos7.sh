@@ -7,8 +7,9 @@ exec > $log 2>&1
 # base packages
 yum -y update
 yum install -y epel-release centos-release-scl \
-    wget tree tmux git mlocate setxkbmap zsh \
+    wget tree the_silver_searcher tmux git zsh \
     make cmake ctags ncurses-devel devtoolset-6 
+source /opt/rh/devtoolset-6/enable
 
 # vim and python
 ( cd /tmp/ && git clone https://github.com/vim/vim && cd vim && \
@@ -24,7 +25,6 @@ if [[ $1 == '--lite' ]]; then
     vim +PluginInstall +qall
 else
     yum install -y python36 python36-devel
-    source /opt/rh/devtoolset-6/enable
     curl -o /root/.vimrc https://raw.githubusercontent.com/airreality/.dotfiles/master/.vimrc
     vim +PluginInstall +qall
     ( cd /root/.vim/bundle/youcompleteme && python36 install.py --all )

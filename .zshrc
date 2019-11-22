@@ -12,7 +12,7 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-setxkbmap -option ctrl:nocaps
+if [[ -n $DISPLAY ]]; then setxkbmap -option ctrl:nocaps; fi
 
 [[ -f ~/.aliases ]] && . ~/.aliases
 [[ -f ~/.aliases_hidden ]] && . ~/.aliases_hidden
