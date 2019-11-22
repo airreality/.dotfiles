@@ -40,5 +40,3 @@ curl -o /usr/share/oh-my-zsh/themes/airreality.zsh-theme https://raw.githubuserc
 git clone https://github.com/zsh-users/zsh-autosuggestions /usr/share/oh-my-zsh/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /usr/share/oh-my-zsh/plugins/zsh-syntax-highlighting
 chsh -s $(which zsh)
-
-updatedb
