@@ -5,10 +5,10 @@ log=/root/install_env.log
 exec > $log 2>&1
 
 # base packages
-yum install -y update
+yum -y update
 yum install -y epel-release centos-release-scl \
     wget tree tmux git mlocate setxkbmap zsh \
-    make cmake ctags
+    make cmake ctags ncurses-devel devtoolset-6 
 
 # vim and python
 ( cd /tmp/ && git clone https://github.com/vim/vim && cd vim && \
@@ -23,8 +23,7 @@ if [[ $1 == '--lite' ]]; then
     curl -o /root/.vimrc https://raw.githubusercontent.com/airreality/.dotfiles/master/.vimrc_lite
     vim +PluginInstall +qall
 else
-    yum install -y ncurses-devel devtoolset-6 \
-        python36 python36-devel
+    yum install -y python36 python36-devel
     source /opt/rh/devtoolset-6/enable
     curl -o /root/.vimrc https://raw.githubusercontent.com/airreality/.dotfiles/master/.vimrc
     vim +PluginInstall +qall
