@@ -123,7 +123,8 @@ let g:ale_virtualenv_dir_names = []
 let g:ale_linters = {
 \  'sh': ['shell'],
 \  'python': ['flake8', 'pylint'],
-\  'markdown': ['remark_lint']
+\  'markdown': ['remark_lint'],
+\  'ansible': ['ansible-lint']
 \}
 let g:ale_fixers = {
 \  'sh': ['shfmt'],
@@ -169,6 +170,9 @@ autocmd FileType python nmap <F6> :w<CR> :! python %
 autocmd FileType sh nmap <F5> :w<CR> :! bash %<CR>
 autocmd FileType sh nmap <F6> :w<CR> :! bash % 
 autocmd FileType markdown nmap <F5> :MarkdownPreview<CR>
+
+" F5 = yaml switch to ansible`
+autocmd Filetype yaml nmap <F5> :set filetype=ansible.yaml<CR>
 
 " F8 = ale fixer
 nmap <F8> :ALEFix<CR>
