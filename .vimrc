@@ -18,6 +18,9 @@ Plugin 'tpope/vim-fugitive'            " git
 Plugin 'tpope/vim-surround'            " add, del, edit brackets, quotes, etc
 Plugin 'Raimondi/delimitMate'          " auto-complete brackets, quotes, etc
 Plugin 'valloric/youcompleteme'        " multi-language autocomplete
+" after install do in terminal
+" cd ~/.vim/bundle/youcompleteme && python3 install.py
+
 Plugin 'vim-python/python-syntax'      " python highlighting
 Plugin 'pallets/jinja'                 " jinja2 highlighting
 Plugin 'ekalinin/dockerfile.vim'       " dockerfile highlighting
@@ -28,7 +31,7 @@ Plugin 'w0rp/ale'                      " linting
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'iamcco/markdown-preview.nvim'
-" after install md-preview do :call mkdp#util#install()
+" after install do :call mkdp#util#install()
 
 " snippets
 Plugin 'MarcWeber/vim-addon-mw-utils'
@@ -177,8 +180,19 @@ autocmd Filetype yaml nmap <F5> :set filetype=ansible.yaml<CR>
 " F8 = ale fixer
 nmap <F8> :ALEFix<CR>
 
-" F12 = nu and paste toggle
-nmap <F12> :set nu!<CR>:set paste!<CR>
+" F12 = nu and paste and signcolumn toggle
+
+function! SignColumnToggle()
+    if !exists("b:signcolumn_on") || b:signcolumn_on
+        set signcolumn=no
+        let b:signcolumn_on=0
+    else
+        set signcolumn=auto
+        let b:signcolumn_on=1
+    endif
+endfunction
+
+nmap <F12> :set nu!<CR>:set paste!<CR>:call SignColumnToggle()<CR>
 
 " choose buffer
 nmap <C-c> :buffers<CR>:buffer<Space>

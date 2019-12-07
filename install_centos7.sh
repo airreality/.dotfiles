@@ -27,7 +27,7 @@ else
     yum install -y python36 python36-devel
     curl -o /root/.vimrc https://raw.githubusercontent.com/airreality/.dotfiles/master/.vimrc
     vim +PluginInstall +qall
-    ( cd /root/.vim/bundle/youcompleteme && python36 install.py --all )
+    ( cd /root/.vim/bundle/youcompleteme && python36 install.py )
 fi
 
 # zsh

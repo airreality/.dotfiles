@@ -4,7 +4,6 @@ alias p="cd ~/PythonProjects/"
 
 # scripts
 alias prename="bash ~/BashProjects/rename_photoes.sh"
-alias hi="python ~/PythonProjects/QATS/qats.py hello"
 alias wtime="python ~/PythonProjects/WORKTIME/time.py"
 alias lenses="python ~/PythonProjects/lenses/lenses.py"
 
