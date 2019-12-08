@@ -10,8 +10,7 @@ Plugin 'gmarik/Vundle.vim'             " vim package manager
 Plugin 'drewtempelmeyer/palenight.vim' " vim theme
 Plugin 'scrooloose/nerdtree'           " tree of directory files
 Plugin 'majutsushi/tagbar'             " structure of source files
-Plugin 'bling/vim-airline'             " statusbar
-Plugin 'vim-airline/vim-airline-themes'
+Plugin 'itchyny/lightline.vim'         " statusbar
 Plugin 'fisadev/FixedTaskList.vim'     " todo list
 Plugin 'tpope/vim-commentary'          " commentaries
 Plugin 'tpope/vim-fugitive'            " git
@@ -122,7 +121,7 @@ syntax on
 let g:python_highlight_all = 1
 
 " ale
-let g:ale_virtualenv_dir_names = []
+let g:ale_virtualenv_dir_names = ['venv', 'env']
 let g:ale_linters = {
 \  'sh': ['shell'],
 \  'python': ['flake8', 'pylint'],
@@ -138,13 +137,10 @@ let g:ale_fixers = {
 " snippets
 let g:snippets_dir = "~/.vim/vim-snippets/snippets"
 
-" airline
+" lightline
 set laststatus=2
-let g:airline_theme='behelit'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#ale#enabled = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail'
+set noshowmode
+let g:lightline = {'colorscheme': 'deus'}
 
 " signify
 let g:signify_vcs_list = [ 'git' ]
