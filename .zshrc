@@ -26,3 +26,4 @@ setopt SHARE_HISTORY
 zstyle ':completion:*' hosts off
 
 export EDITOR=vim
+export TERM=xterm-256color
