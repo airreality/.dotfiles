@@ -38,7 +38,7 @@ alias fgrep="fgrep --colour=auto"
 ### docker
 
 # list docker images
-alias dls="docker image ls --format='{{.ID}}\t{{.Repository}}'"
+alias dls="docker image ls --format='{{.ID}}\t{{.Repository}}\t{{.Tag}}' | column -t -s$'\t'"
 
 # go into container
 function dbash {
@@ -48,7 +48,7 @@ function dbash {
 # find container by parts of name
 function dps {
     if [ $# -eq 0 ]; then
-        docker ps --format='{{.ID}}\t{{.Names}}'
+        docker ps --format='{{.ID}}\t{{.Names}}\t{{.Status}}' | column -t -s$'\t'
     else
         args=""
         filter=""
@@ -61,7 +61,7 @@ function dps {
         done
         args=$(echo $args | xargs)
         if [ -z "$filter" ]; then
-            docker ps ${args} --format="{{.ID}}\t{{.Names}}"
+            docker ps ${args} --format="{{.ID}}\t{{.Names}}\t{{.Status}}" | column -t -s$'\t'
         else
             docker ps ${args} -q --filter "name=${filter}"
         fi
