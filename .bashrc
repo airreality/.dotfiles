@@ -31,6 +31,7 @@ if which zsh > /dev/null 2>&1 && ! echo $SHELL | grep -q zsh; then
     exec zsh
 else
     [[ -f ~/.aliases ]] && . ~/.aliases
+    [[ -f ~/.aliases_docker ]] && . ~/.aliases_docker
     [[ -f ~/.aliases_hidden ]] && . ~/.aliases_hidden
 
     export EDITOR=vim

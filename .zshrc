@@ -15,6 +15,7 @@ source $ZSH/oh-my-zsh.sh
 if [[ -n $DISPLAY ]]; then setxkbmap -option ctrl:nocaps; fi
 
 [[ -f ~/.aliases ]] && . ~/.aliases
+[[ -f ~/.aliases_docker ]] && . ~/.aliases_docker
 [[ -f ~/.aliases_hidden ]] && . ~/.aliases_hidden
 
 HISTFILE=~/.histfile
