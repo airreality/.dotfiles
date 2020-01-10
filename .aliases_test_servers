@@ -62,14 +62,23 @@ function dgo {
     fi
 }
 
-# stop and delete all containers
+# stop and delete container
 function drm {
-    if [ $(docker ps | wc -l) -ge 2 ]; then
-        docker kill $(docker ps --format={{.ID}})
-    fi
-    if [ $(docker ps -a | wc -l) -ge 2 ]; then
-        docker rm $(docker ps -a --format={{.ID}})
-    fi
+    if [ $# -eq 0 ]; then
+        echo "No args"
+    else
+        container=$(dps $@) 
+        if [ -z $container ]; then
+            container=$(docker ps --filter "id=$@" --format="{{.ID}}")
+        fi
+        if [ -z $container ]; then
+            echo "No such container"
+        elif [ $(echo $container | wc -l) -gt 1 ]; then
+            echo "Ambigious query"
+        else
+            docker stop $container && docker rm $container
+        fi
+    fi  
 }
 
 # delete all images
@@ -81,7 +90,7 @@ function dirm {
 
 # go into mysql
 function dmysql {
-    docker exec -it $(dps mysql) mysql -u root -p$(grep -Poe '(?<=MysqlRootPassword\":\")[^"]+' /opt/ispsystem/dci/config.json) $@
+    docker exec -it $(dps mysql) sh -c "mysql -u root -p'$(printenv MYSQL_ROOT_PASSWORD)' $@"
 }
 
 # go into redis
