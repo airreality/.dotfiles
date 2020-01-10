@@ -13,7 +13,7 @@ alias fgrep="fgrep --colour=auto"
 ### docker
 
 # list docker images
-alias dls="docker image ls --format='{{.ID}}\t{{.Repository}}\t{{.Tag}}' | column -t -s$'\t'"
+alias dls="docker image ls --format='table {{.ID}}\t{{.Repository}}\t{{.Tag}}'"
 
 # go into container
 function dbash {
@@ -23,7 +23,7 @@ function dbash {
 # find container by parts of name
 function dps {
     if [ $# -eq 0 ]; then
-        docker ps --format='{{.ID}}\t{{.Names}}\t{{.Status}}' | column -t -s$'\t'
+        docker ps --format='table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Image}}'
     else
         args=""
         filter=""
@@ -36,7 +36,7 @@ function dps {
         done
         args=$(echo $args | xargs)
         if [ -z "$filter" ]; then
-            docker ps ${args} --format="{{.ID}}\t{{.Names}}\t{{.Status}}" | column -t -s$'\t'
+            docker ps ${args} --format="table {{.ID}}\t{{.Names}}\t{{.Status}}"
         else
             docker ps ${args} -q --filter "name=${filter}"
         fi
@@ -50,7 +50,7 @@ function dgo {
     else
         container=$(dps $@)
         if [ -z $container ]; then
-            container=$(docker ps --filter "id=$@" --format="{{.ID}}")
+            container=$(docker ps -q --filter "id=$@")
         fi
         if [ -z $container ]; then
             echo "No such container"
@@ -69,7 +69,7 @@ function drm {
     else
         container=$(dps $@) 
         if [ -z $container ]; then
-            container=$(docker ps --filter "id=$@" --format="{{.ID}}")
+            container=$(docker ps -q --filter "id=$@")
         fi
         if [ -z $container ]; then
             echo "No such container"
