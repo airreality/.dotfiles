@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # dirs
 alias b="cd ~/BashProjects/"
 alias p="cd ~/PythonProjects/"
