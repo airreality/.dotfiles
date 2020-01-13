@@ -3,6 +3,9 @@
 # list docker images
 alias dls="docker image ls --format='table {{.ID}}\t{{.Repository}}\t{{.Tag}}'"
 
+# delete docker image
+alias dirm="docker image rm"
+
 # go into container
 dbash() {
     docker exec -it $@ bash > /dev/null || if [ $? -eq 126 ]; then docker exec -it $@ sh; fi
@@ -54,23 +57,17 @@ drm() {
     dcheck $@ && docker stop $container && docker rm $container
 }
 
-# delete all images
-dirm() {
-    if [ $(docker image ls | wc -l) -ge 2 ]; then
-        docker image rm  $(docker image ls --format={{.ID}})
-    fi
-}
-
 # go into mysql
 dmysql() {
-    docker exec -it $(dps mysql) sh -c "mysql -u root -p'\$(printenv MYSQL_ROOT_PASSWORD)' $@"
+    docker exec -it $(dps mysql) mysql -u root -p"$(docker exec $(dps mysql) printenv MYSQL_ROOT_PASSWORD)" $@
 }
 
 # go into redis
 dredis() {
-    db=$(dmysql -NB -e "SHOW DATABASES LIKE 'dci_%';" | grep -v 'Warning' | tr -d '\r')
-    redis_params=($(dmysql -NB $db -e "SELECT JSON_UNQUOTE(params_redis->'$.password'), params_redis->'$.port' FROM dci_location;" | grep -v 'Warning' | tr -d '\r'))
-    redis_password=$(echo $redis_params[1])
-    redis_port=$(echo $redis_params[2])
+    local db=$(dmysql -NB -e "SHOW DATABASES LIKE 'dci_%';" | grep -v 'Warning' | tr -d '\r')
+    local -a redis_params
+    redis_params=($(dmysql -NB $db -e "SELECT JSON_UNQUOTE(params_redis->'$.password'), params_redis->'$.port' FROM dci_location;" | grep -v 'Warning'))
+    local redis_password=$(echo $redis_params[1])
+    local redis_port=$(echo $redis_params[2])
     docker exec -it $(dps redis) redis-cli -p $redis_port -a $redis_password $@
 }
