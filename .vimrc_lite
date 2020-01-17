@@ -11,14 +11,12 @@ Plugin 'drewtempelmeyer/palenight.vim' " vim theme
 Plugin 'scrooloose/nerdtree'           " tree of directory files
 Plugin 'majutsushi/tagbar'             " structure of source files
 Plugin 'itchyny/lightline.vim'         " statusbar
-Plugin 'fisadev/FixedTaskList.vim'     " todo list
 Plugin 'tpope/vim-commentary'          " commentaries
 Plugin 'tpope/vim-surround'            " add, del, edit brackets, quotes, etc
 Plugin 'Raimondi/delimitMate'          " auto-complete brackets, quotes, etc
 Plugin 'vim-python/python-syntax'      " python highlighting
 Plugin 'pallets/jinja'                 " jinja2 highlighting
 Plugin 'ekalinin/dockerfile.vim'       " dockerfile highlighting
-Plugin 'w0rp/ale'                      " linting
 
 call vundle#end()
 
@@ -93,19 +91,6 @@ autocmd VimResized * wincmd =
 syntax on
 let g:python_highlight_all = 1
 
-" ale
-let g:ale_virtualenv_dir_names = ['venv', 'env']
-let g:ale_linters = {
-\  'sh': ['shell'],
-\  'python': ['flake8', 'pylint'],
-\  'markdown': ['remark_lint']
-\}
-let g:ale_fixers = {
-\  'sh': ['shfmt'],
-\  'python': ['isort', 'add_blank_lines_for_python_control_statements', 'yapf'],
-\  'markdown': ['prettier']
-\}
-
 " lightline
 set laststatus=2
 set noshowmode
@@ -113,9 +98,6 @@ let g:lightline = {'colorscheme': 'deus'}
 
 " signify
 let g:signify_vcs_list = [ 'git' ]
-
-" F2 = Tasks
-nmap <F2> :TaskList<CR>
 
 " F3 = NerdTree
 nmap <F3> :NERDTreeToggle<CR>
@@ -134,9 +116,6 @@ autocmd FileType python nmap <F5> :w<CR> :! python %<CR>
 autocmd FileType python nmap <F6> :w<CR> :! python % 
 autocmd FileType sh nmap <F5> :w<CR> :! bash %<CR>
 autocmd FileType sh nmap <F6> :w<CR> :! bash % 
-
-" F8 = ale fixer
-nmap <F8> :ALEFix<CR>
 
 " F12 = nu and paste and signcolumn toggle
 
