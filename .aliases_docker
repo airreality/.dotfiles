@@ -8,7 +8,7 @@ alias dirm="docker image rm"
 
 # go into container
 dbash() {
-    docker exec -it $@ bash > /dev/null || if [ $? -eq 126 ]; then docker exec -it $@ sh; fi
+    docker exec -it $@ bash || if [ $? -eq 126 ]; then docker exec -it $@ sh; fi
 }
 
 # find container by parts of name
