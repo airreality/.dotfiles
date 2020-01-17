@@ -25,6 +25,7 @@ Plugin 'pallets/jinja'                 " jinja2 highlighting
 Plugin 'ekalinin/dockerfile.vim'       " dockerfile highlighting
 Plugin 'mhinz/vim-signify'             " git diff
 Plugin 'w0rp/ale'                      " linting
+Plugin 'airreality/vim-pydocstring'    " generate python docstring
 
 " markdown
 Plugin 'godlygeek/tabular'
@@ -164,7 +165,7 @@ autocmd FileType sh nmap <F5> :w<CR> :! bash %<CR>
 autocmd FileType sh nmap <F6> :w<CR> :! bash % 
 autocmd FileType markdown nmap <F5> :MarkdownPreview<CR>
 
-" F5 = yaml switch to ansible`
+" F5 = yaml switch to ansible
 autocmd Filetype yaml nmap <F5> :set filetype=ansible.yaml<CR>
 
 " F8 = ale fixer
@@ -195,3 +196,6 @@ nmap <C-j> <C-W>j
 nmap <C-k> <C-W>k
 nmap <C-h> <C-W>h
 nmap <C-l> <C-W>l
+
+" pydocstring
+nmap <silent> <C-_> <Plug>(pydocstring)
