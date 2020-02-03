@@ -13,21 +13,22 @@ dbash() {
 
 # find container by parts of name
 dps() {
-	args=""
-	filter=""
-	for arg in $@; do
-		if [[ "$arg" =~ '^-.+' ]]; then
-			args="${args}${arg} "
-		else
-			filter="${filter}${arg}.*"
-		fi
-	done
-	args=$(echo $args | xargs)
-	if [ -z "$filter" ]; then
-		docker ps ${args} --format="table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Image}}"
-	else
-		docker ps ${args} -q --filter "name=${filter}"
-	fi
+    local args
+    local filter
+    local arg
+    for arg in $@; do
+        if [[ "$arg" =~ ^-.+ ]]; then
+            args+="$arg "
+        else
+            filter+="${arg}.*"
+        fi
+    done
+    args=$(echo $args | xargs)
+    if [ -z "$filter" ]; then
+        docker ps $args --format="table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Image}}"
+    else
+        docker ps $args -q --filter "name=$filter"
+    fi
 }
 
 # find container by id or parts of name
@@ -49,11 +50,13 @@ dcheck() {
 
 # go into container
 dgo() {
-	dcheck $@ && dbash $container
+    local container
+    dcheck $@ && dbash $container
 }
 
 # stop and delete container
 drm() {
+    local container
     dcheck $@ && docker stop $container && docker rm $container
 }
 
