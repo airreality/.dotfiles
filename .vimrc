@@ -120,7 +120,7 @@ let g:ale_virtualenv_dir_names = ['venv', 'env']
 let g:ale_linters = {
 \  'sh': ['shell'],
 \  'python': ['flake8', 'pylint'],
-\  'markdown': ['remark_lint'],
+\  'markdown': ['markdownlint'],
 \  'ansible': ['ansible-lint']
 \}
 let g:ale_fixers = {

@@ -70,7 +70,7 @@ dredis() {
     local db=$(dmysql -NB -e "SHOW DATABASES LIKE 'dci_%';" | grep -v 'Warning' | tr -d '\r')
     local -a redis_params
     redis_params=($(dmysql -NB $db -e "SELECT JSON_UNQUOTE(params_redis->'$.password'), params_redis->'$.port' FROM dci_location;" | grep -v 'Warning'))
-    local redis_password=$(echo $redis_params[1])
-    local redis_port=$(echo $redis_params[2])
+    local redis_password=$(echo ${redis_params[1]})
+    local redis_port=$(echo ${redis_params[2]})
     docker exec -it $(dps redis) redis-cli -p $redis_port -a $redis_password $@
 }

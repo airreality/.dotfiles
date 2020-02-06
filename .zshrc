@@ -12,7 +12,7 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-if [[ -n $DISPLAY ]]; then setxkbmap -option ctrl:nocaps; fi
+if [[ -n $DISPLAY ]]; then xkbcomp ~/.config/xkb/config $DISPLAY > /dev/null 2>&1; fi
 
 [[ -f ~/.aliases ]] && . ~/.aliases
 [[ -f ~/.aliases_docker ]] && . ~/.aliases_docker
