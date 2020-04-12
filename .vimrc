@@ -25,7 +25,7 @@ Plugin 'pallets/jinja'                 " jinja2 highlighting
 Plugin 'ekalinin/dockerfile.vim'       " dockerfile highlighting
 Plugin 'mhinz/vim-signify'             " git diff
 Plugin 'w0rp/ale'                      " linting
-Plugin 'airreality/vim-pydocstring'    " generate python docstring
+Plugin 'heavenshell/vim-pydocstring'   " generate python docstring
 
 " markdown
 Plugin 'godlygeek/tabular'
