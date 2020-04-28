@@ -2,7 +2,6 @@
 
 # system
 alias diff="colordiff"
-alias opti="optirun -c :8"
 alias space="xfconf-query -c xfwm4 -p /general/workspace_count -s"
 alias weather="curl wttr.in"
 alias dl="youtube-dl"
