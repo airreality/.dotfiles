@@ -1,0 +1,11 @@
+[credential]
+	helper = wincred
+[fetch]
+	prune = true
+[rerere]
+	enabled = true
+[color]
+    ui = auto
+[user]
+	name = airreality
+	email = tonygpx@yandex.ru
