@@ -25,7 +25,7 @@ Plugin 'pallets/jinja'                 " jinja2 highlighting
 Plugin 'ekalinin/dockerfile.vim'       " dockerfile highlighting
 Plugin 'mhinz/vim-signify'             " git diff
 Plugin 'w0rp/ale'                      " linting
-Plugin 'heavenshell/vim-pydocstring'   " generate python docstring
+Plugin 'pixelneo/vim-python-docstring' " generate python docstring
 
 " markdown
 Plugin 'godlygeek/tabular'
@@ -197,5 +197,6 @@ nmap <C-k> <C-W>k
 nmap <C-h> <C-W>h
 nmap <C-l> <C-W>l
 
-" pydocstring
-nmap <silent> <C-_> <Plug>(pydocstring)
+" docstring
+nmap <C-_> :Docstring<CR>
+let g:python_style = 'rest'
