@@ -9,3 +9,5 @@
 [user]
 	name = airreality
 	email = tonygpx@yandex.ru
+[includeIf "gitdir:~/work/"]
+    path = ~/work/.gitconfig
