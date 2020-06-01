@@ -9,9 +9,9 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'             " vim package manager
 Plugin 'drewtempelmeyer/palenight.vim' " vim theme
 Plugin 'scrooloose/nerdtree'           " tree of directory files
+Plugin 'junegunn/fzf.vim'              " fuzzy finder
 Plugin 'majutsushi/tagbar'             " structure of source files
 Plugin 'itchyny/lightline.vim'         " statusbar
-Plugin 'fisadev/FixedTaskList.vim'     " todo list
 Plugin 'tpope/vim-commentary'          " commentaries
 Plugin 'tpope/vim-fugitive'            " git
 Plugin 'tpope/vim-surround'            " add, del, edit brackets, quotes, etc
@@ -44,6 +44,7 @@ filetype plugin indent on
 aunmenu Help.
 aunmenu Window.
 let no_buffers_menu=1
+let mapleader=','
 
 tab sball
 set backspace=indent,eol,start
@@ -56,21 +57,23 @@ set equalalways
 set gcr=a:blinkon0
 set hlsearch
 set incsearch
+set linebreak
 set list
-set listchars=tab:>-,trail:-
+set listchars=tab:»»,trail:·
 set ls=2
 set mousemodel=popup
 set novisualbell
-set nu
+set number
 set scrolloff=5
 set showcmd
 set showmatch
 set showmode
 set switchbuf=useopen
+set textwidth=100
 set ttyfast
 set visualbell t_vb=
 set wildmenu
-set wrap linebreak nolist
+set wrap
 
 " tabs
 set expandtab
@@ -116,6 +119,7 @@ syntax on
 let g:python_highlight_all = 1
 
 " ale
+nmap <Leader>f :ALEFix<CR>
 let g:ale_virtualenv_dir_names = ['venv', 'env']
 let g:ale_linters = {
 \  'sh': ['shell'],
@@ -129,9 +133,6 @@ let g:ale_fixers = {
 \  'markdown': ['prettier']
 \}
 
-" snippets
-let g:snippets_dir = "~/.vim/vim-snippets/snippets"
-
 " lightline
 set laststatus=2
 set noshowmode
@@ -143,36 +144,29 @@ let g:signify_vcs_list = [ 'git' ]
 " plasticboy
 let g:vim_markdown_folding_disabled = 1
 
-" F2 = Tasks
-nmap <F2> :TaskList<CR>
-
-" F3 = NerdTree
-nmap <F3> :NERDTreeToggle<CR>
+" NerdTree
+nmap <Leader>t :NERDTreeToggle<CR>
 let NERDTreeIgnore=['\~$', '\.pyc$', '\.pyo$', '\.class$', 'pip-log\.txt$', '\.o$']
 let g:NERDTreeQuitOnOpen = 1
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
-" F4 = Structure of src files
-nmap <F4> :TagbarToggle<CR>
+" structure of src files
+nmap <Leader>l :TagbarToggle<CR>
 let g:Tlist_Ctags_Cmd='/usr/bin/ctags'
 let g:tagbar_autofocus = 0
 
-" F5 F6 = run
-autocmd FileType python nmap <F5> :w<CR> :! python %<CR>
-autocmd FileType python nmap <F6> :w<CR> :! python % 
-autocmd FileType sh nmap <F5> :w<CR> :! bash %<CR>
-autocmd FileType sh nmap <F6> :w<CR> :! bash % 
-autocmd FileType markdown nmap <F5> :MarkdownPreview<CR>
+" run
+autocmd FileType python nmap <Leader>r :w<CR> :! python %<CR>
+autocmd FileType python nmap <Leader>R :w<CR> :! python % 
+autocmd FileType sh nmap <Leader>r :w<CR> :! bash %<CR>
+autocmd FileType sh nmap <Leader>R :w<CR> :! bash % 
+autocmd FileType markdown nmap <Leader>r :MarkdownPreview<CR>
 
-" F5 = yaml switch to ansible
-autocmd Filetype yaml nmap <F5> :set filetype=ansible.yaml<CR>
+" yaml switch to ansible
+autocmd Filetype yaml nmap <Leader>r :set filetype=ansible.yaml<CR>
 
-" F8 = ale fixer
-nmap <F8> :ALEFix<CR>
-
-" F12 = nu and paste and signcolumn toggle
-
+" nu and paste and signcolumn toggle
 function! SignColumnToggle()
     if !exists("b:signcolumn_on") || b:signcolumn_on
         set signcolumn=no
@@ -183,7 +177,7 @@ function! SignColumnToggle()
     endif
 endfunction
 
-nmap <F12> :set nu!<CR>:set paste!<CR>:call SignColumnToggle()<CR>
+nmap <Leader>p :set nu!<CR>:set paste!<CR>:call SignColumnToggle()<CR>
 
 " choose buffer
 nmap <C-c> :buffers<CR>:buffer<Space>
@@ -200,3 +194,6 @@ nmap <C-l> <C-W>l
 " docstring
 nmap <C-_> :Docstring<CR>
 let g:python_style = 'rest'
+
+" fzf
+nmap <Leader>s :Files<CR>

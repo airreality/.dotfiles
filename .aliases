@@ -8,6 +8,7 @@ alias dl="youtube-dl"
 alias dl-mp3="youtube-dl --extract-audio --audio-format mp3 --audio-quality 0"
 alias rec="pactl load-module module-loopback latency_msec=20"
 alias unrec="pactl unload-module module-loopback"
+alias vfzf='vim $(fzf)'
 
 cheat() {
     curl cheat.sh/$1
