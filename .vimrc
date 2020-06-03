@@ -25,6 +25,7 @@ Plugin 'pallets/jinja'                 " jinja2 highlighting
 Plugin 'ekalinin/dockerfile.vim'       " dockerfile highlighting
 Plugin 'mhinz/vim-signify'             " git diff
 Plugin 'w0rp/ale'                      " linting
+Plugin 'maximbaz/lightline-ale'        " ale indicator for lightline
 Plugin 'pixelneo/vim-python-docstring' " generate python docstring
 
 " markdown
@@ -110,8 +111,8 @@ let g:ycm_python_interpreter_path = ''
 let g:ycm_python_sys_path = []
 let g:ycm_extra_conf_vim_data = [
 \  'g:ycm_python_interpreter_path',
-\  'g:ycm_python_sys_path'
-\]
+\  'g:ycm_python_sys_path',
+\ ]
 let g:ycm_global_ycm_extra_conf = '~/.global_extra_conf.py'
 
 " python-syntax
@@ -125,18 +126,40 @@ let g:ale_linters = {
 \  'sh': ['shell'],
 \  'python': ['flake8', 'pylint'],
 \  'markdown': ['markdownlint'],
-\  'ansible': ['ansible-lint']
-\}
+\  'ansible': ['ansible-lint'],
+\ }
 let g:ale_fixers = {
 \  'sh': ['shfmt'],
 \  'python': ['isort', 'add_blank_lines_for_python_control_statements', 'yapf'],
 \  'markdown': ['prettier']
-\}
+\ }
+let g:ale_echo_msg_format = '[%linter%] %s'
+nmap <Leader>e :lopen<CR>
 
 " lightline
 set laststatus=2
 set noshowmode
-let g:lightline = {'colorscheme': 'deus'}
+let g:lightline = {
+\ 'colorscheme': 'deus',
+\ 'active': {
+\   'left': [['mode', 'paste'], ['filename', 'modified']],
+\   'right': [['lineinfo'], ['percent'], ['filetype'], ['readonly', 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ]]
+\ },
+\ 'component_expand': {
+\  'linter_checking': 'lightline#ale#checking',
+\  'linter_infos': 'lightline#ale#infos',
+\  'linter_warnings': 'lightline#ale#warnings',
+\  'linter_errors': 'lightline#ale#errors',
+\  'linter_ok': 'lightline#ale#ok',
+\ },
+\ 'component_type': {
+\  'linter_checking': 'right',
+\  'linter_infos': 'right',
+\  'linter_warnings': 'warning',
+\  'linter_errors': 'error',
+\  'linter_ok': 'right',
+\ },
+\ }
 
 " signify
 let g:signify_vcs_list = [ 'git' ]
@@ -197,3 +220,6 @@ let g:python_style = 'rest'
 
 " fzf
 nmap <Leader>s :Files<CR>
+
+" reset search highlighting
+nmap <Leader>q :nohlsearch<CR>
