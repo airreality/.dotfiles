@@ -95,6 +95,12 @@ silent! colorscheme palenight
 command! W w
 command! Q q
 
+" undo history
+if isdirectory($HOME . '/.vim/undo') == 0
+:silent !mkdir -p ~/.vim/undo > /dev/null 2>&1
+endif
+set undodir=./.vim-undo// undodir+=~/.vim/undo// undofile
+
 " highlight if line > 80 symbols
 augroup vimrc_autocmds
     autocmd!
@@ -216,10 +222,13 @@ nmap <C-l> <C-W>l
 
 " docstring
 nmap <C-_> :Docstring<CR>
-let g:python_style = 'rest'
+let g:python_style='rest'
 
 " fzf
 nmap <Leader>s :Files<CR>
+
+" ack
+let g:ackprg='ag --vimgrep'
 
 " reset search highlighting
 nmap <Leader>q :nohlsearch<CR>
