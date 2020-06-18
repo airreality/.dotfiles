@@ -64,6 +64,7 @@ set listchars=tab:»»,trail:·
 set ls=2
 set mousemodel=popup
 set novisualbell
+set nowrap
 set number
 set scrolloff=5
 set showcmd
@@ -74,7 +75,6 @@ set textwidth=100
 set ttyfast
 set visualbell t_vb=
 set wildmenu
-set wrap
 
 " tabs
 set expandtab

@@ -1,13 +1,13 @@
 [credential]
-	helper = wincred
+    helper = wincred
 [fetch]
-	prune = true
+    prune = true
 [rerere]
-	enabled = true
+    enabled = true
 [color]
-	ui = auto
+    ui = auto
 [user]
-	name = airreality
-	email = tonygpx@yandex.ru
+    name = airreality
+    email = tonygpx@yandex.ru
 [includeIf "gitdir:~/work/"]
     path = ~/work/.gitconfig

@@ -14,6 +14,10 @@ if [[ $1 != '--lite' ]]; then
     yum -y install python36-devel
 fi
 
+# fzf
+( cd /tmp && git clone --depth 1 https://github.com/junegunn/fzf.git && \
+    cd fzf && ./install )
+
 # vim
 ( cd /tmp/ && git clone https://github.com/vim/vim && cd vim && \
     ./configure --with-features=huge \
