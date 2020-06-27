@@ -64,17 +64,16 @@ set listchars=tab:»»,trail:·
 set ls=2
 set mousemodel=popup
 set novisualbell
-set nowrap
 set number
 set scrolloff=5
 set showcmd
 set showmatch
 set showmode
 set switchbuf=useopen
-set textwidth=100
 set ttyfast
 set visualbell t_vb=
 set wildmenu
+set wrap
 
 " tabs
 set expandtab
@@ -106,7 +105,6 @@ augroup vimrc_autocmds
     autocmd!
     autocmd FileType python highlight Excess ctermbg=DarkGrey guibg=Black
     autocmd FileType python match Excess /\%100v.*/
-    autocmd FileType python set nowrap
 augroup END
 
 " auto-resize splits when Vim gets resized
@@ -136,7 +134,7 @@ let g:ale_linters = {
 \ }
 let g:ale_fixers = {
 \  'sh': ['shfmt'],
-\  'python': ['isort', 'add_blank_lines_for_python_control_statements', 'yapf'],
+\  'python': ['isort', 'yapf'],
 \  'markdown': ['prettier']
 \ }
 let g:ale_echo_msg_format = '[%linter%] %s'
