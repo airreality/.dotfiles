@@ -2,7 +2,9 @@
 
 # system
 alias vi="vim"
-function cheat {
+alias vfzf='vim $(fzf)'
+
+cheat() {
     curl cheat.sh/$1
 }
 

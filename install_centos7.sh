@@ -16,7 +16,7 @@ fi
 
 # fzf
 ( cd /tmp && git clone --depth 1 https://github.com/junegunn/fzf.git && \
-    cd fzf && ./install )
+    cd fzf && ./install --all && mv bin/fzf bin/fzf-tmux /usr/bin/)
 
 # vim
 ( cd /tmp/ && git clone https://github.com/vim/vim && cd vim && \
@@ -38,6 +38,7 @@ fi
 # zsh
 curl -o /root/.bashrc https://raw.githubusercontent.com/airreality/.dotfiles/master/.bashrc
 curl -o /root/.aliases https://raw.githubusercontent.com/airreality/.dotfiles/master/.aliases_test_servers
+curl -o /root/.aliases_docker https://raw.githubusercontent.com/airreality/.dotfiles/master/.aliases_docker
 curl -Lo /tmp/install.sh https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh
 ( export ZSH=/usr/share/oh-my-zsh && sh /tmp/install.sh --unattended )
 curl -o /root/.zshrc https://raw.githubusercontent.com/airreality/.dotfiles/master/.zshrc
