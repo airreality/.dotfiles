@@ -22,6 +22,7 @@ venv() {
         read create
         if [[ "$create" == "y" ]]; then
             python3 -m virtualenv venv
+            venv
         fi }
 }
 

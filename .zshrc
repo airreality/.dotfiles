@@ -4,6 +4,7 @@ DISABLE_AUTO_UPDATE="true"
 plugins=(
     colored-man-pages
     copybuffer
+    docker
     git
     sudo
     zsh-autosuggestions

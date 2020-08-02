@@ -70,6 +70,9 @@ set showcmd
 set showmatch
 set showmode
 set switchbuf=useopen
+if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gnome-terminal"
+  set t_Co=256
+endif
 set ttyfast
 set visualbell t_vb=
 set wildmenu
@@ -134,7 +137,7 @@ let g:ale_linters = {
 \ }
 let g:ale_fixers = {
 \  'sh': ['shfmt'],
-\  'python': ['isort', 'yapf'],
+\  'python': ['isort', 'black'],
 \  'markdown': ['prettier']
 \ }
 let g:ale_echo_msg_format = '[%linter%] %s'
@@ -176,7 +179,6 @@ nmap <Leader>t :NERDTreeToggle<CR>
 let NERDTreeIgnore=['\~$', '\.pyc$', '\.pyo$', '\.class$', 'pip-log\.txt$', '\.o$']
 let g:NERDTreeQuitOnOpen = 1
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " structure of src files
 nmap <Leader>l :TagbarToggle<CR>

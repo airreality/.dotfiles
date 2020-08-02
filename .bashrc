@@ -27,6 +27,11 @@ colors() {
     done
 }
 
+export http_proxy=''
+export https_proxy=''
+export ftp_proxy=''
+export socks_proxy=''
+
 if which zsh > /dev/null 2>&1 && ! echo $SHELL | grep -q zsh; then
     exec zsh
 else

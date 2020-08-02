@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+alias d="docker"
+
 # list docker images
 alias dls="docker image ls --format='table {{.ID}}\t{{.Repository}}\t{{.Tag}}'"
 
