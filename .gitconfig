@@ -1,5 +1,5 @@
 [credential]
-    helper = wincred
+	helper = store
 [fetch]
     prune = true
 [rerere]

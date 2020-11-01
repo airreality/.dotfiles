@@ -85,6 +85,7 @@ set shiftwidth=4
 set smarttab
 set softtabstop=4
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType markdown setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
 " colors
 set background=dark
@@ -121,6 +122,8 @@ let g:ycm_extra_conf_vim_data = [
 \  'g:ycm_python_sys_path',
 \ ]
 let g:ycm_global_ycm_extra_conf = '~/.global_extra_conf.py'
+nmap <Leader>g :YcmCompleter GoToType<CR>
+nmap <Leader>d :YcmCompleter GoToDefinition<CR>
 
 " python-syntax
 syntax on
@@ -212,7 +215,7 @@ nmap <Leader>p :set nu!<CR>:set paste!<CR>:call SignColumnToggle()<CR>
 nmap <C-c> :buffers<CR>:buffer<Space>
 
 " close buffer
-nmap <C-q> :bd<CR>
+nmap <C-x> :bd<CR>
 
 " window movement
 nmap <C-j> <C-W>j
