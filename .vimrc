@@ -228,7 +228,8 @@ nmap <C-_> :Docstring<CR>
 let g:python_style='rest'
 
 " fzf
-nmap <Leader>s :Files<CR>
+nmap <Leader>c :Buffers<CR>
+map <expr> <Leader>s fugitive#head() != '' ? ':GFiles<CR>' : ':Files<CR>'
 
 " ack
 let g:ackprg='ag --vimgrep'

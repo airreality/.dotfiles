@@ -48,7 +48,7 @@ dcheck() {
             echo "Ambigious query" && return 1
         fi
     fi
-} 
+}
 
 # go into container
 dgo() {

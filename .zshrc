@@ -16,6 +16,8 @@ source $ZSH/oh-my-zsh.sh
 [[ -f ~/.aliases ]] && . ~/.aliases
 [[ -f ~/.aliases_docker ]] && . ~/.aliases_docker
 [[ -f ~/.aliases_hidden ]] && . ~/.aliases_hidden
+[[ -f /usr/share/fzf/key-bindings.zsh ]] && . /usr/share/fzf/key-bindings.zsh
+[[ -f /usr/share/fzf/completion.zsh ]] && . /usr/share/fzf/completion.zsh
 
 HISTFILE=~/.histfile
 HISTSIZE=10000
