@@ -8,7 +8,6 @@ alias dl="youtube-dl"
 alias dl-mp3="youtube-dl --extract-audio --audio-format mp3 --audio-quality 0"
 alias rec="pactl load-module module-loopback latency_msec=20"
 alias unrec="pactl unload-module module-loopback"
-alias vfzf='vim $(fzf)'
 alias p1="ping 1.1.1.1"
 alias p8="ping 8.8.8.8"
 alias ifzf="yay -Slq | fzf --multi --preview 'yay -Si {1}' | xargs -ro yay -S"
@@ -16,6 +15,13 @@ alias rfzf="yay -Qq | fzf --multi --preview 'yay -Qi {1}' | xargs -ro yay -Rns"
 
 cheat() {
     curl cheat.sh/$1
+}
+
+vfzf() {
+    local file=$(fzf)
+    if [[ -n "$file" ]]; then
+        vim "$file"
+    fi
 }
 
 # python
