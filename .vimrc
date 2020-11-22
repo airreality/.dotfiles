@@ -144,7 +144,7 @@ let g:ale_fixers = {
 \  'markdown': ['prettier']
 \ }
 let g:ale_echo_msg_format = '[%linter%] %s'
-nmap <Leader>e :lopen<CR>
+nmap <Leader>w :lwindow<CR>
 
 " lightline
 set laststatus=2
@@ -189,11 +189,11 @@ let g:Tlist_Ctags_Cmd='/usr/bin/ctags'
 let g:tagbar_autofocus = 0
 
 " run
-autocmd FileType python nmap <Leader>r :w<CR> :! python %<CR>
-autocmd FileType python nmap <Leader>R :w<CR> :! python % 
-autocmd FileType sh nmap <Leader>r :w<CR> :! bash %<CR>
-autocmd FileType sh nmap <Leader>R :w<CR> :! bash % 
-autocmd FileType markdown nmap <Leader>r :MarkdownPreview<CR>
+autocmd FileType python nmap <Leader>e :w<CR> :! python %<CR>
+autocmd FileType python nmap <Leader>E :w<CR> :! python % 
+autocmd FileType sh nmap <Leader>e :w<CR> :! bash %<CR>
+autocmd FileType sh nmap <Leader>E :w<CR> :! bash % 
+autocmd FileType markdown nmap <Leader>e :MarkdownPreview<CR>
 
 " yaml switch to ansible
 autocmd Filetype yaml nmap <Leader>r :set filetype=ansible.yaml<CR>
@@ -217,6 +217,9 @@ nmap <C-c> :buffers<CR>:buffer<Space>
 " close buffer
 nmap <C-x> :bd<CR>
 
+" show registers
+nmap <Leader>r :reg<CR>
+
 " window movement
 nmap <C-j> <C-W>j
 nmap <C-k> <C-W>k
@@ -229,7 +232,7 @@ let g:python_style='rest'
 
 " fzf
 nmap <Leader>c :Buffers<CR>
-map <expr> <Leader>s fugitive#head() != '' ? ':GFiles<CR>' : ':Files<CR>'
+nmap <expr> <Leader>s fugitive#head() != '' ? ':GFiles<CR>' : ':Files<CR>'
 
 " ack
 let g:ackprg='ag --vimgrep'

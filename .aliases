@@ -18,7 +18,11 @@ cheat() {
 }
 
 vfzf() {
-    local file=$(fzf)
+    if [[ -n "$1" ]]; then
+        local file="$(fzf -q $1)"
+    else
+        local file="$(fzf)"
+    fi
     if [[ -n "$file" ]]; then
         vim "$file"
     fi
