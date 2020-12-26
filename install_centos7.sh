@@ -7,7 +7,7 @@ exec > $log 2>&1
 # base packages
 yum -y update
 yum -y install epel-release
-yum -y install which wget curl tree the_silver_searcher tmux git zsh \
+yum -y install which wget curl tree jq the_silver_searcher tmux git zsh \
     make cmake gcc-c++ ctags ncurses-devel
 
 if [[ $1 != '--lite' ]]; then
