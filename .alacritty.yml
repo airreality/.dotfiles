@@ -34,4 +34,8 @@ colors:
     cyan:    '0xff5370'
     white:   '0xffffff'
 
+mouse:
+  url:
+    launcher: None
+
 draw_bold_text_with_bright_colors: false
