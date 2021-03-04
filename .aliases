@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 # system
+alias ls="ls --color=auto"
+alias grep="grep --colour=auto"
 alias diff="colordiff"
 alias space="xfconf-query -c xfwm4 -p /general/workspace_count -s"
 alias weather="curl wttr.in"
@@ -41,7 +43,3 @@ venv() {
             fi
         }
 }
-
-# colours
-alias ls="ls --color=auto"
-alias grep="grep --colour=auto"
