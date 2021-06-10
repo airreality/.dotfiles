@@ -21,7 +21,7 @@ Plugin 'valloric/youcompleteme'        " multi-language autocomplete
 " cd ~/.vim/bundle/youcompleteme && python3 install.py
 
 Plugin 'vim-python/python-syntax'      " python highlighting
-Plugin 'pallets/jinja'                 " jinja2 highlighting
+" Plugin 'pallets/jinja'                 " jinja2 highlighting
 Plugin 'ekalinin/dockerfile.vim'       " dockerfile highlighting
 Plugin 'mhinz/vim-signify'             " git diff
 Plugin 'w0rp/ale'                      " linting
@@ -134,7 +134,7 @@ nmap <Leader>f :ALEFix<CR>
 let g:ale_virtualenv_dir_names = ['venv', 'env']
 let g:ale_linters = {
 \  'sh': ['shell'],
-\  'python': ['flake8', 'pylint'],
+\  'python': ['flake8', 'pylint', 'mypy'],
 \  'markdown': ['markdownlint'],
 \  'ansible': ['ansible-lint'],
 \ }

@@ -1,0 +1,54 @@
+[flake8]
+# Base options
+format = pylint
+max-line-length = 100
+show-source = True
+statistics = False
+
+# General options
+min-name-length = 3
+max-name-length = 30
+
+# Complexity options
+max-returns = 5
+max-local-variables = 5
+max-expressions = 9
+max-arguments = 5
+max-module-members = 7
+max-methods = 7
+max-line-complexity = 14
+max-jones-score = 12
+max-imports = 12
+max-imported-names = 50
+max-base-classes = 3
+max-decorators = 5
+max-string-usages = 5
+max-awaits = 5
+max-try-body-length = 1
+max-module-expressions = 7
+max-function-expressions = 4
+max-asserts = 5
+max-access-level = 4
+max-attributes = 6
+max-cognitive-score = 12
+max-cognitive-average = 8
+max-call-level = 3
+max-annotation-complexity = 3
+max-import-from-members = 8
+max-tuple-unpack-length = 4
+
+# Plugins
+max-complexity = 9
+
+# Exclude directories
+exclude =
+    __init__.py
+
+# Ignore
+ignore =
+    D105,
+    D107,
+    D202,
+    D205,
+    D401,
+    W503,

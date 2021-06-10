@@ -35,7 +35,7 @@ colors:
     white:   '0xffffff'
 
 mouse:
-  url:
+  hints:
     launcher: None
 
 draw_bold_text_with_bright_colors: false

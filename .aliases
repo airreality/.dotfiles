@@ -15,6 +15,14 @@ alias p8="ping 8.8.8.8"
 alias ifzf="yay -Slq | fzf --multi --preview 'yay -Si {1}' | xargs -ro yay -S"
 alias rfzf="yay -Qq | fzf --multi --preview 'yay -Qi {1}' | xargs -ro yay -Rns"
 
+unauth() {
+    if [[ -z $1 ]]; then
+        echo "Empty query"
+    else
+        sed -ie "$1d" ~/.ssh/known_hosts
+    fi
+}
+
 cheat() {
     curl cheat.sh/$1
 }
