@@ -9,6 +9,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'             " vim package manager
 Plugin 'drewtempelmeyer/palenight.vim' " vim theme
 Plugin 'scrooloose/nerdtree'           " tree of directory files
+Plugin 'junegunn/fzf'                  " fuzzy finder
 Plugin 'junegunn/fzf.vim'              " fuzzy finder
 Plugin 'majutsushi/tagbar'             " structure of source files
 Plugin 'itchyny/lightline.vim'         " statusbar
@@ -21,6 +22,8 @@ Plugin 'valloric/youcompleteme'        " multi-language autocomplete
 " cd ~/.vim/bundle/youcompleteme && python3 install.py
 
 Plugin 'vim-python/python-syntax'      " python highlighting
+Plugin 'puremourning/vimspector'       " debugger
+Plugin 'vim-test/vim-test'             " run tests
 " Plugin 'pallets/jinja'                 " jinja2 highlighting
 Plugin 'ekalinin/dockerfile.vim'       " dockerfile highlighting
 Plugin 'mhinz/vim-signify'             " git diff
@@ -197,6 +200,16 @@ autocmd FileType markdown nmap <Leader>e :MarkdownPreview<CR>
 
 " yaml switch to ansible
 autocmd Filetype yaml nmap <Leader>r :set filetype=ansible.yaml<CR>
+
+" tests
+let test#strategy="vimterminal"
+let test#python#runner="pytest"
+nmap <Leader>n :TestNearest<CR>
+nmap <Leader>m :TestSuite<CR>
+nmap <Leader>b :TestLast<CR>
+
+" debugger
+let g:vimspector_enable_mappings="HUMAN"
 
 " nu and paste and signcolumn toggle
 function! SignColumnToggle()
