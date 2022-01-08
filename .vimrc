@@ -20,9 +20,9 @@ Plugin 'valloric/youcompleteme'        " multi-language autocomplete
 " after install do in terminal
 " cd ~/.vim/bundle/youcompleteme && python3 install.py
 
-Plugin 'vim-python/python-syntax'      " python highlighting
-" Plugin 'pallets/jinja'                 " jinja2 highlighting
-Plugin 'ekalinin/dockerfile.vim'       " dockerfile highlighting
+Plugin 'sheerun/vim-polyglot'          " multi-language highlighting
+Plugin 'puremourning/vimspector'       " debugger
+Plugin 'vim-test/vim-test'             " run tests
 Plugin 'mhinz/vim-signify'             " git diff
 Plugin 'w0rp/ale'                      " linting
 Plugin 'maximbaz/lightline-ale'        " ale indicator for lightline
@@ -134,7 +134,8 @@ nmap <Leader>f :ALEFix<CR>
 let g:ale_virtualenv_dir_names = ['venv', 'env']
 let g:ale_linters = {
 \  'sh': ['shell'],
-\  'python': ['flake8', 'pylint', 'mypy'],
+\  'json': ['jq'],
+\  'python': ['flake8'],
 \  'markdown': ['markdownlint'],
 \  'ansible': ['ansible-lint'],
 \ }
@@ -198,6 +199,16 @@ autocmd FileType markdown nmap <Leader>e :MarkdownPreview<CR>
 " yaml switch to ansible
 autocmd Filetype yaml nmap <Leader>r :set filetype=ansible.yaml<CR>
 
+" tests
+let test#strategy="vimterminal"
+let test#python#runner="pytest"
+nmap <Leader>n :TestNearest<CR>
+nmap <Leader>m :TestFile<CR>
+nmap <Leader>b :TestLast<CR>
+
+" debugger
+let g:vimspector_enable_mappings="HUMAN"
+
 " nu and paste and signcolumn toggle
 function! SignColumnToggle()
     if !exists("b:signcolumn_on") || b:signcolumn_on
@@ -227,8 +238,11 @@ nmap <C-h> <C-W>h
 nmap <C-l> <C-W>l
 
 " docstring
-nmap <C-_> :Docstring<CR>
-let g:python_style='rest'
+nmap <Leader>- :Docstring<CR>
+let g:python_style='google'
+
+" ag
+nmap <Leader>a :Ag<CR>
 
 " fzf
 nmap <Leader>c :Buffers<CR>
