@@ -122,8 +122,7 @@ let g:ycm_extra_conf_vim_data = [
 \  'g:ycm_python_sys_path',
 \ ]
 let g:ycm_global_ycm_extra_conf = '~/.global_extra_conf.py'
-nmap <Leader>g :YcmCompleter GoToType<CR>
-nmap <Leader>d :YcmCompleter GoToDefinition<CR>
+nmap <Leader>g :YcmCompleter GoToDeclaration<CR>
 
 " python-syntax
 syntax on
@@ -131,6 +130,7 @@ let g:python_highlight_all = 1
 
 " ale
 nmap <Leader>f :ALEFix<CR>
+nmap <Leader>i :ALEFix isort<CR>
 let g:ale_virtualenv_dir_names = ['venv', 'env']
 let g:ale_linters = {
 \  'sh': ['shell'],

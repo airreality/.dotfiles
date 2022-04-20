@@ -9,7 +9,7 @@ plugins=(
     git
     sudo
     zsh-autosuggestions
-    zsh-syntax-highlighting
+    fast-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -33,5 +33,6 @@ export TERM=xterm-256color
 export FZF_DEFAULT_COMMAND='ag --nocolor -g ""'
 
 if env | grep -q '^WSLENV='; then
-    export DISPLAY=$(grep nameserver /etc/resolv.conf | awk '{print $2}'):0 
+    export DISPLAY=$(grep nameserver /etc/resolv.conf | awk '{print $2}'):0
+    export LIBGL_ALWAYS_INDIRECT=1
 fi
