@@ -108,7 +108,7 @@ set undodir=./.vim-undo// undodir+=~/.vim/undo// undofile
 augroup vimrc_autocmds
     autocmd!
     autocmd FileType python highlight Excess ctermbg=DarkGrey guibg=Black
-    autocmd FileType python match Excess /\%100v.*/
+    autocmd FileType python match Excess /\%121v.*/
 augroup END
 
 " auto-resize splits when Vim gets resized
@@ -123,6 +123,7 @@ let g:ycm_extra_conf_vim_data = [
 \ ]
 let g:ycm_global_ycm_extra_conf = '~/.global_extra_conf.py'
 nmap <Leader>g :YcmCompleter GoToDeclaration<CR>
+nmap <Leader>r :YcmCompleter RefactorRename 
 
 " python-syntax
 syntax on
@@ -141,6 +142,7 @@ let g:ale_linters = {
 \ }
 let g:ale_fixers = {
 \  'sh': ['shfmt'],
+\  'json': ['jq'],
 \  'python': ['isort', 'black'],
 \  'markdown': ['prettier']
 \ }
@@ -197,7 +199,7 @@ autocmd FileType sh nmap <Leader>E :w<CR> :! bash %
 autocmd FileType markdown nmap <Leader>e :MarkdownPreview<CR>
 
 " yaml switch to ansible
-autocmd Filetype yaml nmap <Leader>r :set filetype=ansible.yaml<CR>
+autocmd Filetype yaml nmap <Leader>e :set filetype=ansible.yaml<CR>
 
 " tests
 let test#strategy="vimterminal"
@@ -229,7 +231,7 @@ nmap <C-c> :buffers<CR>:buffer<Space>
 nmap <C-x> :bd<CR>
 
 " show registers
-nmap <Leader>r :reg<CR>
+nmap <Leader>' :reg<CR>
 
 " window movement
 nmap <C-j> <C-W>j
@@ -246,7 +248,7 @@ nmap <Leader>a :Ag<CR>
 
 " fzf
 nmap <Leader>c :Buffers<CR>
-nmap <expr> <Leader>s fugitive#head() != '' ? ':GFiles<CR>' : ':Files<CR>'
+nmap <expr> <Leader>s FugitiveHead() != '' ? ':GFiles<CR>' : ':Files<CR>'
 
 " ack
 let g:ackprg='ag --vimgrep'
