@@ -1,18 +1,20 @@
 [credential]
 	helper = store
 [fetch]
-    prune = true
+	prune = true
 [rerere]
-    enabled = true
+	enabled = true
 [color]
-    ui = auto
+	ui = auto
 [user]
-    name = airreality
-    email = tonygpx@yandex.ru
+	name = airreality
+	email = tonygpx@yandex.ru
 [includeIf "gitdir:~/work/"]
-    path = ~/work/.gitconfig
+	path = ~/work/.gitconfig
 [filter "lfs"]
-    clean = git-lfs clean -- %f
-    smudge = git-lfs smudge -- %f
-    process = git-lfs filter-process
-    required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[push]
+	autoSetupRemote = true
