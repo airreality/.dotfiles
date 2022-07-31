@@ -30,7 +30,7 @@ zstyle ':completion:*' hosts off
 
 export EDITOR=vim
 export TERM=xterm-256color
-export FZF_DEFAULT_COMMAND='ag --nocolor -g ""'
+export FZF_DEFAULT_COMMAND='rg --color auto --files'
 
 if env | grep -q '^WSLENV='; then
     export DISPLAY=$(grep nameserver /etc/resolv.conf | awk '{print $2}'):0

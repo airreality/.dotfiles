@@ -243,15 +243,12 @@ nmap <C-l> <C-W>l
 nmap <Leader>- :Docstring<CR>
 let g:python_style='google'
 
-" ag
-nmap <Leader>a :Ag<CR>
+" rg
+nmap <Leader>a :Rg<CR>
 
 " fzf
 nmap <Leader>c :Buffers<CR>
 nmap <expr> <Leader>s FugitiveHead() != '' ? ':GFiles<CR>' : ':Files<CR>'
-
-" ack
-let g:ackprg='ag --vimgrep'
 
 " reset search highlighting
 nmap <Leader>q :nohlsearch<CR>

@@ -162,8 +162,5 @@ nmap <C-l> <C-W>l
 " fzf
 nmap <Leader>s :Files<CR>
 
-" ack
-let g:ackprg='ag --vimgrep'
-
 " reset search highlighting
 nmap <Leader>q :nohlsearch<CR>
