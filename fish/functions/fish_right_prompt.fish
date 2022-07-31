@@ -1,5 +1,9 @@
 function _get_git_branch_name
-    git branch --show-current 2>/dev/null
+    set -l name (git branch --show-current 2>/dev/null)
+    if [ -z "$name" ]
+        set name (git rev-parse --short HEAD 2>/dev/null)
+    end
+    echo -n -s $name
 end
 
 function _has_unstaged_files
