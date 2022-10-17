@@ -84,6 +84,7 @@ set tabstop=4
 set shiftwidth=4
 set smarttab
 set softtabstop=4
+autocmd FileType json setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType markdown setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
