@@ -2,6 +2,11 @@ if status is-interactive
     set fish_greeting
     set -g __fish_git_prompt_show_informative_status 1
 
+    function sync_history --on-event fish_preexec
+        history --save
+        history --merge
+    end
+
     export EDITOR=vim
     export FZF_DEFAULT_COMMAND='rg --color auto --files'
 
@@ -15,4 +20,6 @@ if status is-interactive
         export DISPLAY=$(grep nameserver /etc/resolv.conf | awk '{print $2}'):0
         export LIBGL_ALWAYS_INDIRECT=1
     end
+
+    pyenv init - | source
 end
