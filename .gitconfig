@@ -8,7 +8,7 @@
 	ui = auto
 [user]
 	name = airreality
-	email = tonygpx@yandex.ru
+	email = airunreality@gmail.com
 [includeIf "gitdir:~/work/"]
 	path = ~/work/.gitconfig
 [push]

@@ -7,7 +7,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'             " vim package manager
-Plugin 'drewtempelmeyer/palenight.vim' " vim theme
+Plugin 'rakr/vim-one'                  " vim theme
 Plugin 'scrooloose/nerdtree'           " tree of directory files
 Plugin 'junegunn/fzf.vim'              " fuzzy finder
 Plugin 'majutsushi/tagbar'             " structure of source files
@@ -15,6 +15,7 @@ Plugin 'itchyny/lightline.vim'         " statusbar
 Plugin 'tpope/vim-commentary'          " commentaries
 Plugin 'tpope/vim-fugitive'            " git
 Plugin 'tpope/vim-surround'            " add, del, edit brackets, quotes, etc
+Plugin 'tpope/vim-repeat'              " repeat for vim-surround commands
 Plugin 'Raimondi/delimitMate'          " auto-complete brackets, quotes, etc
 Plugin 'valloric/youcompleteme'        " multi-language autocomplete
 " after install do in terminal
@@ -93,7 +94,8 @@ set background=dark
 if (has("termguicolors"))
     set termguicolors
 endif
-silent! colorscheme palenight
+let g:one_allow_italics = 1
+silent! colorscheme one
 
 " :W = :w and :Q = :q
 command! W w
@@ -154,7 +156,7 @@ nmap <Leader>w :lwindow<CR>
 set laststatus=2
 set noshowmode
 let g:lightline = {
-\ 'colorscheme': 'deus',
+\ 'colorscheme': 'one',
 \ 'active': {
 \   'left': [['mode', 'paste'], ['filename', 'modified']],
 \   'right': [['lineinfo'], ['percent'], ['filetype'], ['readonly', 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ]]

@@ -7,6 +7,7 @@ if status is-interactive
         history --merge
     end
 
+    export BAT_THEME='ansi'
     export EDITOR=vim
     export FZF_DEFAULT_COMMAND='rg --color auto --files'
 

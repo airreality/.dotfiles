@@ -25,9 +25,9 @@ function _get_git_status_indicator
         set -a indicator •
     end
     if [ -z "$indicator" ]
-        echo -n -s (set_color green) ✔ (set_color normal)
+        echo -n -s (set_color green) ✔ (set_color normal) \ 
     else
-        echo -n -s (set_color red) (string join '' $indicator) (set_color normal)
+        echo -n -s (set_color red) (string join '' $indicator) (set_color normal) \ 
     end
 end
 

@@ -32,13 +32,10 @@ export https_proxy=''
 export ftp_proxy=''
 export socks_proxy=''
 
-if which zsh > /dev/null 2>&1 && ! echo $SHELL | grep -q zsh; then
-    exec zsh
-else
-    [[ -f ~/.aliases ]] && . ~/.aliases
-    [[ -f ~/.aliases_docker ]] && . ~/.aliases_docker
-    [[ -f ~/.aliases_hidden ]] && . ~/.aliases_hidden
+[[ -f ~/.aliases ]] && . ~/.aliases
+[[ -f ~/.aliases_docker ]] && . ~/.aliases_docker
+[[ -f ~/.aliases_hidden ]] && . ~/.aliases_hidden
 
-    export EDITOR=vim
-    export HISTTIMEFORMAT="%d-%m-%y %T    "
-fi
+export BAT_THEME='ansi'
+export EDITOR=vim
+export HISTTIMEFORMAT="%d-%m-%y %T    "
