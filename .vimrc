@@ -94,6 +94,14 @@ set background=dark
 if (has("termguicolors"))
     set termguicolors
 endif
+let g:terminal_ansi_colors = [
+\  '#2c323c', '#e06c75', '#98c379', '#e5c07b',
+\  '#61afef', '#c678dd', '#56b6c2', '#5c6370',
+\  '#3e4452', '#e06c75', '#98c379', '#e5c07b',
+\  '#61afef', '#c678dd', '#56b6c2', '#abb2bf',
+\ ]
+highlight Terminal guibg='#282c34'
+highlight Terminal guifg='#abb2bf'
 let g:one_allow_italics = 1
 silent! colorscheme one
 
@@ -156,25 +164,25 @@ nmap <Leader>w :lwindow<CR>
 set laststatus=2
 set noshowmode
 let g:lightline = {
-\ 'colorscheme': 'one',
-\ 'active': {
-\   'left': [['mode', 'paste'], ['filename', 'modified']],
-\   'right': [['lineinfo'], ['percent'], ['filetype'], ['readonly', 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ]]
-\ },
-\ 'component_expand': {
-\  'linter_checking': 'lightline#ale#checking',
-\  'linter_infos': 'lightline#ale#infos',
-\  'linter_warnings': 'lightline#ale#warnings',
-\  'linter_errors': 'lightline#ale#errors',
-\  'linter_ok': 'lightline#ale#ok',
-\ },
-\ 'component_type': {
-\  'linter_checking': 'right',
-\  'linter_infos': 'right',
-\  'linter_warnings': 'warning',
-\  'linter_errors': 'error',
-\  'linter_ok': 'right',
-\ },
+\  'colorscheme': 'one',
+\  'active': {
+\    'left': [['mode', 'paste'], ['filename', 'modified']],
+\    'right': [['lineinfo'], ['percent'], ['filetype'], ['readonly', 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ]]
+\  },
+\  'component_expand': {
+\    'linter_checking': 'lightline#ale#checking',
+\    'linter_infos': 'lightline#ale#infos',
+\    'linter_warnings': 'lightline#ale#warnings',
+\    'linter_errors': 'lightline#ale#errors',
+\    'linter_ok': 'lightline#ale#ok',
+\  },
+\  'component_type': {
+\    'linter_checking': 'right',
+\    'linter_infos': 'right',
+\    'linter_warnings': 'warning',
+\    'linter_errors': 'error',
+\    'linter_ok': 'right',
+\  },
 \ }
 
 " signify
@@ -255,3 +263,6 @@ nmap <expr> <Leader>s FugitiveHead() != '' ? ':GFiles<CR>' : ':Files<CR>'
 
 " reset search highlighting
 nmap <Leader>q :nohlsearch<CR>
+
+" vertical term in vim
+nmap <Leader>v :vert term<CR>
