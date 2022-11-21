@@ -16,6 +16,7 @@ if status is-interactive
     abbr -a dls "docker image ls --format='table {{.ID}}\t{{.Repository}}\t{{.Tag}}'"
     abbr -a dirm "docker image rm"
     abbr -a gpf "git push --force"
+    abbr -a gb "git branch"
     abbr -a gbm "git branch -m"
 
     if env | grep -q '^WSLENV='
