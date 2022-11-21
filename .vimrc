@@ -1,45 +1,41 @@
 set nocompatible
 
-" vundle package manager
+" package manager
+let data_dir = '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source '~/.vimrc'
+endif
 
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'gmarik/Vundle.vim'             " vim package manager
-Plugin 'rakr/vim-one'                  " vim theme
-Plugin 'scrooloose/nerdtree'           " tree of directory files
-Plugin 'junegunn/fzf.vim'              " fuzzy finder
-Plugin 'majutsushi/tagbar'             " structure of source files
-Plugin 'itchyny/lightline.vim'         " statusbar
-Plugin 'tpope/vim-commentary'          " commentaries
-Plugin 'tpope/vim-fugitive'            " git
-Plugin 'tpope/vim-surround'            " add, del, edit brackets, quotes, etc
-Plugin 'tpope/vim-repeat'              " repeat for vim-surround commands
-Plugin 'Raimondi/delimitMate'          " auto-complete brackets, quotes, etc
-Plugin 'valloric/youcompleteme'        " multi-language autocomplete
-" after install do in terminal
-" cd ~/.vim/bundle/youcompleteme && python3 install.py
-
-Plugin 'sheerun/vim-polyglot'          " multi-language highlighting
-Plugin 'puremourning/vimspector'       " debugger
-Plugin 'vim-test/vim-test'             " run tests
-Plugin 'mhinz/vim-signify'             " git diff
-Plugin 'w0rp/ale'                      " linting
-Plugin 'maximbaz/lightline-ale'        " ale indicator for lightline
-Plugin 'pixelneo/vim-python-docstring' " generate python docstring
-
+call plug#begin('~/.vim/plugged')
+Plug 'rakr/vim-one'                  " vim theme
+" tree of directory files
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'junegunn/fzf.vim'              " fuzzy finder
+Plug 'majutsushi/tagbar'             " structure of source files
+Plug 'itchyny/lightline.vim'         " statusbar
+Plug 'tpope/vim-commentary'          " commentaries
+Plug 'tpope/vim-fugitive'            " git
+Plug 'tpope/vim-surround'            " add, del, edit brackets, quotes, etc
+Plug 'tpope/vim-repeat'              " repeat for vim-surround commands
+Plug 'Raimondi/delimitMate'          " auto-complete brackets, quotes, etc
+" multi-language autocomplete
+Plug 'valloric/youcompleteme', { 'dir': '~/.vim/plugged/youcompleteme', 'do': 'python3 install.py' }
+Plug 'sheerun/vim-polyglot'          " multi-language highlighting
+" debugger
+Plug 'puremourning/vimspector', { 'for': 'python' }
+" run tests
+Plug 'vim-test/vim-test', { 'for': 'python' }
+Plug 'mhinz/vim-signify'             " git diff
+Plug 'w0rp/ale'                      " linting
+Plug 'maximbaz/lightline-ale'        " ale indicator for lightline
+Plug 'pixelneo/vim-python-docstring' " generate python docstring
 " markdown
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'iamcco/markdown-preview.nvim'
-" after install do :call mkdp#util#install()
+Plug 'godlygeek/tabular', { 'for': 'markdown' }
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for': 'markdown' }
 
-call vundle#end()
-
-filetype on
-filetype plugin on
-filetype plugin indent on
+call plug#end()
 
 " general settings
 
@@ -49,6 +45,7 @@ let no_buffers_menu=1
 let mapleader=','
 
 tab sball
+set autoread
 set backspace=indent,eol,start
 set clipboard+=unnamedplus
 set cmdheight=2
@@ -143,7 +140,7 @@ let g:python_highlight_all = 1
 " ale
 nmap <Leader>f :ALEFix<CR>
 nmap <Leader>i :ALEFix isort<CR>
-let g:ale_virtualenv_dir_names = ['venv', 'env']
+let g:ale_virtualenv_dir_names = ['venv', '.venv']
 let g:ale_linters = {
 \  'sh': ['shell'],
 \  'json': ['jq'],
