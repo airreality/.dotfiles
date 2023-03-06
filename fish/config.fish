@@ -7,9 +7,10 @@ if status is-interactive
         history --merge
     end
 
-    export BAT_THEME='ansi'
+    export BAT_THEME="ansi"
     export EDITOR=vim
-    export FZF_DEFAULT_COMMAND='rg --color auto --files'
+    export FZF_DEFAULT_COMMAND="rg --color auto --files"
+    export POETRY_CONFIG_DIR="~/.config/pypoetry"
 
     abbr -a weather "curl wttr.in"
     abbr -a d docker
@@ -19,8 +20,8 @@ if status is-interactive
     abbr -a gb "git branch"
     abbr -a gbm "git branch -m"
 
-    if env | grep -q '^WSLENV='
-        export DISPLAY=$(grep nameserver /etc/resolv.conf | awk '{print $2}'):0
+    if env | grep -q "^WSLENV="
+        export DISPLAY=$(grep nameserver /etc/resolv.conf | awk "{print $2}"):0
         export LIBGL_ALWAYS_INDIRECT=1
     else if [ $(uname) = "Darwin" ]
         eval "$(/opt/homebrew/bin/brew shellenv)"

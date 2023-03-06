@@ -27,18 +27,20 @@ colors() {
     done
 }
 
-export http_proxy=''
-export https_proxy=''
-export ftp_proxy=''
-export socks_proxy=''
+export http_proxy=""
+export https_proxy=""
+export ftp_proxy=""
+export socks_proxy=""
 
 [[ -f ~/.aliases ]] && . ~/.aliases
 [[ -f ~/.aliases_docker ]] && . ~/.aliases_docker
 [[ -f ~/.aliases_hidden ]] && . ~/.aliases_hidden
 
-export BAT_THEME='ansi'
+export BAT_THEME="ansi"
 export EDITOR=vim
 export HISTTIMEFORMAT="%d-%m-%y %T    "
+export FZF_DEFAULT_COMMAND="rg --color auto --files"
+export POETRY_CONFIG_DIR="~/.config/pypoetry"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 if [ $(uname) = "Darwin" ]; then
