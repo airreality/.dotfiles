@@ -11,6 +11,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'rakr/vim-one'                  " vim theme
 " tree of directory files
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+if isdirectory("/opt/homebrew/opt/fzf")
+    Plug '/opt/homebrew/opt/fzf'
+endif
 Plug 'junegunn/fzf.vim'              " fuzzy finder
 Plug 'majutsushi/tagbar'             " structure of source files
 Plug 'itchyny/lightline.vim'         " statusbar
@@ -20,10 +23,8 @@ Plug 'tpope/vim-surround'            " add, del, edit brackets, quotes, etc
 Plug 'tpope/vim-repeat'              " repeat for vim-surround commands
 Plug 'Raimondi/delimitMate'          " auto-complete brackets, quotes, etc
 " multi-language autocomplete
-Plug 'valloric/youcompleteme', { 'dir': '~/.vim/plugged/youcompleteme', 'do': 'python3 install.py' }
+Plug 'valloric/youcompleteme', { 'dir': '~/.vim/plugged/youcompleteme', 'do': 'python3 install.py --clangd-completer' }
 Plug 'sheerun/vim-polyglot'          " multi-language highlighting
-" debugger
-Plug 'puremourning/vimspector', { 'for': 'python' }
 " run tests
 Plug 'vim-test/vim-test', { 'for': 'python' }
 Plug 'mhinz/vim-signify'             " git diff
@@ -47,7 +48,7 @@ let mapleader=','
 tab sball
 set autoread
 set backspace=indent,eol,start
-set clipboard+=unnamedplus
+set clipboard^=unnamed
 set cmdheight=2
 set confirm
 set completeopt-=preview
@@ -89,6 +90,8 @@ autocmd FileType markdown setlocal shiftwidth=2 tabstop=2 softtabstop=2
 " colors
 set background=dark
 if (has("termguicolors"))
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
     set termguicolors
 endif
 let g:terminal_ansi_colors = [
@@ -139,22 +142,22 @@ let g:python_highlight_all = 1
 
 " ale
 nmap <Leader>f :ALEFix<CR>
-nmap <Leader>i :ALEFix isort<CR>
 let g:ale_virtualenv_dir_names = ['venv', '.venv']
 let g:ale_linters = {
 \  'sh': ['shell'],
 \  'json': ['jq'],
-\  'python': ['flake8'],
+\  'python': ['ruff', 'mypy'],
 \  'markdown': ['markdownlint'],
 \  'ansible': ['ansible-lint'],
 \ }
 let g:ale_fixers = {
 \  'sh': ['shfmt'],
 \  'json': ['jq'],
-\  'python': ['isort', 'black'],
-\  'markdown': ['prettier']
+\  'python': ['black', 'ruff'],
+\  'markdown': ['prettier'],
 \ }
 let g:ale_echo_msg_format = '[%linter%] %s'
+let g:ale_python_mypy_options = '--ignore-missing-imports'
 nmap <Leader>w :lwindow<CR>
 
 " lightline
