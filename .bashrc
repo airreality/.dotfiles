@@ -40,7 +40,6 @@ export BAT_THEME="ansi"
 export EDITOR=vim
 export HISTTIMEFORMAT="%d-%m-%y %T    "
 export FZF_DEFAULT_COMMAND="rg --color auto --files"
-export POETRY_CONFIG_DIR="~/.config/pypoetry"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 if [ $(uname) = "Darwin" ]; then
