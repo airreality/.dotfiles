@@ -22,6 +22,10 @@ if status is-interactive
     if env | grep -q '^WSLENV='
         export DISPLAY=$(grep nameserver /etc/resolv.conf | awk '{print $2}'):0
         export LIBGL_ALWAYS_INDIRECT=1
+    else if [ $(uname) = "Darwin" ]
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+        set PATH "/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
+        set PATH "/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
     end
 
     pyenv init - | source

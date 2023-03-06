@@ -39,3 +39,8 @@ export socks_proxy=''
 export BAT_THEME='ansi'
 export EDITOR=vim
 export HISTTIMEFORMAT="%d-%m-%y %T    "
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+if [ $(uname) = "Darwin" ]; then
+    export FZF_BASE="/opt/homebrew/opt/fzf"
+fi
