@@ -1,9 +1,9 @@
 function _get_git_branch_name
-    set -l name (git branch --show-current 2>/dev/null)
-    if [ -z "$name" ]
-        set name (git rev-parse --short HEAD 2>/dev/null)
-    end
-    echo -n -s $name
+    begin
+        git branch --show-current
+        or git rev-parse --short HEAD
+        or return
+    end 2>/dev/null
 end
 
 function _has_unstaged_files
@@ -40,8 +40,5 @@ function _get_git_branch_with_status
 end
 
 function fish_right_prompt
-    echo -n -s (set_color $fish_color_cwd) (_get_git_branch_with_status)
+    echo -n -s (set_color $fish_color_cwd)(_get_git_branch_with_status) $hydro_color_normal
 end
-
-set async_prompt_functions _git_branch_name
-set async_prompt_functions _get_git_status_indicator
