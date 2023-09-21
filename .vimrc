@@ -8,7 +8,7 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-Plug 'rakr/vim-one'                  " vim theme
+Plug 'sainnhe/everforest'            " theme
 " tree of directory files
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 if isdirectory("/opt/homebrew/opt/fzf")
@@ -102,8 +102,9 @@ let g:terminal_ansi_colors = [
 \ ]
 highlight Terminal guibg='#282c34'
 highlight Terminal guifg='#abb2bf'
-let g:one_allow_italics = 1
-silent! colorscheme one
+let g:everforest_enable_italic = 1
+let g:everforest_background = 'hard'
+silent! colorscheme everforest
 
 " :W = :w and :Q = :q
 command! W w
@@ -164,7 +165,7 @@ nmap <Leader>w :lwindow<CR>
 set laststatus=2
 set noshowmode
 let g:lightline = {
-\  'colorscheme': 'one',
+\  'colorscheme': 'everforest',
 \  'active': {
 \    'left': [['mode', 'paste'], ['filename', 'modified']],
 \    'right': [['lineinfo'], ['percent'], ['filetype'], ['readonly', 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ]]
