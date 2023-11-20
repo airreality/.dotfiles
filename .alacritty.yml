@@ -1,9 +1,11 @@
 ---
+# TODO convert to toml config
 env:
   WINIT_X11_SCALE_FACTOR: "1.0"
 
 font:
-  family: Consolas
+  normal:
+    family: CodeNewRoman Nerd Font Mono
 
 colors:
   # Default colors
