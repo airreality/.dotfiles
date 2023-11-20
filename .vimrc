@@ -127,13 +127,6 @@ augroup END
 autocmd VimResized * wincmd =
 
 " youcompleteme
-let g:ycm_python_interpreter_path = ''
-let g:ycm_python_sys_path = []
-let g:ycm_extra_conf_vim_data = [
-\  'g:ycm_python_interpreter_path',
-\  'g:ycm_python_sys_path',
-\ ]
-let g:ycm_global_ycm_extra_conf = '~/.global_extra_conf.py'
 nmap <Leader>g :YcmCompleter GoToDeclaration<CR>
 nmap <Leader>r :YcmCompleter RefactorRename 
 
@@ -219,9 +212,6 @@ let test#python#runner="pytest"
 nmap <Leader>n :TestNearest<CR>
 nmap <Leader>m :TestFile<CR>
 nmap <Leader>b :TestLast<CR>
-
-" debugger
-let g:vimspector_enable_mappings="HUMAN"
 
 " nu and paste and signcolumn toggle
 function! SignColumnToggle()
