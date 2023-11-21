@@ -77,3 +77,8 @@ mouse:
     launcher: None
 
 draw_bold_text_with_bright_colors: false
+
+key_bindings:
+  - {key: Period, mods: Alt, chars: "\e."}
+  - {key: F, mods: Alt, chars: "\x1bf"}
+  - {key: B, mods: Alt, chars: "\x1bb"}
