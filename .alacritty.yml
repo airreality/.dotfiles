@@ -6,7 +6,7 @@ env:
 font:
   normal:
     family: CodeNewRoman Nerd Font Mono
-  size: 12
+  size: 14
 
 colors:
   # Default colors
