@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
 
-# system
 alias ls="ls --color=auto"
 alias grep="grep --colour=auto"
 alias diff="colordiff"
 alias space="xfconf-query -c xfwm4 -p /general/workspace_count -s"
 alias weather="curl wttr.in"
-alias dl="youtube-dl"
-alias dl-mp3="youtube-dl --extract-audio --audio-format mp3 --audio-quality 0"
+alias dl="yt-dlp"
+alias dl-mp3="yt-dlp --extract-audio --audio-format mp3 --audio-quality 0"
 alias rec="pactl load-module module-loopback latency_msec=20"
 alias unrec="pactl unload-module module-loopback"
 alias p1="ping 1.1.1.1"
@@ -38,7 +37,6 @@ vfzf() {
     fi
 }
 
-# python
 venv() {
     source venv/bin/activate >/dev/null 2>&1 ||
         source env/bin/activate >/dev/null 2>&1 ||
