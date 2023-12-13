@@ -1,0 +1,11 @@
+vim.loader.enable()
+
+local root = vim.fn.stdpath("config")
+require("globals")
+vim.cmd(string.format("source %s/vim/options.vim", root))
+vim.cmd(string.format("source %s/vim/autocmd.vim", root))
+require("autocmd")
+require("mappings")
+require("plugins")
+vim.cmd(string.format("source %s/vim/plugins.vim", root))
+require("colorscheme")

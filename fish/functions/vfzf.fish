@@ -6,6 +6,6 @@ function vfzf
         set file $(fzf)
     end
     if [ -n "$file" ]
-        vim "$file"
+        nvim "$file"
     end
 end

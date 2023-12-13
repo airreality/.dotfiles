@@ -62,12 +62,12 @@ set list
 set listchars=tab:»»,trail:·
 set ls=2
 set mousemodel=popup
+set noshowmode
 set novisualbell
 set number
 set scrolloff=5
 set showcmd
 set showmatch
-set showmode
 set switchbuf=useopen
 if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gnome-terminal"
   set t_Co=256
