@@ -15,7 +15,17 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugin_specs = {
-    { "navarasu/onedark.nvim", lazy = false },
+    { "navarasu/onedark.nvim", lazy = false, priority = 52 },
+    {
+        "nvim-treesitter/nvim-treesitter",
+        lazy = false,
+        build = ":TSUpdate",
+        config = function()
+            require("config.treesitter")
+        end,
+        priority = 51,
+    },
+
     { "nvim-tree/nvim-web-devicons", event = "VeryLazy" },
 
     -- extended motions
@@ -26,15 +36,6 @@ local plugin_specs = {
             vim.defer_fn(function()
                 require("config.hop")
             end, 2000)
-        end,
-    },
-
-    {
-        "nvim-treesitter/nvim-treesitter",
-        event = "VeryLazy",
-        build = ":TSUpdate",
-        config = function()
-            require("config.treesitter")
         end,
     },
 
