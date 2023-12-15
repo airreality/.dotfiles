@@ -166,16 +166,9 @@ local plugin_specs = {
     },
 
     {
-        "nvim-neotest/neotest",
-        ft = "python",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "antoinemadec/FixCursorHold.nvim",
-            "nvim-neotest/neotest-python",
-        },
-        config = function()
-            require("config.neotest")
-        end,
+        "vim-test/vim-test",
+        ft = { "python" },
+        event = "VeryLazy",
     },
 
     {

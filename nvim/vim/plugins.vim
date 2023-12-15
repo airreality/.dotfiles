@@ -24,6 +24,13 @@ let g:neoformat_enabled_lua = ['stylua']
 let g:neoformat_enabled_python = ['ruff', 'black']
 let g:neoformat_enabled_sh = ['shfmt']
 
+" vim-test
+let test#strategy="neovim"
+let test#python#runner="pytest"
+nmap <Leader>n :TestNearest<CR>
+nmap <Leader>m :TestFile<CR>
+nmap <Leader>b :TestLast<CR>
+
 " TODO
 " UltiSnips
 " trigger configuration
