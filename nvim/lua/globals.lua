@@ -1,5 +1,4 @@
 local fn = vim.fn
-local api = vim.api
 
 vim.g.logging_level = "info"
 
@@ -15,13 +14,7 @@ else
     python_executable_command = "which python3"
 end
 
-if python_executable_command then
-    vim.g.python3_host_prog = fn.substitute(fn.system(python_executable_command), "\n", "", "g")
-else
-    api.nvim_err_writeln("python3 not found")
-    return
-end
-
+vim.g.python3_host_prog = fn.substitute(fn.system(python_executable_command), "\n", "", "g")
 vim.g.mapleader = ","
 
 -- highlight lua in vim script
