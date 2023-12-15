@@ -116,3 +116,4 @@ keymap.set("c", "<C-A>", "<HOME>")
 -- fzf
 keymap.set("n", "<leader>s", "<cmd>FzfLua files<cr>")
 keymap.set("n", "<leader>c", "<cmd>FzfLua buffers<cr>")
+keymap.set("n", "<leader>a", "<cmd>FzfLua live_grep<cr>")
