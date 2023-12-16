@@ -26,10 +26,10 @@ local custom_attach = function(client, bufnr)
         keymap.set(mode, l, r, opts)
     end
 
-    map("n", "<leader>gg", vim.lsp.buf.definition, { desc = "go to definition" })
-    map("n", "<leader>gk", vim.lsp.buf.hover)
-    map("n", "<leader>gn", vim.lsp.buf.rename, { desc = "variable rename" })
-    map("n", "<leader>gr", vim.lsp.buf.references, { desc = "show references" })
+    map("n", "<leader>g", vim.lsp.buf.definition, { desc = "go to definition" })
+    map("n", "<leader>k", vim.lsp.buf.hover)
+    map("n", "<leader>r", vim.lsp.buf.rename, { desc = "variable rename" })
+    map("n", "<leader>e", vim.lsp.buf.references, { desc = "show references" })
     map("n", "[d", diagnostic.goto_prev, { desc = "previous diagnostic" })
     map("n", "]d", diagnostic.goto_next, { desc = "next diagnostic" })
     -- this puts diagnostics from opened files to quickfix
