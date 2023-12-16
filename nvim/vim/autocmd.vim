@@ -52,6 +52,7 @@ function! s:custom_highlight() abort
   highlight Cursor2 guifg=red guibg=red
   highlight FloatBorder guifg=LightGreen guibg=NONE
   highlight MatchParen cterm=bold,underline gui=bold,underline
+  highlight CursorLineNr guifg=#8ebd6b
 endfunction
 
 augroup git_repo_check

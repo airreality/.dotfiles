@@ -1,4 +1,5 @@
 set confirm
+set cursorline
 set fillchars=fold:\ ,vert:\│,eob:\ ,msgsep:‾
 set gcr=a:blinkon0
 set history=100
