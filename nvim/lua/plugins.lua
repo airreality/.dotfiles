@@ -15,7 +15,11 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugin_specs = {
-    { "navarasu/onedark.nvim", lazy = false, priority = 52 },
+    {
+        "rmehri01/onenord.nvim",
+        lazy = false,
+        priority = 52,
+    },
     {
         "nvim-treesitter/nvim-treesitter",
         lazy = false,
@@ -273,7 +277,6 @@ local plugin_specs = {
         end,
     },
 }
-
 local lazy_opts = {
     ui = {
         border = "rounded",

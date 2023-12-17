@@ -47,12 +47,12 @@ augroup custom_highlight
 augroup END
 
 function! s:custom_highlight() abort
-  highlight YankColor ctermfg=59 ctermbg=41 guifg=#34495E guibg=#2ECC71
-  highlight Cursor cterm=bold gui=bold guibg=#00c918 guifg=black
-  highlight Cursor2 guifg=red guibg=red
+  highlight YankColor ctermfg=59 ctermbg=41 guifg=#34495E guibg=#8EBD6B
+  highlight Cursor cterm=bold gui=bold guibg=#8EBD6B guifg=#34495E
+  highlight Cursor2 guifg=#E55561 guibg=#E55561
   highlight FloatBorder guifg=LightGreen guibg=NONE
   highlight MatchParen cterm=bold,underline gui=bold,underline
-  highlight CursorLineNr guifg=#8ebd6b
+  highlight CursorLineNr guifg=#A3BE8C
 endfunction
 
 augroup git_repo_check
