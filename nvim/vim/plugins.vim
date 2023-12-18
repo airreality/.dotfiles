@@ -18,10 +18,10 @@ let g:better_escape_interval = 150
 let b:delimitMate_matchpairs = "(:),[:],{:}"
 
 " neoformat
-nnoremap <silent> <leader>f :Neoformat<CR>
+nnoremap <silent> <leader>F :Neoformat<CR>
 let g:neoformat_enabled_json = ['jq']
 let g:neoformat_enabled_lua = ['stylua']
-let g:neoformat_enabled_python = ['ruff', 'black']
+let g:neoformat_enabled_python = ['black']
 let g:neoformat_enabled_sh = ['shfmt']
 
 " vim-test

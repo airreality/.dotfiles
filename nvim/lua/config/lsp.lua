@@ -18,6 +18,19 @@ local set_qflist = function(buf_num, severity)
     vim.cmd([[copen]])
 end
 
+local ruff_fix = function()
+    if vim.bo.filetype ~= "python" then
+      return
+    end
+    vim.lsp.buf.format()
+    vim.lsp.buf.code_action({
+        context = {
+            only = { "source.fixAll.ruff" },
+        },
+        apply = true,
+    })
+end
+
 local custom_attach = function(client, bufnr)
     local map = function(mode, l, r, opts)
         opts = opts or {}
@@ -25,7 +38,7 @@ local custom_attach = function(client, bufnr)
         opts.buffer = bufnr
         keymap.set(mode, l, r, opts)
     end
-
+    map("n", "<leader>f", ruff_fix, { desc = "fix code" })
     map("n", "<leader>g", vim.lsp.buf.definition, { desc = "go to definition" })
     map("n", "<leader>k", vim.lsp.buf.hover)
     map("n", "<leader>r", vim.lsp.buf.rename, { desc = "variable rename" })
@@ -107,7 +120,7 @@ end
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local lspconfig = require("lspconfig")
 
--- install python-lsp-server pylsp-mypy python-lsp-ruff python-lsp-black
+-- install python-lsp-server pylsp-mypy
 if utils.executable("pylsp") then
     local venv_path = os.getenv("VIRTUAL_ENV")
     local py_path = nil
@@ -123,8 +136,6 @@ if utils.executable("pylsp") then
         settings = {
             pylsp = {
                 plugins = {
-                    black = { enabled = true },
-                    ruff = { enabled = true },
                     pylsp_mypy = {
                         enabled = true,
                         overrides = { "--python-executable", py_path, true },
@@ -142,6 +153,40 @@ if utils.executable("pylsp") then
     })
 else
     vim.notify("pylsp not found!", vim.log.levels.WARN, { title = "Nvim-config" })
+end
+
+if utils.executable("ruff") then
+    require("lspconfig").ruff_lsp.setup({
+        init_options = {
+            settings = {},
+        },
+        commands = {
+            RuffAutofix = {
+                function()
+                    vim.lsp.buf.execute_command({
+                        command = "ruff.applyAutofix",
+                        arguments = {
+                            { uri = vim.uri_from_bufnr(0) },
+                        },
+                    })
+                end,
+                description = "Ruff: Fix all auto-fixable problems",
+            },
+            RuffOrganizeImports = {
+                function()
+                    vim.lsp.buf.execute_command({
+                        command = "ruff.applyOrganizeImports",
+                        arguments = {
+                            { uri = vim.uri_from_bufnr(0) },
+                        },
+                    })
+                end,
+                description = "Ruff: Format imports",
+            },
+        },
+    })
+else
+    vim.notify("ruff-lsp not found!", vim.log.levels.WARN, { title = "Nvim-config" })
 end
 
 if utils.executable("lua-language-server") then
