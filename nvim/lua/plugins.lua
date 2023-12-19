@@ -99,9 +99,6 @@ local plugin_specs = {
     { "sbdchd/neoformat", cmd = { "Neoformat" } },
 
     { "tpope/vim-fugitive", event = "User InGitRepo" },
-
-    -- improve git log
-    -- TODO hotkey?
     {
         "rbong/vim-flog",
         cmd = { "Flog" },
@@ -225,6 +222,7 @@ local plugin_specs = {
         config = function()
             require("config.bqf")
         end,
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
     },
 
     {

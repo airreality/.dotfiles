@@ -20,9 +20,9 @@ end
 
 local ruff_fix = function()
     if vim.bo.filetype ~= "python" then
-      return
+        return
     end
-    vim.lsp.buf.format()
+    vim.lsp.buf.format({ async = true })
     vim.lsp.buf.code_action({
         context = {
             only = { "source.fixAll.ruff" },
@@ -51,7 +51,7 @@ local custom_attach = function(client, bufnr)
     map("n", "<space>qb", function()
         set_qflist(bufnr)
     end, { desc = "put buffer diagnostics to qf" })
-    map("n", "<space>ca", vim.lsp.buf.code_action, { desc = "LSP code action" })
+    map("n", "<space>c", vim.lsp.buf.code_action, { desc = "LSP code action" })
     map("n", "<space>wa", vim.lsp.buf.add_workspace_folder, { desc = "add workspace folder" })
     map("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, { desc = "remove workspace folder" })
     map("n", "<space>wl", function()
@@ -120,15 +120,15 @@ end
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local lspconfig = require("lspconfig")
 
-if utils.executable("pylsp") then
-    local venv_path = os.getenv("VIRTUAL_ENV")
-    local py_path = nil
-    if venv_path ~= nil then
-        py_path = venv_path .. "/bin/python3"
-    else
-        py_path = vim.g.python3_host_prog
-    end
+local venv_path = os.getenv("VIRTUAL_ENV")
+local py_path = nil
+if venv_path ~= nil then
+    py_path = venv_path .. "/bin/python3"
+else
+    py_path = vim.g.python3_host_prog
+end
 
+if utils.executable("pylsp") then
     lspconfig.pylsp.setup({
         on_attach = custom_attach,
         settings = {
@@ -136,9 +136,9 @@ if utils.executable("pylsp") then
                 plugins = {
                     pylsp_mypy = {
                         enabled = true,
-                        overrides = { "--python-executable", py_path, true },
+                        overrides = { "--follow-imports", "skip", "--python-executable", py_path, true },
                         report_progress = true,
-                        live_mode = false,
+                        live_mode = true,
                     },
                     jedi_completion = { fuzzy = true },
                 },
@@ -156,7 +156,7 @@ end
 if utils.executable("ruff-lsp") then
     require("lspconfig").ruff_lsp.setup({
         init_options = {
-            settings = {},
+            settings = { interpreter = { venv_path } },
         },
         commands = {
             RuffAutofix = {

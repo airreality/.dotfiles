@@ -23,20 +23,19 @@ keymap.set("n", "]q", "<cmd>cnext<cr>zv", { silent = true, desc = "next qf item"
 keymap.set("n", "[Q", "<cmd>cfirst<cr>zv", { silent = true, desc = "first qf item" })
 keymap.set("n", "]Q", "<cmd>clast<cr>zv", { silent = true, desc = "last qf item" })
 
--- Close location list or quickfix list if they are present, see https://superuser.com/q/355325/736190
+-- close location list or quickfix list if they are present
 keymap.set("n", [[\x]], "<cmd>windo lclose <bar> cclose <cr>", {
     silent = true,
     desc = "close qf and location list",
 })
 
--- Delete a buffer, without closing the window, see https://stackoverflow.com/q/4465095/6064933
+-- delete a buffer, without closing the window
 keymap.set("n", [[\d]], "<cmd>bprevious <bar> bdelete #<cr>", {
     silent = true,
     desc = "delete buffer",
 })
 
--- Insert a blank line below or above current line (do not move the cursor),
--- see https://stackoverflow.com/a/16136133/6064933
+-- insert a blank line below or above current line (do not move the cursor)
 keymap.set("n", "<space>o", "printf('m`%so<ESC>``', v:count1)", {
     expr = true,
     desc = "insert line below",
@@ -47,7 +46,7 @@ keymap.set("n", "<space>O", "printf('m`%sO<ESC>``', v:count1)", {
     desc = "insert line above",
 })
 
--- do not include white space characters when using $ in visual mode,
+-- do not include white space characters when using $ in visual mode
 keymap.set("x", "$", "g_")
 
 keymap.set({ "n", "x" }, "H", "^")
@@ -55,18 +54,18 @@ keymap.set({ "n", "x" }, "L", "g_")
 
 keymap.set("n", "/", [[/\v]])
 
--- Change current working directory locally and print cwd after that,
--- see https://vim.fandom.com/wiki/Set_working_directory_to_the_current_file
+-- change current working directory locally and print cwd after that
 keymap.set("n", "<leader>cd", "<cmd>lcd %:p:h<cr><cmd>pwd<cr>", { desc = "change cwd" })
 
 -- Use Esc to quit builtin terminal
 keymap.set("t", "<Esc>", [[<c-\><c-n>]])
 
--- Toggle spell checking
+-- TODO
+-- toggle spell checking
 keymap.set("n", "<F11>", "<cmd>set spell!<cr>", { desc = "toggle spell" })
 keymap.set("i", "<F11>", "<c-o><cmd>set spell!<cr>", { desc = "toggle spell" })
 
--- change text without putting it into the vim register,
+-- change text without putting it into the vim register
 keymap.set("n", "c", '"_c')
 keymap.set("n", "C", '"_C')
 keymap.set("n", "cc", '"_cc')
@@ -80,12 +79,9 @@ keymap.set("n", "<A-j>", '<cmd>call utils#SwitchLine(line("."), "down")<cr>', { 
 keymap.set("x", "<A-k>", '<cmd>call utils#MoveSelection("up")<cr>', { desc = "move selection up" })
 keymap.set("x", "<A-j>", '<cmd>call utils#MoveSelection("down")<cr>', { desc = "move selection down" })
 
--- TODO
--- Replace visual selection with text in register, but not contaminate the register,
--- see also https://stackoverflow.com/q/10723700/6064933.
+-- replace visual selection with text in register, but not contaminate the register
 keymap.set("x", "p", '"_c<Esc>p')
 
--- TODO
 -- go to a certain buffer
 keymap.set("n", "gb", '<cmd>call buf_utils#GoToBuffer(v:count, "forward")<cr>', {
     desc = "go to buffer (forward)",
