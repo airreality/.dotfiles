@@ -120,11 +120,9 @@ end
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local lspconfig = require("lspconfig")
 
--- install python-lsp-server pylsp-mypy
 if utils.executable("pylsp") then
     local venv_path = os.getenv("VIRTUAL_ENV")
     local py_path = nil
-    -- decide which python executable to use for mypy
     if venv_path ~= nil then
         py_path = venv_path .. "/bin/python3"
     else
@@ -155,7 +153,7 @@ else
     vim.notify("pylsp not found!", vim.log.levels.WARN, { title = "Nvim-config" })
 end
 
-if utils.executable("ruff") then
+if utils.executable("ruff-lsp") then
     require("lspconfig").ruff_lsp.setup({
         init_options = {
             settings = {},
