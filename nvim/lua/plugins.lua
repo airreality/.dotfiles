@@ -32,17 +32,6 @@ local plugin_specs = {
 
     { "nvim-tree/nvim-web-devicons", event = "VeryLazy" },
 
-    -- extended motions
-    {
-        "smoka7/hop.nvim",
-        event = "VeryLazy",
-        config = function()
-            vim.defer_fn(function()
-                require("config.hop")
-            end, 2000)
-        end,
-    },
-
     -- view code structure
     {
         "liuchengxu/vista.vim",
