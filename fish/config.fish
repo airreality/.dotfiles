@@ -10,9 +10,10 @@ function sync_history --on-event fish_preexec
 end
 
 set -x BAT_THEME "ansi"
-set -x EDITOR vim
+set -x EDITOR nvim
 set -x FZF_DEFAULT_COMMAND "rg --color auto --files"
 
+abbr -a vim "nvim"
 abbr -a weather "curl wttr.in"
 abbr -a d docker
 abbr -a dls "docker image ls --format='table {{.ID}}\t{{.Repository}}\t{{.Tag}}'"

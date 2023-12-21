@@ -156,7 +156,7 @@ end
 if utils.executable("ruff-lsp") then
     require("lspconfig").ruff_lsp.setup({
         init_options = {
-            settings = { interpreter = { venv_path } },
+            settings = { interpreter = { py_path } },
         },
         commands = {
             RuffAutofix = {
