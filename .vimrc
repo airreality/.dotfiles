@@ -1,6 +1,5 @@
 set nocompatible
 
-" package manager
 let data_dir = '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -9,33 +8,7 @@ endif
 
 call plug#begin('~/.vim/plugged')
 Plug 'rakr/vim-one'                  " vim theme
-" tree of directory files
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-if isdirectory("/opt/homebrew/opt/fzf")
-    Plug '/opt/homebrew/opt/fzf'
-endif
-Plug 'junegunn/fzf.vim'              " fuzzy finder
-Plug 'majutsushi/tagbar'             " structure of source files
-Plug 'itchyny/lightline.vim'         " statusbar
-Plug 'tpope/vim-commentary'          " commentaries
-Plug 'tpope/vim-fugitive'            " git
-Plug 'tpope/vim-surround'            " add, del, edit brackets, quotes, etc
-Plug 'tpope/vim-repeat'              " repeat for vim-surround commands
-Plug 'Raimondi/delimitMate'          " auto-complete brackets, quotes, etc
-" multi-language autocomplete
-Plug 'valloric/youcompleteme', { 'dir': '~/.vim/plugged/youcompleteme', 'do': 'python3 install.py --clangd-completer' }
 Plug 'sheerun/vim-polyglot'          " multi-language highlighting
-" run tests
-Plug 'vim-test/vim-test', { 'for': 'python' }
-Plug 'mhinz/vim-signify'             " git diff
-Plug 'w0rp/ale'                      " linting
-Plug 'maximbaz/lightline-ale'        " ale indicator for lightline
-Plug 'pixelneo/vim-python-docstring' " generate python docstring
-" markdown
-Plug 'godlygeek/tabular', { 'for': 'markdown' }
-Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for': 'markdown' }
-
 call plug#end()
 
 " general settings
@@ -49,7 +22,6 @@ tab sball
 set autoread
 set backspace=indent,eol,start
 set clipboard^=unnamed
-set cmdheight=2
 set confirm
 set completeopt-=preview
 set encoding=utf-8
@@ -78,14 +50,13 @@ set wildmenu
 set wrap
 
 " tabs
-set expandtab
-set tabstop=4
-set shiftwidth=4
+set tabstop=2       " number of visual spaces per TAB
+set softtabstop=2   " number of spaces in tab when editing
+set shiftwidth=2    " number of spaces to use for autoindent
+set expandtab       " expand tab to spaces so that tabs are spaces
 set smarttab
-set softtabstop=4
-autocmd FileType json setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType markdown setlocal shiftwidth=2 tabstop=2 softtabstop=2
+
+autocmd FileType python setlocal shiftwidth=4 tabstop=4 softtabstop=4
 
 " colors
 set background=dark
@@ -115,7 +86,7 @@ if isdirectory($HOME . '/.vim/undo') == 0
 endif
 set undodir=./.vim-undo// undodir+=~/.vim/undo// undofile
 
-" highlight if line > 80 symbols
+" highlight if line > 120 symbols
 augroup vimrc_autocmds
     autocmd!
     autocmd FileType python highlight Excess ctermbg=DarkGrey guibg=Black
@@ -125,92 +96,9 @@ augroup END
 " auto-resize splits when Vim gets resized
 autocmd VimResized * wincmd =
 
-" youcompleteme
-nmap <Leader>g :YcmCompleter GoToDeclaration<CR>
-nmap <Leader>r :YcmCompleter RefactorRename 
-
 " python-syntax
 syntax on
 let g:python_highlight_all = 1
-
-" ale
-nmap <Leader>f :ALEFix<CR>
-let g:ale_virtualenv_dir_names = ['venv', '.venv']
-let g:ale_linters = {
-\  'sh': ['shell'],
-\  'json': ['jq'],
-\  'python': ['ruff', 'mypy'],
-\  'markdown': ['markdownlint'],
-\  'ansible': ['ansible-lint'],
-\ }
-let g:ale_fixers = {
-\  'sh': ['shfmt'],
-\  'json': ['jq'],
-\  'python': ['black', 'ruff'],
-\  'markdown': ['prettier'],
-\ }
-let g:ale_echo_msg_format = '[%linter%] %s'
-let g:ale_python_mypy_options = '--ignore-missing-imports'
-nmap <Leader>w :lwindow<CR>
-
-" lightline
-set laststatus=2
-set noshowmode
-let g:lightline = {
-\  'colorscheme': 'one',
-\  'active': {
-\    'left': [['mode', 'paste'], ['filename', 'modified']],
-\    'right': [['lineinfo'], ['percent'], ['filetype'], ['readonly', 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ]]
-\  },
-\  'component_expand': {
-\    'linter_checking': 'lightline#ale#checking',
-\    'linter_infos': 'lightline#ale#infos',
-\    'linter_warnings': 'lightline#ale#warnings',
-\    'linter_errors': 'lightline#ale#errors',
-\    'linter_ok': 'lightline#ale#ok',
-\  },
-\  'component_type': {
-\    'linter_checking': 'right',
-\    'linter_infos': 'right',
-\    'linter_warnings': 'warning',
-\    'linter_errors': 'error',
-\    'linter_ok': 'right',
-\  },
-\ }
-
-" signify
-let g:signify_vcs_list = [ 'git' ]
-
-" plasticboy
-let g:vim_markdown_folding_disabled = 1
-
-" NerdTree
-nmap <Leader>t :NERDTreeToggle<CR>
-let NERDTreeIgnore=['\~$', '\.pyc$', '\.pyo$', '\.class$', 'pip-log\.txt$', '\.o$']
-let g:NERDTreeQuitOnOpen = 1
-autocmd StdinReadPre * let s:std_in=1
-
-" structure of src files
-nmap <Leader>l :TagbarToggle<CR>
-let g:Tlist_Ctags_Cmd='/usr/bin/ctags'
-let g:tagbar_autofocus = 0
-
-" run
-autocmd FileType python nmap <Leader>e :w<CR> :! python %<CR>
-autocmd FileType python nmap <Leader>E :w<CR> :! python % 
-autocmd FileType sh nmap <Leader>e :w<CR> :! bash %<CR>
-autocmd FileType sh nmap <Leader>E :w<CR> :! bash % 
-autocmd FileType markdown nmap <Leader>e :MarkdownPreview<CR>
-
-" yaml switch to ansible
-autocmd Filetype yaml nmap <Leader>e :set filetype=ansible.yaml<CR>
-
-" tests
-let test#strategy="vimterminal"
-let test#python#runner="pytest"
-nmap <Leader>n :TestNearest<CR>
-nmap <Leader>m :TestFile<CR>
-nmap <Leader>b :TestLast<CR>
 
 " nu and paste and signcolumn toggle
 function! SignColumnToggle()
@@ -239,17 +127,6 @@ nmap <C-j> <C-W>j
 nmap <C-k> <C-W>k
 nmap <C-h> <C-W>h
 nmap <C-l> <C-W>l
-
-" docstring
-nmap <Leader>- :Docstring<CR>
-let g:python_style='google'
-
-" rg
-nmap <Leader>a :Rg<CR>
-
-" fzf
-nmap <Leader>c :Buffers<CR>
-nmap <expr> <Leader>s FugitiveHead() != '' ? ':GFiles<CR>' : ':Files<CR>'
 
 " reset search highlighting
 nmap <Leader>q :nohlsearch<CR>
