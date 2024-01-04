@@ -1,5 +1,3 @@
-local utils = require("utils")
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
 if not vim.loop.fs_stat(lazypath) then
@@ -35,13 +33,6 @@ local plugin_specs = {
     -- view code structure
     {
         "liuchengxu/vista.vim",
-        enabled = function()
-            if utils.executable("ctags") then
-                return true
-            else
-                return false
-            end
-        end,
         cmd = "Vista",
     },
 
@@ -112,14 +103,6 @@ local plugin_specs = {
         end,
     },
 
-    {
-        "akinsho/bufferline.nvim",
-        event = { "BufEnter" },
-        config = function()
-            require("config.bufferline")
-        end,
-    },
-
     -- autocomplete
     {
         "hrsh7th/nvim-cmp",
@@ -165,13 +148,10 @@ local plugin_specs = {
         "rcarriga/nvim-notify",
         event = "VeryLazy",
         config = function()
-            vim.defer_fn(function()
-                require("config.notify")
-            end, 2000)
+            require("config.notify")
         end,
     },
 
-    -- TODO research other functionality in addition to buffers and files
     {
         "ibhagwan/fzf-lua",
         dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -200,9 +180,6 @@ local plugin_specs = {
     --     lazy = false,
     -- },
 
-    -- TODO no surround in this config, should I remove it?
-    { "tpope/vim-repeat", event = "VeryLazy" }, -- repeat vim-surround motions
-
     -- quickfix window improvements
     -- TODO customize config
     {
@@ -227,13 +204,7 @@ local plugin_specs = {
         dependencies = { "nvim-tree/nvim-web-devicons" },
     },
 
-    -- Additional powerful text object for vim, this plugin should be studied
-    -- carefully to use its full power
-    -- TODO research
     { "wellle/targets.vim", event = "VeryLazy" },
-
-    -- Plugin to manipulate character pairs quickly
-    -- TODO vim-surround?
     { "machakann/vim-sandwich", event = "VeryLazy" },
 
     -- debugger
@@ -249,9 +220,7 @@ local plugin_specs = {
         "folke/which-key.nvim",
         event = "VeryLazy",
         config = function()
-            vim.defer_fn(function()
-                require("config.which-key")
-            end, 2000)
+            require("config.which-key")
         end,
     },
 
