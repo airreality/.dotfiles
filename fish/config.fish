@@ -24,7 +24,7 @@ abbr -a gbr "git branch --remotes"
 abbr -a gbm "git branch -m"
 
 if env | grep -q "^WSLENV="
-    set -x DISPLAY $(grep nameserver /etc/resolv.conf | awk "{print $2}"):0
+    set -x DISPLAY $(grep nameserver /etc/resolv.conf | awk '{print $2}'):0
     set -x LIBGL_ALWAYS_INDIRECT 1
 else if [ $(uname) = "Darwin" ]
     eval "$(/opt/homebrew/bin/brew shellenv)"
