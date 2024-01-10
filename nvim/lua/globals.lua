@@ -7,7 +7,14 @@ vim.g.loaded_ruby_provider = 0 -- disable ruby provider
 vim.g.loaded_node_provider = 0 -- disable node provider
 vim.g.did_install_default_menus = 1 -- do not load menu
 
-vim.g.python3_host_prog = fn.substitute(fn.system("which python3"), "\n", "", "g")
+local python_executable_command = ""
+if fn.exists("$VIRTUAL_ENV") == 1 then
+    python_executable_command = "which -a python3 | head -n2 | tail -n1"
+else
+    python_executable_command = "which python3"
+end
+
+vim.g.python3_host_prog = fn.substitute(fn.system(python_executable_command), "\n", "", "g")
 vim.g.mapleader = ","
 
 -- highlight lua in vim script
