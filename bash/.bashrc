@@ -27,11 +27,6 @@ colors() {
     done
 }
 
-export http_proxy=""
-export https_proxy=""
-export ftp_proxy=""
-export socks_proxy=""
-
 [[ -f ~/.aliases ]] && . ~/.aliases
 [[ -f ~/.aliases_docker ]] && . ~/.aliases_docker
 [[ -f ~/.aliases_hidden ]] && . ~/.aliases_hidden
