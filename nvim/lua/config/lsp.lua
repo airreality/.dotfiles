@@ -134,6 +134,13 @@ if utils.executable("pylsp") then
         settings = {
             pylsp = {
                 plugins = {
+                    black = { enabled = false },
+                    autopep8 = { enabled = false },
+                    yapf = { enabled = false },
+                    pylint = { enabled = false },
+                    ruff = { enabled = false },
+                    pyflakes = { enabled = false },
+                    pycodestyle = { enabled = false },
                     pylsp_mypy = {
                         enabled = true,
                         overrides = { "--follow-imports", "skip", "--python-executable", py_path, true },
@@ -141,6 +148,7 @@ if utils.executable("pylsp") then
                         live_mode = true,
                     },
                     jedi_completion = { fuzzy = true },
+                    isort = { enabled = false },
                 },
             },
         },
