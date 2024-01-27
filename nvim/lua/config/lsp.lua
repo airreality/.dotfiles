@@ -145,7 +145,7 @@ if utils.executable("pylsp") then
                         enabled = true,
                         overrides = { "--follow-imports", "skip", "--python-executable", py_path, true },
                         report_progress = true,
-                        live_mode = true,
+                        live_mode = false,
                     },
                     jedi_completion = { fuzzy = true },
                     isort = { enabled = false },
