@@ -114,3 +114,6 @@ keymap.set("n", "<leader>s", "<cmd>FzfLua files<cr>")
 keymap.set("n", "<leader>c", "<cmd>FzfLua buffers<cr>")
 keymap.set("n", "<leader>a", "<cmd>FzfLua grep<cr><cr>")
 keymap.set("n", "<leader>i", "<cmd>FzfLua git_status<cr>")
+
+-- copilot
+keymap.set("n", "<space>l", "<cmd>Copilot panel<cr>", { desc = "open copilot" })

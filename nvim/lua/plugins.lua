@@ -122,6 +122,16 @@ local plugin_specs = {
     },
 
     {
+        "zbirenbaum/copilot.lua",
+        ft = { "python" },
+        cmd = "Copilot",
+        build = ":Copilot auth",
+        config = function()
+            require("config.copilot")
+        end,
+    },
+
+    {
         "neovim/nvim-lspconfig",
         event = { "BufRead", "BufNewFile" },
         config = function()
