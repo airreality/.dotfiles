@@ -43,3 +43,5 @@ vim.g.loaded_tarPlugin = 1
 
 -- disable tutor plugin
 vim.g.loaded_tutor_mode_plugin = 1
+
+vim.g.editorconfig = false
