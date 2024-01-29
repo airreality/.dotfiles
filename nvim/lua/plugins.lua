@@ -1,3 +1,5 @@
+local utils = require("utils")
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
 if not vim.loop.fs_stat(lazypath) then
@@ -123,6 +125,9 @@ local plugin_specs = {
 
     {
         "zbirenbaum/copilot.lua",
+        enabled = function()
+            return utils.executable("nodejs")
+        end,
         ft = { "python" },
         cmd = "Copilot",
         build = ":Copilot auth",
