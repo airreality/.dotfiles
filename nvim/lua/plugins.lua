@@ -36,6 +36,7 @@ local plugin_specs = {
     {
         "liuchengxu/vista.vim",
         cmd = "Vista",
+        event = "VeryLazy",
     },
 
     -- show match number and index for searching
@@ -156,7 +157,6 @@ local plugin_specs = {
     {
         "vim-test/vim-test",
         ft = { "python" },
-        event = "VeryLazy",
     },
 
     {
@@ -226,8 +226,8 @@ local plugin_specs = {
     -- TODO research
     {
         "sakhnik/nvim-gdb",
+        event = "VeryLazy",
         build = { "bash install.sh" },
-        lazy = true,
     },
 
     -- show keybindings
