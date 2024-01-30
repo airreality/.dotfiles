@@ -31,22 +31,6 @@ nmap <Leader>n :TestNearest<CR>
 nmap <Leader>m :TestFile<CR>
 nmap <Leader>b :TestLast<CR>
 
-" TODO
-" UltiSnips
-" trigger configuration
-let g:UltiSnipsExpandTrigger='<c-j>'
-
-" do not look for SnipMate snippets
-let g:UltiSnipsEnableSnipMate = 0
-
-" jump forward and backward in tabstop positions
-let g:UltiSnipsJumpForwardTrigger='<c-j>'
-let g:UltiSnipsJumpBackwardTrigger='<c-k>'
-
-" configuration for custom snippets directory
-" https://jdhao.github.io/2019/04/17/neovim_snippet_s1/ for details.
-let g:UltiSnipsSnippetDirectories=['UltiSnips', 'code_snippets']
-
 " vim-markdown
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_conceal = 0

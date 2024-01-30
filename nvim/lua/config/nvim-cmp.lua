@@ -4,7 +4,7 @@ local lspkind = require("lspkind")
 cmp.setup({
     snippet = {
         expand = function(args)
-            vim.fn["UltiSnips#Anon"](args.body)
+            require("luasnip").lsp_expand(args.body)
         end,
     },
     mapping = cmp.mapping.preset.insert({
@@ -29,7 +29,7 @@ cmp.setup({
     }),
     sources = {
         { name = "nvim_lsp" },
-        { name = "ultisnips" },
+        { name = "luasnip" },
         { name = "path" },
         { name = "buffer", keyword_length = 2 },
         { name = "nvim_lsp_signature_help" },
@@ -46,7 +46,7 @@ cmp.setup({
             mode = "symbol_text",
             menu = {
                 nvim_lsp = "[LSP]",
-                ultisnips = "[US]",
+                luasnip = "[Snip]",
                 nvim_lua = "[Lua]",
                 path = "[Path]",
                 buffer = "[Buffer]",

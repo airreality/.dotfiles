@@ -117,7 +117,7 @@ local plugin_specs = {
             "hrsh7th/cmp-buffer",
             "hrsh7th/cmp-nvim-lsp-signature-help",
             "hrsh7th/cmp-omni",
-            "quangnguyen30192/cmp-nvim-ultisnips",
+            "saadparwaiz1/cmp_luasnip",
         },
         config = function()
             require("config.nvim-cmp")
@@ -175,13 +175,21 @@ local plugin_specs = {
         end,
     },
 
-    -- TODO filter snippets, write own
     {
-        "SirVer/ultisnips",
-        dependencies = {
-            "honza/vim-snippets",
-        },
-        event = "InsertEnter",
+        "L3MON4D3/LuaSnip",
+        dependencies = { "rafamadriz/friendly-snippets" },
+        event = "VeryLazy",
+        config = function()
+            vim.api.nvim_set_keymap("i", "<C-j>", "<Plug>luasnip-expand-or-jump", { desc = "Expand snip or jump next" })
+            vim.api.nvim_set_keymap("s", "<C-j>", "<Plug>luasnip-expand-or-jump", { desc = "Expand snip or jump next" })
+            vim.api.nvim_set_keymap("i", "<C-k>", "<Plug>luasnip-jump-prev", { desc = "Jump previous snip item" })
+            vim.api.nvim_set_keymap("s", "<C-k>", "<Plug>luasnip-jump-prev", { desc = "Jump previous snip item" })
+            require("luasnip").config.setup({
+                history = true,
+                update_events = "TextChanged, TextChangedI",
+            })
+            require("luasnip.loaders.from_vscode").lazy_load()
+        end,
     },
 
     -- yank history
