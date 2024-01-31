@@ -127,7 +127,7 @@ local plugin_specs = {
     {
         "zbirenbaum/copilot.lua",
         enabled = function()
-            return utils.executable("nodejs")
+            return utils.executable("node")
         end,
         ft = { "python" },
         cmd = "Copilot",
