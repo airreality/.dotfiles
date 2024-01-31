@@ -192,16 +192,13 @@ local plugin_specs = {
         end,
     },
 
-    -- yank history
-    -- TODO does not work well, research for config improvements
-    -- {
-    --     "gbprod/yanky.nvim",
-    --     cmd = { "YankyRingHistory" },
-    --     config = function()
-    --         require("config.yanky")
-    --     end,
-    --     lazy = false,
-    -- },
+    {
+        "gbprod/yanky.nvim",
+        cmd = { "YankyRingHistory" },
+        config = function()
+            require("config.yanky")
+        end,
+    },
 
     -- quickfix window improvements
     -- TODO customize config
