@@ -45,10 +45,8 @@ local custom_attach = function(client, bufnr)
     map("n", "<leader>e", vim.lsp.buf.references, { desc = "show references" })
     map("n", "[d", diagnostic.goto_prev, { desc = "previous diagnostic" })
     map("n", "]d", diagnostic.goto_next, { desc = "next diagnostic" })
-    -- this puts diagnostics from opened files to quickfix
-    map("n", "<space>qw", diagnostic.setqflist, { desc = "put window diagnostics to qf" })
-    -- this puts diagnostics from current buffer to quickfix
-    map("n", "<space>qb", function()
+    -- put diagnostics from current buffer to quickfix
+    map("n", "<leader>b", function()
         set_qflist(bufnr)
     end, { desc = "put buffer diagnostics to qf" })
     map("n", "<space>c", vim.lsp.buf.code_action, { desc = "LSP code action" })

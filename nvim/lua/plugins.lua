@@ -201,7 +201,6 @@ local plugin_specs = {
     },
 
     -- quickfix window improvements
-    -- TODO customize config
     {
         "kevinhwang91/nvim-bqf",
         ft = "qf",

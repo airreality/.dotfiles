@@ -29,7 +29,6 @@ let test#strategy="neovim"
 let test#python#runner="pytest"
 nmap <Leader>n :TestNearest<CR>
 nmap <Leader>m :TestFile<CR>
-nmap <Leader>b :TestLast<CR>
 
 " vim-markdown
 let g:vim_markdown_folding_disabled = 1
