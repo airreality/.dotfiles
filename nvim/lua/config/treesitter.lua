@@ -1,5 +1,5 @@
 require("nvim-treesitter.configs").setup({
-    ensure_installed = { "python", "lua", "vim", "json", "toml", "yaml", "dockerfile", "fish" },
+    ensure_installed = { "python", "lua", "vim", "json", "toml", "yaml", "dockerfile", "fish", "hurl" },
     ignore_install = {},
     highlight = {
         enable = true,
