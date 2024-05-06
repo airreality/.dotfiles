@@ -116,6 +116,7 @@ keymap.set("n", "<leader>i", "<cmd>FzfLua git_status<cr>")
 
 -- copilot
 keymap.set("n", "<space>l", "<cmd>Copilot panel<cr>", { desc = "open copilot" })
+keymap.set("n", "<space>h", "<cmd>CopilotChatToggle<cr>", { desc = "toggle copilot chat" })
 
 -- yanky
 vim.keymap.set("n", "<leader>y", "<cmd>YankyRingHistory<cr>", { desc = "Open yank history" })

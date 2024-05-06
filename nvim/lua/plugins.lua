@@ -138,6 +138,23 @@ local plugin_specs = {
     },
 
     {
+        "CopilotC-Nvim/CopilotChat.nvim",
+        enabled = function()
+            return utils.executable("node")
+        end,
+        ft = { "python" },
+        cmd = "CopilotChatToggle",
+        branch = "canary",
+        dependencies = {
+            { "zbirenbaum/copilot.lua" },
+            { "nvim-lua/plenary.nvim" },
+        },
+        config = function()
+            require("config.copilotchat")
+        end,
+    },
+
+    {
         "neovim/nvim-lspconfig",
         event = { "BufRead", "BufNewFile" },
         config = function()
