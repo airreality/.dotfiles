@@ -159,8 +159,8 @@ else
     vim.notify("pylsp not found!", vim.log.levels.WARN, { title = "Nvim-config" })
 end
 
-if utils.executable("ruff-lsp") then
-    require("lspconfig").ruff_lsp.setup({
+if utils.executable("ruff") then
+    require("lspconfig").ruff.setup({
         init_options = {
             settings = { interpreter = { py_path } },
         },

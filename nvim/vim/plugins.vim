@@ -21,7 +21,6 @@ let b:delimitMate_matchpairs = "(:),[:],{:}"
 nnoremap <silent> <leader>F :Neoformat<CR>
 let g:neoformat_enabled_json = ['jq']
 let g:neoformat_enabled_lua = ['stylua']
-let g:neoformat_enabled_python = ['black']
 let g:neoformat_enabled_sh = ['shfmt']
 
 " vim-test
