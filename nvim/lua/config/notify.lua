@@ -1,7 +1,7 @@
 local nvim_notify = require("notify")
 
 nvim_notify.setup({
-    stages = "fade_in_slide_out",
+    stages = "static",
     timeout = 1500,
     background_colour = "#2E3440",
 })
