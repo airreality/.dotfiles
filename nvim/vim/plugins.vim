@@ -44,24 +44,12 @@ let g:vim_markdown_toc_autofit = 1
 """ do not close preview window on buffer changing
 let g:mkdp_auto_close = 0
 
-" start and stop markdown previewing
-" nmap <C-p> <Plug>MarkdownPreviewToggle
-" TODO
-nnoremap <silent> <M-m> :<C-U>MarkdownPreview<CR>
-nnoremap <silent> <M-S-m> :<C-U>MarkdownPreviewStop<CR>
-
 " vim-sandwich
-" map s to nop since s in used by vim-sandwich. Use cl instead of s.
-" TODO
+" map s to nop since s is used by vim-sandwich, use cl instead of s
 nmap s <Nop>
 omap s <Nop>
 
-" nvim-gdb
-" TODO
-nnoremap <leader>dp :<C-U>GdbStartPDB python -m pdb %<CR>
-
 " wilder.nvim
-" TODO improve config
 call timer_start(250, { -> s:wilder_init() })
 
 function! s:wilder_init() abort
