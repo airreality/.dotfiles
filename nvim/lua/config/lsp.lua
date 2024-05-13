@@ -160,7 +160,7 @@ else
 end
 
 if utils.executable("ruff") then
-    require("lspconfig").ruff.setup({
+    lspconfig.ruff.setup({
         init_options = {
             settings = { interpreter = { py_path } },
         },
@@ -190,7 +190,7 @@ if utils.executable("ruff") then
         },
     })
 else
-    vim.notify("ruff-lsp not found!", vim.log.levels.WARN, { title = "Nvim-config" })
+    vim.notify("ruff not found!", vim.log.levels.WARN, { title = "Nvim-config" })
 end
 
 if utils.executable("lua-language-server") then
