@@ -2,7 +2,7 @@ local utils = require("utils")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
     vim.fn.system({
         "git",
         "clone",
@@ -75,7 +75,6 @@ local plugin_specs = {
     { "cespare/vim-toml", ft = { "toml" }, branch = "main" },
     { "machakann/vim-swap", event = "VeryLazy" }, -- swap args keymaps
     { "Raimondi/delimitMate", event = "InsertEnter" }, -- auto-complete brackets, quotes, etc
-    { "tpope/vim-commentary", event = "VeryLazy" },
     { "mbbill/undotree", cmd = { "UndotreeShow", "UndotreeToggle" } },
     { "stevearc/dressing.nvim" }, -- fzf, lsp-replacements UI improvements
     { "nvim-zh/better-escape.vim", event = { "InsertEnter" } },
