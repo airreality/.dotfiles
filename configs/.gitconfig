@@ -22,3 +22,5 @@
 	process = git-lfs filter-process
 [http]
 	postBuffer = 524288000
+[pull]
+	rebase = true
