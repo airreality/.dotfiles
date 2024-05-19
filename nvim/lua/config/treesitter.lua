@@ -1,6 +1,27 @@
 require("nvim-treesitter.configs").setup({
-    ensure_installed = { "python", "lua", "vim", "json", "toml", "yaml", "dockerfile", "fish", "hurl" },
-    ignore_install = {},
+    ensure_installed = {
+        "bash",
+        "diff",
+        "html",
+        "javascript",
+        "json",
+        "jsonc",
+        "dockerfile",
+        "fish",
+        "hurl",
+        "json",
+        "lua",
+        "markdown",
+        "markdown_inline",
+        "python",
+        "query",
+        "regex",
+        "toml",
+        "typescript",
+        "vim",
+        "xml",
+        "yaml",
+    },
     highlight = {
         enable = true,
         disable = function(_, buf)
@@ -11,4 +32,5 @@ require("nvim-treesitter.configs").setup({
             end
         end,
     },
+    indent = { enabled = true },
 })
