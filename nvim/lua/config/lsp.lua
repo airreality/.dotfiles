@@ -234,7 +234,7 @@ diagnostic.config({
     severity_sort = true,
 })
 
--- change border of documentation hover window, See https://github.com/neovim/neovim/pull/13998.
-lsp.handlers["textDocument/hover"] = lsp.with(vim.lsp.handlers.hover, {
-    border = "rounded",
-})
+-- change borders style
+lsp.handlers["textDocument/hover"] = lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
+lsp.handlers["textDocument/signatureHelp"] = lsp.with(vim.lsp.handlers.signatureHelp, { border = "rounded" })
+require("lspconfig.ui.windows").default_options.border = "rounded"
