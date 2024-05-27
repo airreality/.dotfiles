@@ -25,11 +25,18 @@ config.force_reverse_video_cursor = true
 config.window_padding = { left = 0, right = 0, top = 0, bottom = 0 }
 config.scrollback_lines = 10000
 
-config.hyperlink_rules = {
-    {
-        regex = [[(WCCA|WEBCC|SA|ENV|CCC|CCBE|CCAC|CBCT|IDS|CWS|CCBA|DA|ATD|MDS)-\d+]],
-        format = "https://jira.aligntech.com/browse/$0",
-    },
-}
+config.hyperlink_rules = wezterm.default_hyperlink_rules()
+table.insert(config.hyperlink_rules, {
+    regex = [[["]?([\w\d]{1}[-\w\d]+)(/){1}([-\w\d\.]+)["]?]],
+    format = "https://www.github.com/$1/$3",
+})
+table.insert(config.hyperlink_rules, {
+    regex = [[(WCCA|WEBCC|SA|ENV|CCC|CCBE|CCAC|CBCT|IDS|CWS|CCBA|DA|ATD|MDS)-\d+]],
+    format = "https://jira.aligntech.com/browse/$0",
+})
+table.insert(config.hyperlink_rules, {
+    regex = [[(WCCA|WEBCC|SA|ENV|CCC|CCBE|CCAC|CBCT|IDS|CWS|CCBA|DA|ATD|MDS)-T\d+]],
+    format = "https://jira.aligntech.com/secure/Tests.jspa#/testCase/$0",
+})
 
 return config
