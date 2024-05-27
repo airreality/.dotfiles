@@ -11,6 +11,7 @@ end
 
 set -x BAT_THEME "ansi"
 set -x EDITOR nvim
+set -x TERM xterm-256color  # to avoid wezterm "WARNING: terminal is not fully functional"
 set -x FZF_DEFAULT_COMMAND "rg --color auto --files"
 
 abbr -a vim "nvim"
