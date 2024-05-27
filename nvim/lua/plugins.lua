@@ -210,7 +210,7 @@ local plugin_specs = {
 
     {
         "gbprod/yanky.nvim",
-        cmd = { "YankyRingHistory" },
+        lazy = false,
         config = function()
             require("config.yanky")
         end,
