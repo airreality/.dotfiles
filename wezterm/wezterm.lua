@@ -27,10 +27,6 @@ config.scrollback_lines = 10000
 
 config.hyperlink_rules = wezterm.default_hyperlink_rules()
 table.insert(config.hyperlink_rules, {
-    regex = [[["]?([\w\d]{1}[-\w\d]+)(/){1}([-\w\d\.]+)["]?]],
-    format = "https://www.github.com/$1/$3",
-})
-table.insert(config.hyperlink_rules, {
     regex = [[(WCCA|WEBCC|SA|ENV|CCC|CCBE|CCAC|CBCT|IDS|CWS|CCBA|DA|ATD|MDS)-\d+]],
     format = "https://jira.aligntech.com/browse/$0",
 })
