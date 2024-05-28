@@ -1,8 +1,6 @@
 local fn = vim.fn
 local api = vim.api
 
-local utils = require("utils")
-
 local function augroup(name)
     return api.nvim_create_augroup(name, { clear = true })
 end
@@ -52,31 +50,32 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 })
 
 -- create dir when saving a file, if not exists
-api.nvim_create_autocmd({ "BufWritePre" }, {
-    pattern = "*",
-    group = api.nvim_create_augroup("auto_create_dir", { clear = true }),
-    callback = function(ctx)
-        local dir = fn.fnamemodify(ctx.file, ":p:h")
-        utils.mkdir(dir)
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+    group = augroup("auto_create_dir"),
+    callback = function(event)
+        if event.match:match("^%w%w+:[\\/][\\/]") then
+            return
+        end
+        local file = vim.uv.fs_realpath(event.match) or event.match
+        vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
     end,
 })
 
 -- reload file if changed
 -- It seems that `checktime` does not work in command line. We need to check if we are in command
 -- line before executing this command, see also https://vi.stackexchange.com/a/20397/15292 .
-api.nvim_create_augroup("auto_read", { clear = true })
+local auto_read = augroup("auto_read")
 
 api.nvim_create_autocmd({ "FileChangedShellPost" }, {
     pattern = "*",
-    group = "auto_read",
+    group = auto_read,
     callback = function()
         vim.notify("File changed on disk. Buffer reloaded!", vim.log.levels.WARN, { title = "Buffer reloaded" })
     end,
 })
 
 api.nvim_create_autocmd({ "FocusGained", "CursorHold" }, {
-    pattern = "*",
-    group = "auto_read",
+    group = auto_read,
     callback = function()
         if fn.getcmdwintype() == "" then
             vim.cmd("checktime")
@@ -86,7 +85,7 @@ api.nvim_create_autocmd({ "FocusGained", "CursorHold" }, {
 
 -- resize all windows on terminal resizing
 api.nvim_create_autocmd("VimResized", {
-    group = api.nvim_create_augroup("win_autoresize", { clear = true }),
+    group = augroup("win_autoresize"),
     desc = "autoresize windows on resizing operation",
     command = "wincmd =",
 })

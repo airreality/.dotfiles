@@ -10,12 +10,4 @@ function M.executable(name)
     return false
 end
 
-function M.mkdir(dir)
-    local res = fn.isdirectory(dir)
-
-    if res == 0 then
-        fn.mkdir(dir, "p")
-    end
-end
-
 return M
