@@ -1,12 +1,8 @@
 local cmp = require("cmp")
 local lspkind = require("lspkind")
 
+vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
 cmp.setup({
-    snippet = {
-        expand = function(args)
-            require("luasnip").lsp_expand(args.body)
-        end,
-    },
     mapping = cmp.mapping.preset.insert({
         ["<Tab>"] = function(fallback)
             if cmp.visible() then
@@ -24,19 +20,20 @@ cmp.setup({
         end,
         ["<CR>"] = cmp.mapping.confirm({ select = true }),
         ["<C-e>"] = cmp.mapping.abort(),
+        ["<C-Space>"] = cmp.mapping.complete(),
         ["<C-d>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
     }),
     sources = {
         { name = "nvim_lsp" },
-        { name = "luasnip" },
+        { name = "snippets" },
         { name = "path" },
         { name = "buffer", keyword_length = 2 },
         { name = "nvim_lsp_signature_help" },
     },
     completion = {
         keyword_length = 1,
-        completeopt = "menu,noselect",
+        completeopt = "menu,menuone,noinsert",
     },
     view = {
         entries = "custom",
@@ -53,6 +50,11 @@ cmp.setup({
                 omni = "[Omni]",
             },
         }),
+    },
+    experimental = {
+        ghost_text = {
+            hl_group = "CmpGhostText",
+        },
     },
 })
 

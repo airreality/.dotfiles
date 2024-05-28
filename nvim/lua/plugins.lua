@@ -108,7 +108,7 @@ local plugin_specs = {
     -- autocomplete
     {
         "hrsh7th/nvim-cmp",
-        event = "VeryLazy",
+        event = "InsertEnter",
         dependencies = {
             "hrsh7th/cmp-nvim-lsp",
             "onsails/lspkind-nvim",
@@ -117,6 +117,12 @@ local plugin_specs = {
             "hrsh7th/cmp-nvim-lsp-signature-help",
             "hrsh7th/cmp-omni",
             "saadparwaiz1/cmp_luasnip",
+            "rafamadriz/friendly-snippets",
+            {
+                "garymjr/nvim-snippets",
+                opts = { friendly_snippets = true },
+                dependencies = { "rafamadriz/friendly-snippets" },
+            },
         },
         config = function()
             require("config.nvim-cmp")
@@ -188,23 +194,6 @@ local plugin_specs = {
         dependencies = { "nvim-tree/nvim-web-devicons" },
         config = function()
             require("config.fzf")
-        end,
-    },
-
-    {
-        "L3MON4D3/LuaSnip",
-        dependencies = { "rafamadriz/friendly-snippets" },
-        event = "VeryLazy",
-        config = function()
-            vim.api.nvim_set_keymap("i", "<C-j>", "<Plug>luasnip-expand-or-jump", { desc = "Expand snip or jump next" })
-            vim.api.nvim_set_keymap("s", "<C-j>", "<Plug>luasnip-expand-or-jump", { desc = "Expand snip or jump next" })
-            vim.api.nvim_set_keymap("i", "<C-k>", "<Plug>luasnip-jump-prev", { desc = "Jump previous snip item" })
-            vim.api.nvim_set_keymap("s", "<C-k>", "<Plug>luasnip-jump-prev", { desc = "Jump previous snip item" })
-            require("luasnip").config.setup({
-                history = true,
-                update_events = "TextChanged, TextChangedI",
-            })
-            require("luasnip.loaders.from_vscode").lazy_load()
         end,
     },
 
