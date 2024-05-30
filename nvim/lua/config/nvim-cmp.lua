@@ -4,14 +4,14 @@ local lspkind = require("lspkind")
 vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
 cmp.setup({
     mapping = cmp.mapping.preset.insert({
-        ["<Tab>"] = function(fallback)
+        ["<C-j>"] = function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
             else
                 fallback()
             end
         end,
-        ["<S-Tab>"] = function(fallback)
+        ["<C-k>"] = function(fallback)
             if cmp.visible() then
                 cmp.select_prev_item()
             else
@@ -19,6 +19,7 @@ cmp.setup({
             end
         end,
         ["<CR>"] = cmp.mapping.confirm({ select = true }),
+        ["<Tab>"] = cmp.mapping.confirm({ select = true }),
         ["<C-e>"] = cmp.mapping.abort(),
         ["<C-Space>"] = cmp.mapping.complete(),
         ["<C-d>"] = cmp.mapping.scroll_docs(-4),
