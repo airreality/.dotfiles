@@ -2,7 +2,6 @@ vim.loader.enable()
 
 local root = vim.fn.stdpath("config")
 require("globals")
-vim.cmd(string.format("source %s/vim/options.vim", root))
 require("autocmd")
 require("mappings")
 require("plugins")
