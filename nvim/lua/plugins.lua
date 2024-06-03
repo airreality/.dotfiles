@@ -80,7 +80,7 @@ local plugin_specs = {
     { "nvim-zh/better-escape.vim", event = { "InsertEnter" } },
     { "sbdchd/neoformat", cmd = { "Neoformat" } },
 
-    { "tpope/vim-fugitive", event = "User InGitRepo" },
+    { "tpope/vim-fugitive", event = "User GitRepoIn" },
     {
         "rbong/vim-flog",
         cmd = { "Flog" },

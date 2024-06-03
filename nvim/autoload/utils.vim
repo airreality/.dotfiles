@@ -50,15 +50,3 @@ function! utils#Get_titlestr() abort
   let l:title_str = l:title_str . l:buf_path . '  '
   return l:title_str
 endfunction
-
-" Check if we are inside a Git repo.
-function! utils#Inside_git_repo() abort
-  let res = system('git rev-parse --is-inside-work-tree')
-  if match(res, 'true') == -1
-    return v:false
-  else
-    " Manually trigger a special user autocmd InGitRepo (used lazyloading.
-    doautocmd User InGitRepo
-    return v:true
-  endif
-endfunction
