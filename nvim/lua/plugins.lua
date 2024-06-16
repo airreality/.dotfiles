@@ -1,33 +1,11 @@
-local utils = require("utils")
-
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-
-if not vim.uv.fs_stat(lazypath) then
-    vim.fn.system({
-        "git",
-        "clone",
-        "--filter=blob:none",
-        "https://github.com/folke/lazy.nvim.git",
-        "--branch=stable",
-        lazypath,
-    })
-end
-vim.opt.rtp:prepend(lazypath)
-
-local plugin_specs = {
+return {
     {
         "rmehri01/onenord.nvim",
         lazy = false,
         priority = 52,
-    },
-    {
-        "nvim-treesitter/nvim-treesitter",
-        lazy = false,
-        build = ":TSUpdate",
-        config = function()
-            require("config.treesitter")
+        init = function()
+            require("onenord").setup({})
         end,
-        priority = 51,
     },
 
     { "nvim-tree/nvim-web-devicons", event = "VeryLazy" },
@@ -39,169 +17,37 @@ local plugin_specs = {
         event = "VeryLazy",
     },
 
-    -- show match number and index for searching
-    {
-        "kevinhwang91/nvim-hlslens",
-        branch = "main",
-        keys = { "*", "#", "n", "N" },
-        config = function()
-            require("config.hlslens")
-        end,
-    },
-
-    {
-        "lukas-reineke/indent-blankline.nvim",
-        event = "VeryLazy",
-        main = "ibl",
-        config = function()
-            require("config.indent-blankline")
-        end,
-    },
-
-    -- cmdline autocomplete
-    {
-        "gelguy/wilder.nvim",
-        build = ":UpdateRemotePlugins",
-    },
+    { "gelguy/wilder.nvim", build = ":UpdateRemotePlugins" }, -- cmdline autocomplete
 
     -- lua autocomplete
-    -- requires lua-language-server in system
-    { "LuaLS/lua-language-server", ft = "lua" },
+    { "LuaLS/lua-language-server", ft = "lua" }, -- requires lua-language-server in system
     { "ii14/emmylua-nvim", ft = "lua" },
 
-    { "Vimjas/vim-python-pep8-indent", ft = { "python" } },
-    { "jeetsukumaran/vim-pythonsense", ft = { "python" } }, -- python text objects and motions
+    { "Vimjas/vim-python-pep8-indent", ft = "python" },
+    { "jeetsukumaran/vim-pythonsense", ft = "python" }, -- python text objects and motions
 
-    { "cespare/vim-toml", ft = { "toml" }, branch = "main" },
+    { "cespare/vim-toml", ft = "toml", branch = "main" },
     { "machakann/vim-swap", event = "VeryLazy" }, -- swap args keymaps
     { "Raimondi/delimitMate", event = "InsertEnter" }, -- auto-complete brackets, quotes, etc
     { "mbbill/undotree", cmd = { "UndotreeShow", "UndotreeToggle" } },
     { "stevearc/dressing.nvim" }, -- fzf, lsp-replacements UI improvements
-    { "nvim-zh/better-escape.vim", event = { "InsertEnter" } },
-    { "sbdchd/neoformat", cmd = { "Neoformat" } },
+    { "nvim-zh/better-escape.vim", event = "InsertEnter" },
+    { "sbdchd/neoformat", cmd = "Neoformat" },
 
     { "tpope/vim-fugitive", event = "User GitRepoIn" },
     {
         "rbong/vim-flog",
-        cmd = { "Flog" },
-        dependencies = {
-            "tpope/vim-fugitive",
-        },
+        cmd = "Flog",
+        dependencies = { "tpope/vim-fugitive" },
     },
 
-    -- show git signs for changes
-    {
-        "lewis6991/gitsigns.nvim",
-        config = function()
-            require("config.gitsigns")
-        end,
-    },
-
-    {
-        "nvim-lualine/lualine.nvim",
-        event = "VeryLazy",
-        config = function()
-            require("config.lualine")
-        end,
-    },
-
-    -- autocomplete
-    {
-        "hrsh7th/nvim-cmp",
-        event = "InsertEnter",
-        dependencies = {
-            "hrsh7th/cmp-nvim-lsp",
-            "onsails/lspkind-nvim",
-            "hrsh7th/cmp-path",
-            "hrsh7th/cmp-buffer",
-            "hrsh7th/cmp-nvim-lsp-signature-help",
-            "hrsh7th/cmp-omni",
-            "saadparwaiz1/cmp_luasnip",
-            "rafamadriz/friendly-snippets",
-            {
-                "garymjr/nvim-snippets",
-                opts = { friendly_snippets = true },
-                dependencies = { "rafamadriz/friendly-snippets" },
-            },
-        },
-        config = function()
-            require("config.nvim-cmp")
-        end,
-    },
-
-    {
-        "zbirenbaum/copilot.lua",
-        enabled = function()
-            return utils.executable("node")
-        end,
-        ft = { "python" },
-        cmd = "Copilot",
-        build = ":Copilot auth",
-        config = function()
-            require("config.copilot")
-        end,
-    },
-
-    {
-        "CopilotC-Nvim/CopilotChat.nvim",
-        enabled = function()
-            return utils.executable("node")
-        end,
-        ft = { "python" },
-        cmd = "CopilotChatToggle",
-        branch = "canary",
-        dependencies = {
-            { "zbirenbaum/copilot.lua" },
-            { "nvim-lua/plenary.nvim" },
-        },
-        config = function()
-            require("config.copilotchat")
-        end,
-    },
-
-    {
-        "neovim/nvim-lspconfig",
-        event = { "BufRead", "BufNewFile" },
-        config = function()
-            require("config.lsp")
-        end,
-    },
-
-    -- lsp progress UI
-    {
-        "j-hui/fidget.nvim",
-        event = "VeryLazy",
-        config = function()
-            require("config.fidget")
-        end,
-    },
-
-    {
-        "vim-test/vim-test",
-        ft = { "python" },
-    },
-
-    {
-        "rcarriga/nvim-notify",
-        event = "VeryLazy",
-        config = function()
-            require("config.notify")
-        end,
-    },
+    { "vim-test/vim-test", ft = "python" },
 
     {
         "ibhagwan/fzf-lua",
         dependencies = { "nvim-tree/nvim-web-devicons" },
-        config = function()
-            require("config.fzf")
-        end,
-    },
-
-    {
-        "gbprod/yanky.nvim",
-        lazy = false,
-        config = function()
-            require("config.yanky")
+        init = function()
+            require("fzf-lua")
         end,
     },
 
@@ -209,60 +55,21 @@ local plugin_specs = {
     {
         "kevinhwang91/nvim-bqf",
         ft = "qf",
-        config = function()
-            require("config.bqf")
+        init = function()
+            require("bqf")
         end,
         dependencies = { "nvim-treesitter/nvim-treesitter" },
     },
 
-    {
-        "godlygeek/tabular",
-        cmd = { "Tabularize" },
-        ft = { "markdown" },
-    },
-    { "preservim/vim-markdown", ft = { "markdown" } },
+    { "godlygeek/tabular", cmd = "Tabularize", ft = "markdown" },
+    { "preservim/vim-markdown", ft = "markdown" },
     {
         "iamcco/markdown-preview.nvim",
         build = ":call mkdp#util#install()",
-        ft = { "markdown" },
+        ft = "markdown",
         dependencies = { "nvim-tree/nvim-web-devicons" },
     },
 
     { "wellle/targets.vim", event = "VeryLazy" },
     { "machakann/vim-sandwich", event = "VeryLazy" },
-
-    -- debugger
-    -- TODO research
-    {
-        "sakhnik/nvim-gdb",
-        event = "VeryLazy",
-        build = { "bash install.sh" },
-    },
-
-    -- show keybindings
-    {
-        "folke/which-key.nvim",
-        event = "VeryLazy",
-        config = function()
-            require("config.which-key")
-        end,
-    },
-
-    {
-        "nvim-tree/nvim-tree.lua",
-        keys = { "<leader>t" },
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-        config = function()
-            require("config.tree")
-        end,
-    },
 }
-local lazy_opts = {
-    ui = {
-        border = "rounded",
-        title = "Plugin Manager",
-        title_pos = "center",
-    },
-}
-
-require("lazy").setup(plugin_specs, lazy_opts)
