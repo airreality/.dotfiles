@@ -43,14 +43,6 @@ return {
 
     { "vim-test/vim-test", ft = "python" },
 
-    {
-        "ibhagwan/fzf-lua",
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-        init = function()
-            require("fzf-lua")
-        end,
-    },
-
     -- quickfix window improvements
     {
         "kevinhwang91/nvim-bqf",

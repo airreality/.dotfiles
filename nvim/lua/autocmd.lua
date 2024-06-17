@@ -165,7 +165,7 @@ vim.api.nvim_create_autocmd("BufReadPre", {
     group = augroup("handle_large_file"),
     desc = "handle large file",
     callback = function()
-        local large_file_size = 1 * 1024 * 1024  -- 1MB
+        local large_file_size = 1 * 1024 * 1024 -- 1MB
         local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf()))
         if not (ok and stats and stats.size < large_file_size) then
             vim.o.relativenumber = false

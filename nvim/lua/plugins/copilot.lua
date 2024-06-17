@@ -12,6 +12,9 @@ return {
             panel = { enabled = false },
             suggestion = { enabled = false },
         },
+        keys = {
+            { "<space>l", "<cmd>Copilot panel<cr>", desc = "Open copilot" },
+        },
     },
 
     {
@@ -28,5 +31,8 @@ return {
         init = function()
             require("CopilotChat").setup({})
         end,
+        keys = {
+            { "<space>h", "<cmd>CopilotChatToggle<cr>", desc = "toggle copilot chat" },
+        },
     },
 }
