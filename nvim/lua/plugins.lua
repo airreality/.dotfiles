@@ -17,8 +17,6 @@ return {
         event = "VeryLazy",
     },
 
-    { "gelguy/wilder.nvim", build = ":UpdateRemotePlugins" }, -- cmdline autocomplete
-
     -- lua autocomplete
     { "LuaLS/lua-language-server", ft = "lua" }, -- requires lua-language-server in system
     { "ii14/emmylua-nvim", ft = "lua" },

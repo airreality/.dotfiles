@@ -1,15 +1,15 @@
 return {
     "hrsh7th/nvim-cmp",
-    event = "InsertEnter",
+    event = "VeryLazy",
     dependencies = {
         "hrsh7th/cmp-nvim-lsp",
         "onsails/lspkind-nvim",
         "hrsh7th/cmp-path",
         "hrsh7th/cmp-buffer",
+        "hrsh7th/cmp-cmdline",
         "hrsh7th/cmp-nvim-lsp-signature-help",
         "hrsh7th/cmp-omni",
         "saadparwaiz1/cmp_luasnip",
-        "rafamadriz/friendly-snippets",
         {
             "garymjr/nvim-snippets",
             opts = { friendly_snippets = true },
@@ -37,7 +37,7 @@ return {
                         luasnip = "[Snip]",
                         nvim_lua = "[Lua]",
                         path = "[Path]",
-                        buffer = "[Buffer]",
+                        buffer = "[Buf]",
                         omni = "[Omni]",
                     },
                 }),
@@ -60,16 +60,15 @@ return {
                 ["<CR>"] = cmp.mapping.confirm({ select = true }),
                 ["<Tab>"] = cmp.mapping.confirm({ select = true }),
                 ["<C-e>"] = cmp.mapping.abort(),
-                ["<C-Space>"] = cmp.mapping.complete(),
                 ["<C-d>"] = cmp.mapping.scroll_docs(-4),
                 ["<C-f>"] = cmp.mapping.scroll_docs(4),
             }),
             sources = {
-                { name = "nvim_lsp" },
-                { name = "snippets" },
-                { name = "path" },
                 { name = "buffer", keyword_length = 2 },
+                { name = "nvim_lsp" },
                 { name = "nvim_lsp_signature_help" },
+                { name = "path" },
+                { name = "snippets" },
             },
             view = {
                 entries = "custom",
@@ -77,6 +76,33 @@ return {
         }
     end,
     config = function(_, opts)
-        require("cmp").setup(opts)
+        local cmp = require("cmp")
+        cmp.setup(opts)
+        cmp.setup.cmdline("/", {
+            mapping = cmp.mapping.preset.cmdline(),
+            sources = {
+                { name = "buffer" },
+            },
+        })
+        cmp.setup.cmdline(":", {
+            mapping = cmp.mapping.preset.cmdline({
+                ["<C-n>"] = { c = cmp.mapping.select_next_item() },
+                ["<C-p>"] = { c = cmp.mapping.select_prev_item() },
+                ["<C-j>"] = { c = cmp.mapping.select_next_item() },
+                ["<C-k>"] = { c = cmp.mapping.select_prev_item() },
+                ["<Tab>"] = { c = cmp.mapping.confirm({ select = true }) },
+            }),
+            ---@diagnostic disable-next-line: undefined-field
+            sources = cmp.config.sources({
+                { name = "path" },
+            }, {
+                {
+                    name = "cmdline",
+                    option = {
+                        ignore_cmds = { "Man", "!" },
+                    },
+                },
+            }),
+        })
     end,
 }

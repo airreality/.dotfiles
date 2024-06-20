@@ -47,8 +47,6 @@ keymap.set("x", "$", "g_")
 keymap.set({ "n", "x" }, "H", "^")
 keymap.set({ "n", "x" }, "L", "g_")
 
-keymap.set("n", "/", [[/\v]])
-
 keymap.set("n", "<leader>cd", "<cmd>lcd %:p:h<cr><cmd>pwd<cr>", { desc = "change cwd" })
 
 keymap.set("t", "<Esc>", [[<c-\><c-n>]])
