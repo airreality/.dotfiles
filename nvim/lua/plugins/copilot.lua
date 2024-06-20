@@ -23,7 +23,9 @@ return {
             "nvim-lua/plenary.nvim",
         },
         init = function()
-            require("CopilotChat").setup({})
+            if utils.executable("node") then
+                require("CopilotChat").setup({})
+            end
         end,
         keys = {
             { "<space>h", "<cmd>CopilotChatToggle<cr>", mode = { "n", "v" }, desc = "toggle copilot chat" },
