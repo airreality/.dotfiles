@@ -1,5 +1,7 @@
 return {
     "lewis6991/gitsigns.nvim",
+    -- TODO: support 0.9.0 version
+    version="v0.8.1",
     opts = {
         signs = {
             add = { hl = "GitSignsAdd", text = "+", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
