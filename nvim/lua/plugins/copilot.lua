@@ -3,9 +3,6 @@ local utils = require("utils")
 return {
     {
         "zbirenbaum/copilot.lua",
-        enabled = function()
-            return utils.executable("node")
-        end,
         cmd = "Copilot",
         build = ":Copilot auth",
         opts = {
@@ -19,9 +16,6 @@ return {
 
     {
         "CopilotC-Nvim/CopilotChat.nvim",
-        enabled = function()
-            return utils.executable("node")
-        end,
         cmd = "CopilotChatToggle",
         branch = "canary",
         dependencies = {
