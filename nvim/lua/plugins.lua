@@ -26,7 +26,6 @@ return {
 
     { "cespare/vim-toml", ft = "toml", branch = "main" },
     { "machakann/vim-swap", event = "VeryLazy" }, -- swap args keymaps
-    { "Raimondi/delimitMate", event = "InsertEnter" }, -- auto-complete brackets, quotes, etc
     { "mbbill/undotree", cmd = { "UndotreeShow", "UndotreeToggle" } },
     { "stevearc/dressing.nvim" }, -- fzf, lsp-replacements UI improvements
     { "sbdchd/neoformat", cmd = "Neoformat" },

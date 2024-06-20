@@ -10,9 +10,6 @@ let g:undotree_SplitWidth = 45
 
 nnoremap <silent> <leader>u :UndotreeToggle<CR>
 
-" delimitMate
-let b:delimitMate_matchpairs = "(:),[:],{:}"
-
 " neoformat
 nnoremap <silent> <leader>f :Neoformat<CR>
 let g:neoformat_enabled_json = ['jq']
