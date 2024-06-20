@@ -32,7 +32,7 @@ return {
             require("CopilotChat").setup({})
         end,
         keys = {
-            { "<space>h", "<cmd>CopilotChatToggle<cr>", desc = "toggle copilot chat" },
+            { "<space>h", "<cmd>CopilotChatToggle<cr>", mode = { "n", "v" }, desc = "toggle copilot chat" },
         },
     },
 }
