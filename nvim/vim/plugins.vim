@@ -10,10 +10,6 @@ let g:undotree_SplitWidth = 45
 
 nnoremap <silent> <leader>u :UndotreeToggle<CR>
 
-" better-escape
-let g:better_escape_shortcut = ['jj', 'оо']
-let g:better_escape_interval = 150
-
 " delimitMate
 let b:delimitMate_matchpairs = "(:),[:],{:}"
 

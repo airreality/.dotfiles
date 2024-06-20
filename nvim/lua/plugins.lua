@@ -31,7 +31,6 @@ return {
     { "Raimondi/delimitMate", event = "InsertEnter" }, -- auto-complete brackets, quotes, etc
     { "mbbill/undotree", cmd = { "UndotreeShow", "UndotreeToggle" } },
     { "stevearc/dressing.nvim" }, -- fzf, lsp-replacements UI improvements
-    { "nvim-zh/better-escape.vim", event = "InsertEnter" },
     { "sbdchd/neoformat", cmd = "Neoformat" },
 
     { "tpope/vim-fugitive", event = "User GitRepoIn" },
