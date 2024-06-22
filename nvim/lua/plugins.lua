@@ -12,7 +12,6 @@ return {
     { "LuaLS/lua-language-server", ft = "lua" }, -- requires lua-language-server in system
     { "ii14/emmylua-nvim", ft = "lua" },
     { "Vimjas/vim-python-pep8-indent", ft = "python" },
-    { "cespare/vim-toml", ft = "toml", branch = "main" },
     { "mbbill/undotree", cmd = { "UndotreeShow", "UndotreeToggle" } },
     { "stevearc/dressing.nvim" }, -- fzf, lsp-replacements UI improvements
     { "sbdchd/neoformat", cmd = "Neoformat" },
