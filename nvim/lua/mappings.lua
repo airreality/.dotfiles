@@ -1,8 +1,5 @@
 local keymap = vim.keymap
 
--- save key strokes (do not press shift to enter command mode)
-keymap.set({ "n", "x" }, ";", ":")
-
 keymap.set("n", "<leader>p", "m`o<ESC>p``", { desc = "paste below current line" })
 keymap.set("n", "<leader>P", "m`O<ESC>p``", { desc = "paste above current line" })
 
@@ -59,12 +56,6 @@ keymap.set("n", "c", '"_c')
 keymap.set("n", "C", '"_C')
 keymap.set("n", "cc", '"_cc')
 keymap.set("x", "c", '"_c')
-
-keymap.set("n", "<A-k>", '<cmd>call utils#SwitchLine(line("."), "up")<cr>', { desc = "move line up" })
-keymap.set("n", "<A-j>", '<cmd>call utils#SwitchLine(line("."), "down")<cr>', { desc = "move line down" })
-
-keymap.set("x", "<A-k>", '<cmd>call utils#MoveSelection("up")<cr>', { desc = "move selection up" })
-keymap.set("x", "<A-j>", '<cmd>call utils#MoveSelection("down")<cr>', { desc = "move selection down" })
 
 -- replace visual selection with text in register, but not contaminate the register
 keymap.set("x", "p", '"_c<Esc>p')

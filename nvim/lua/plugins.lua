@@ -22,10 +22,8 @@ return {
     { "ii14/emmylua-nvim", ft = "lua" },
 
     { "Vimjas/vim-python-pep8-indent", ft = "python" },
-    { "jeetsukumaran/vim-pythonsense", ft = "python" }, -- python text objects and motions
 
     { "cespare/vim-toml", ft = "toml", branch = "main" },
-    { "machakann/vim-swap", event = "VeryLazy" }, -- swap args keymaps
     { "mbbill/undotree", cmd = { "UndotreeShow", "UndotreeToggle" } },
     { "stevearc/dressing.nvim" }, -- fzf, lsp-replacements UI improvements
     { "sbdchd/neoformat", cmd = "Neoformat" },
