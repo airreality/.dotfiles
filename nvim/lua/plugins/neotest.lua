@@ -7,6 +7,7 @@ return {
         "nvim-treesitter/nvim-treesitter",
         "nvim-neotest/neotest-python",
     },
+    ft = "python",
     config = function()
         require("neotest").setup({
             adapters = {
