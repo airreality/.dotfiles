@@ -16,12 +16,6 @@ let g:neoformat_enabled_json = ['jq']
 let g:neoformat_enabled_lua = ['stylua']
 let g:neoformat_enabled_sh = ['shfmt']
 
-" vim-test
-let test#strategy="neovim"
-let test#python#runner="pytest"
-nmap <Leader>n :TestNearest<CR>
-nmap <Leader>m :TestFile<CR>
-
 " vim-markdown
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_conceal = 0
