@@ -16,21 +16,6 @@ let g:neoformat_enabled_json = ['jq']
 let g:neoformat_enabled_lua = ['stylua']
 let g:neoformat_enabled_sh = ['shfmt']
 
-" vim-markdown
-let g:vim_markdown_folding_disabled = 1
-let g:vim_markdown_conceal = 0
-let g:tex_conceal = ''
-let g:vim_markdown_math = 0
-let g:vim_markdown_frontmatter = 1
-let g:vim_markdown_toml_frontmatter = 1
-let g:vim_markdown_json_frontmatter = 1
-let g:vim_markdown_toc_autofit = 1
-
-" markdown-preview
-
-""" do not close preview window on buffer changing
-let g:mkdp_auto_close = 0
-
 " vim-sandwich
 " map s to nop since s is used by vim-sandwich, use cl instead of s
 nmap s <Nop>

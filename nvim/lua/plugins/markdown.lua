@@ -1,10 +1,23 @@
 return {
-    { "godlygeek/tabular", cmd = "Tabularize", ft = "markdown" },
-    { "preservim/vim-markdown", ft = "markdown" },
     {
         "iamcco/markdown-preview.nvim",
-        build = ":call mkdp#util#install()",
-        ft = "markdown",
-        dependencies = { "nvim-tree/nvim-web-devicons" },
+        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+        ft = { "markdown" },
+        build = function()
+            vim.fn["mkdp#util#install"]()
+        end,
+        config = function()
+            vim.g.mkdp_auto_close = 0
+        end,
+    },
+    {
+        "lukas-reineke/headlines.nvim",
+        ft = { "markdown" },
+        dependencies = "nvim-treesitter/nvim-treesitter",
+        opts = {
+            markdown = {
+                bullets = {},
+            },
+        },
     },
 }
