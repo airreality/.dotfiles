@@ -117,9 +117,10 @@ return {
             local gs = require("gitsigns")
             --
             -- -- make gitsigns.nvim movement repeatable with ;
-            local next_hunk_repeat, prev_hunk_repeat = ts_repeat_move.make_repeatable_move_pair(gs.next_hunk, gs.prev_hunk)
-            vim.keymap.set({ "n", "x", "o" }, "]h", next_hunk_repeat, {desc = "Next hunk"})
-            vim.keymap.set({ "n", "x", "o" }, "[h", prev_hunk_repeat, {desc = "Previous hunk"})
+            local next_hunk_repeat, prev_hunk_repeat =
+                ts_repeat_move.make_repeatable_move_pair(gs.next_hunk, gs.prev_hunk)
+            vim.keymap.set({ "n", "x", "o" }, "]h", next_hunk_repeat, { desc = "Next hunk" })
+            vim.keymap.set({ "n", "x", "o" }, "[h", prev_hunk_repeat, { desc = "Previous hunk" })
         end,
     },
 }
