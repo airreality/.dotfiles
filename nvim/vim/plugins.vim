@@ -15,8 +15,3 @@ nnoremap <silent> <leader>f :Neoformat<CR>
 let g:neoformat_enabled_json = ['jq']
 let g:neoformat_enabled_lua = ['stylua']
 let g:neoformat_enabled_sh = ['shfmt']
-
-" vim-sandwich
-" map s to nop since s is used by vim-sandwich, use cl instead of s
-nmap s <Nop>
-omap s <Nop>

@@ -24,5 +24,4 @@ return {
         dependencies = { "nvim-treesitter/nvim-treesitter" },
     },
     { "wellle/targets.vim", event = "VeryLazy" },
-    { "machakann/vim-sandwich", event = "VeryLazy" },
 }
