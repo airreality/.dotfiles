@@ -42,7 +42,7 @@ return {
                 end
                 map("n", "<leader>g", vim.lsp.buf.definition, { desc = "go to definition" })
                 map("n", "<leader>k", vim.lsp.buf.hover)
-                map("n", "<leader>r", vim.lsp.buf.rename, { desc = "variable rename" })
+                map("n", "<leader>rr", vim.lsp.buf.rename, { desc = "variable rename" })
                 map("n", "<leader>e", vim.lsp.buf.references, { desc = "show references" })
                 map("n", "[d", diagnostic.goto_prev, { desc = "previous diagnostic" })
                 map("n", "]d", diagnostic.goto_next, { desc = "next diagnostic" })
