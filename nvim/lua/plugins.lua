@@ -1,11 +1,5 @@
 return {
     { "nvim-tree/nvim-web-devicons", event = "VeryLazy" },
-    {
-        "liuchengxu/vista.vim",
-        cmd = "Vista",
-        event = "VeryLazy",
-    },
-
     { "mbbill/undotree", cmd = { "UndotreeShow", "UndotreeToggle" } },
     { "stevearc/dressing.nvim" }, -- fzf, lsp-replacements UI improvements
     { "sbdchd/neoformat", cmd = "Neoformat" },
