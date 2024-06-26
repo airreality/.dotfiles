@@ -86,6 +86,9 @@ return {
             },
         },
         opts = {
+            print_var_statements = {
+                python = { 'print(f"%s {%s=}")' },
+            },
             show_success_message = true, -- shows a message with information about the refactor on success
         },
         config = function(_, opts)
