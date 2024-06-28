@@ -29,6 +29,3 @@ require("lazy").setup(
 )
 
 require("commands")
-
-local root = vim.fn.stdpath("config")
-vim.cmd(string.format("source %s/vim/plugins.vim", root))

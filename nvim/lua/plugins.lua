@@ -1,6 +1,5 @@
 return {
     { "nvim-tree/nvim-web-devicons", event = "VeryLazy" },
-    { "mbbill/undotree", cmd = { "UndotreeShow", "UndotreeToggle" } },
     { "stevearc/dressing.nvim" }, -- fzf, lsp-replacements UI improvements
     {
         "kevinhwang91/nvim-bqf",
