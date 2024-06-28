@@ -24,6 +24,7 @@ return {
                 "python",
                 "query",
                 "regex",
+                "rst",
                 "toml",
                 "typescript",
                 "vim",
