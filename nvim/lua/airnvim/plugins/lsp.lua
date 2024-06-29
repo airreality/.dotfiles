@@ -2,7 +2,7 @@ local api = vim.api
 local lsp = vim.lsp
 local diagnostic = vim.diagnostic
 
-local utils = require("utils")
+local utils = require("airnvim.utils")
 
 local function notify_executable_not_found(executable)
     vim.notify(executable .. " not found!", vim.log.levels.WARN, { title = "nvim lsp config" })

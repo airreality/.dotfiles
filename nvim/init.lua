@@ -14,13 +14,13 @@ if not vim.uv.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("globals")
-require("autocmd")
-require("mappings")
-require("options")
+require("airnvim/globals")
+require("airnvim/autocmd")
+require("airnvim/mappings")
+require("airnvim/options")
 
 require("lazy").setup(
-    "plugins",
+    "airnvim/plugins",
     { ui = {
         border = "rounded",
         title = "Plugin Manager",
@@ -28,4 +28,4 @@ require("lazy").setup(
     } }
 )
 
-require("commands")
+require("airnvim/commands")
