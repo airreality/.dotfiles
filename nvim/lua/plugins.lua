@@ -9,5 +9,4 @@ return {
         end,
         dependencies = { "nvim-treesitter/nvim-treesitter" },
     },
-    { "wellle/targets.vim", event = "VeryLazy" },
 }
