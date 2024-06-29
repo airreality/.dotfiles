@@ -4,7 +4,9 @@ return {
         {
             "<leader>f",
             function()
-                require("conform").format()
+                require("conform").format(nil, function()
+                    vim.notify("Autoformat complete", vim.log.levels.INFO, { title = "conform.nvim" })
+                end)
             end,
             desc = "format buffer",
         },
