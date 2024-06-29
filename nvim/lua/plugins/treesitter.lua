@@ -63,6 +63,8 @@ return {
                             ["if"] = "@function.inner",
                             ["ac"] = "@class.outer",
                             ["ic"] = "@class.inner",
+                            ["ao"] = "@comment.outer",
+                            ["io"] = "@comment.outer",
                         },
                         include_surrounding_whitespace = true,
                     },
