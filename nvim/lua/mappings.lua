@@ -61,12 +61,8 @@ keymap.set("x", "c", '"_c')
 keymap.set("x", "p", '"_c<Esc>p')
 
 -- go to a certain buffer
-keymap.set("n", "gb", '<cmd>call buf_utils#GoToBuffer(v:count, "forward")<cr>', {
-    desc = "go to buffer (forward)",
-})
-keymap.set("n", "gB", '<cmd>call buf_utils#GoToBuffer(v:count, "backward")<cr>', {
-    desc = "go to buffer (backward)",
-})
+keymap.set("n", "[b", "<cmd>bprevious>", { desc = "open previous buffer" })
+keymap.set("n", "]b", "<cmd>bnext<cr>", { desc = "open next buffer" })
 
 -- switch windows
 keymap.set("n", "<left>", "<c-w>h")
