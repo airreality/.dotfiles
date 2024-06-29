@@ -1,5 +1,5 @@
 function cfd
-    set -l search_results (fd "$argv" | string split \n)
+    set -l search_results (fd --type directory "$argv" | string split \n)
     if [ -z "$search_results" ]
         echo "No results"
         return
