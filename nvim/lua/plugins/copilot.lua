@@ -10,7 +10,7 @@ return {
             suggestion = { enabled = false },
         },
         keys = {
-            { "<space>l", "<cmd>Copilot panel<cr>", desc = "Open copilot" },
+            { "<space>l", "<cmd>Copilot panel<cr>", desc = "Copilot panel" },
         },
     },
 
@@ -28,7 +28,7 @@ return {
             end
         end,
         keys = {
-            { "<space>h", "<cmd>CopilotChatToggle<cr>", mode = { "n", "v" }, desc = "toggle copilot chat" },
+            { "<space>h", "<cmd>CopilotChatToggle<cr>", mode = { "n", "v" }, desc = "Copilot chat" },
         },
     },
 }

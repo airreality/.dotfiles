@@ -18,6 +18,7 @@ return {
         })
     end,
     keys = {
+        { "<leader>n", "", desc = "+neotest" },
         {
             "<leader>nn",
             function()

@@ -8,7 +8,7 @@ return {
                     vim.notify("Autoformat complete", vim.log.levels.INFO, { title = "conform.nvim" })
                 end)
             end,
-            desc = "format buffer",
+            desc = "Format buffer",
         },
     },
     config = function()

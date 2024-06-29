@@ -31,22 +31,22 @@ local custom_attach = function(client, bufnr)
         opts.buffer = bufnr
         vim.keymap.set(mode, l, r, opts)
     end
-    map("n", "<leader>g", vim.lsp.buf.definition, { desc = "go to definition" })
+    map("n", "<leader>g", vim.lsp.buf.definition, { desc = "Go to definition" })
     map("n", "<leader>k", vim.lsp.buf.hover)
-    map("n", "<leader>rr", vim.lsp.buf.rename, { desc = "variable rename" })
-    map("n", "<leader>e", vim.lsp.buf.references, { desc = "show references" })
-    map("n", "[d", diagnostic.goto_prev, { desc = "previous diagnostic" })
-    map("n", "]d", diagnostic.goto_next, { desc = "next diagnostic" })
+    map("n", "<leader>rr", vim.lsp.buf.rename, { desc = "Rename variable" })
+    map("n", "<leader>e", vim.lsp.buf.references, { desc = "Show references" })
+    map("n", "[d", diagnostic.goto_prev, { desc = "Prev diagnostic" })
+    map("n", "]d", diagnostic.goto_next, { desc = "Next diagnostic" })
     -- put diagnostics from current buffer to quickfix
     map("n", "<leader>b", function()
         set_qflist(bufnr)
-    end, { desc = "put buffer diagnostics to qf" })
+    end, { desc = "Put buffer diagnostics to qf" })
     map("n", "<space>c", vim.lsp.buf.code_action, { desc = "LSP code action" })
-    map("n", "<space>wa", vim.lsp.buf.add_workspace_folder, { desc = "add workspace folder" })
-    map("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, { desc = "remove workspace folder" })
+    map("n", "<space>wa", vim.lsp.buf.add_workspace_folder, { desc = "Add workspace folder" })
+    map("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, { desc = "Remove workspace folder" })
     map("n", "<space>wl", function()
         vim.print(vim.lsp.buf.list_workspace_folders())
-    end, { desc = "list workspace folder" })
+    end, { desc = "List workspace folder" })
 
     api.nvim_create_autocmd("CursorHold", {
         buffer = bufnr,

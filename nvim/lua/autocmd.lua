@@ -6,7 +6,7 @@ local number_toggle_group = augroup("number_toggle")
 
 vim.api.nvim_create_autocmd({ "BufEnter", "FocusGained", "InsertLeave", "WinEnter" }, {
     group = number_toggle_group,
-    desc = "toggle on line numbers",
+    desc = "Toggle on line numbers",
     callback = function()
         if vim.opt_local.number then
             vim.opt_local.relativenumber = true
@@ -15,7 +15,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "FocusGained", "InsertLeave", "WinEnte
 })
 vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost", "InsertEnter", "WinLeave" }, {
     group = number_toggle_group,
-    desc = "toggle off line numbers",
+    desc = "Toggle off line numbers",
     callback = function()
         if vim.opt_local.number then
             vim.opt_local.relativenumber = false
@@ -52,7 +52,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 vim.api.nvim_create_autocmd("BufReadPost", {
     group = augroup("open_last_position"),
-    desc = "go to last position when opening a buffer",
+    desc = "Go to last position when opening a buffer",
     callback = function(event)
         local exclude = { "gitcommit" }
         local buf = event.buf
@@ -70,7 +70,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 
 vim.api.nvim_create_autocmd("BufWritePre", {
     group = augroup("auto_create_dir"),
-    desc = "create dir if not exists on file saving",
+    desc = "Create dir if not exists on file saving",
     callback = function(event)
         if event.match:match("^%w%w+:[\\/][\\/]") then
             return
@@ -103,7 +103,7 @@ vim.api.nvim_create_autocmd({ "FocusGained", "CursorHold" }, {
 
 vim.api.nvim_create_autocmd("VimResized", {
     group = augroup("auto_resize_tabs"),
-    desc = "resize all tabs on vim resizing",
+    desc = "Resize all tabs on vim resizing",
     command = "wincmd =",
 })
 
@@ -111,31 +111,31 @@ local disable_cmd_smartcase_group = augroup("disable_cmd_smartcase_group")
 
 vim.api.nvim_create_autocmd("CmdlineEnter", {
     group = disable_cmd_smartcase_group,
-    desc = "disable smartcase in cmd line mode",
+    desc = "Disable smartcase in cmd line mode",
     command = "set nosmartcase",
 })
 
 vim.api.nvim_create_autocmd("CmdlineLeave", {
     group = disable_cmd_smartcase_group,
-    desc = "disable smartcase in cmd line mode",
+    desc = "Disable smartcase in cmd line mode",
     command = "set smartcase",
 })
 
 vim.api.nvim_create_autocmd("TermOpen", {
     group = augroup("disable_term_numbers"),
-    desc = "disable numbers in terminal",
+    desc = "Disable numbers in terminal",
     command = "setlocal norelativenumber nonumber",
 })
 
 vim.api.nvim_create_autocmd("TermOpen", {
     group = augroup("open_term_in_insert_mode"),
-    desc = "open terminal in insert mode",
+    desc = "Open terminal in insert mode",
     command = "startinsert",
 })
 
 vim.api.nvim_create_autocmd({ "VimEnter", "DirChanged" }, {
     group = augroup("check_is_git_repo"),
-    desc = "trigger custom event if in git repo",
+    desc = "Trigger custom event if in git repo",
     callback = function()
         local output = vim.fn.system({ "git", "rev-parse", "--is-inside-work-tree" })
         if string.match(output, "true") then
@@ -146,7 +146,7 @@ vim.api.nvim_create_autocmd({ "VimEnter", "DirChanged" }, {
 
 vim.api.nvim_create_autocmd("ColorScheme", {
     group = augroup("set_custom_colors"),
-    desc = "set custom colors",
+    desc = "Set custom colors",
     callback = function()
         vim.api.nvim_set_hl(0, "YankColor", { ctermfg = 59, ctermbg = 41, fg = "#34495E", bg = "#8EBD6B" })
         vim.api.nvim_set_hl(0, "Cursor", { cterm = { bold = true }, bold = true, bg = "#8EBD6B", fg = "#34495E" })
@@ -163,7 +163,7 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 
 vim.api.nvim_create_autocmd("BufReadPre", {
     group = augroup("handle_large_file"),
-    desc = "handle large file",
+    desc = "Handle large file",
     callback = function()
         local large_file_size = 1 * 1024 * 1024 -- 1MB
         local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf()))

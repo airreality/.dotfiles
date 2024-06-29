@@ -13,7 +13,7 @@ return {
             function()
                 require("neo-tree.command").execute({ toggle = true })
             end,
-            desc = "toggle neo-tree",
+            desc = "Neo-tree",
         },
     },
     deactivate = function()
