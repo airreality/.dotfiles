@@ -18,11 +18,7 @@ return {
         "CopilotC-Nvim/CopilotChat.nvim",
         cmd = "CopilotChatToggle",
         branch = "canary",
-        dependencies = {
-            "zbirenbaum/copilot.lua",
-            "nvim-lua/plenary.nvim",
-        },
-        init = function()
+        config = function()
             if utils.executable("node") then
                 require("CopilotChat").setup({})
             end

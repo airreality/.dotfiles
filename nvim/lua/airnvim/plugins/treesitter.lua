@@ -47,11 +47,7 @@ return {
     },
     {
         "nvim-treesitter/nvim-treesitter-textobjects",
-        lazy = false,
-        dependencies = {
-            "nvim-treesitter/nvim-treesitter",
-            "lewis6991/gitsigns.nvim",
-        },
+        event = "VeryLazy",
         opts = function()
             return {
                 textobjects = {

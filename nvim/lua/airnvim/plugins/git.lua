@@ -1,13 +1,10 @@
 return {
     { "tpope/vim-fugitive", event = "User GitRepoIn" },
-    {
-        "rbong/vim-flog",
-        cmd = "Flog",
-        dependencies = { "tpope/vim-fugitive" },
-    },
+    { "rbong/vim-flog", cmd = "Flog" },
     {
         "lewis6991/gitsigns.nvim",
         -- TODO: support 0.9.0 version
+        lazy = false,
         version = "v0.8.1",
         opts = {
             signs = {
