@@ -1,6 +1,5 @@
 return {
-    { "nvim-tree/nvim-web-devicons", event = "VeryLazy" },
-    { "stevearc/dressing.nvim" }, -- fzf, lsp-replacements UI improvements
+    { "nvim-tree/nvim-web-devicons", lazy = true },
     {
         "kevinhwang91/nvim-bqf",
         ft = "qf",
