@@ -144,6 +144,15 @@ vim.api.nvim_create_autocmd({ "VimEnter", "DirChanged" }, {
     end,
 })
 
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+    group = augroup("check_is_dockerfile"),
+    desc = "Set Dockerfile filetype",
+    pattern = "Dockerfile*",
+    callback = function()
+        vim.opt_local.filetype = "dockerfile"
+    end,
+})
+
 vim.api.nvim_create_autocmd("ColorScheme", {
     group = augroup("set_custom_colors"),
     desc = "Set custom colors",
