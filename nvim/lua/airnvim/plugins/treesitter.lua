@@ -4,7 +4,6 @@ return {
         lazy = false,
         priority = 51,
         build = ":TSUpdate",
-        opts_extend = { "ensure_installed" },
         opts = {
             ensure_installed = {
                 "bash",
@@ -44,6 +43,9 @@ return {
             },
             indent = { enabled = true },
         },
+        config = function(_, opts)
+            require("nvim-treesitter.configs").setup(opts)
+        end,
     },
     {
         "nvim-treesitter/nvim-treesitter-textobjects",
