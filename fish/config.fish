@@ -23,6 +23,8 @@ abbr -a gpf "git push --force"
 abbr -a gb "git branch"
 abbr -a gbr "git branch --remotes"
 abbr -a gbm "git branch -m"
+abbr -a rc "ruff check"
+abbr -a rf "ruff format"
 
 if env | grep -q "^WSLENV="
     set -x DISPLAY $(grep nameserver /etc/resolv.conf | awk '{print $2}'):0
