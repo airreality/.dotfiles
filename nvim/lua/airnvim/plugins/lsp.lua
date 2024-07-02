@@ -12,7 +12,14 @@ local custom_attach = function(client, bufnr)
     diagnostic.config({
         underline = false,
         virtual_text = false,
-        signs = true,
+        signs = {
+            text = {
+                [vim.diagnostic.severity.ERROR] = " ",
+                [vim.diagnostic.severity.WARN] = " ",
+                [vim.diagnostic.severity.HINT] = " ",
+                [vim.diagnostic.severity.INFO] = " ",
+            },
+        },
         severity_sort = true,
     })
 
@@ -31,8 +38,9 @@ local custom_attach = function(client, bufnr)
         opts.buffer = bufnr
         vim.keymap.set(mode, l, r, opts)
     end
+
     map("n", "<leader>g", vim.lsp.buf.definition, { desc = "Go to definition" })
-    map("n", "<leader>k", vim.lsp.buf.hover)
+    map("n", "<leader>k", vim.lsp.buf.hover, { desc = "Hover" })
     map("n", "<leader>rr", vim.lsp.buf.rename, { desc = "Rename variable" })
     map("n", "<leader>e", vim.lsp.buf.references, { desc = "Show references" })
     map("n", "[d", diagnostic.goto_prev, { desc = "Prev diagnostic" })
@@ -113,25 +121,32 @@ local function init_pylsp(py_path)
         return
     end
 
+    local capabilities = require("cmp_nvim_lsp").default_capabilities()
     require("lspconfig").pylsp.setup({
         on_attach = custom_attach,
-        plugins = {
-            black = { enabled = false },
-            autopep8 = { enabled = false },
-            yapf = { enabled = false },
-            pylint = { enabled = false },
-            ruff = { enabled = false },
-            pyflakes = { enabled = false },
-            pycodestyle = { enabled = false },
-            pylsp_mypy = {
-                enabled = true,
-                overrides = { "--follow-imports", "skip", "--python-executable", py_path, true },
-                report_progress = true,
-                live_mode = false,
+        settings = {
+            pylsp = {
+                plugins = {
+                    black = { enabled = false },
+                    autopep8 = { enabled = false },
+                    yapf = { enabled = false },
+                    pylint = { enabled = false },
+                    ruff = { enabled = false },
+                    pyflakes = { enabled = false },
+                    pycodestyle = { enabled = false },
+                    pylsp_mypy = {
+                        enabled = true,
+                        overrides = { "--follow-imports", "skip", "--python-executable", py_path, true },
+                        report_progress = true,
+                        live_mode = false,
+                    },
+                    jedi_completion = { fuzzy = true },
+                    isort = { enabled = false },
+                },
             },
-            jedi_completion = { fuzzy = true },
-            isort = { enabled = false },
         },
+        flags = { debounce_text_changes = 200 },
+        capabilities = capabilities,
     })
 end
 
@@ -265,16 +280,6 @@ return {
             init_yaml_language_server()
             init_docker_language_server()
             init_markdown_language_server()
-
-            local diagnostic_signs = {
-                DiagnosticSignError = " ",
-                DiagnosticSignWarn = " ",
-                DiagnosticSignInfo = " ",
-                DiagnosticSignHint = " ",
-            }
-            for type, text in pairs(diagnostic_signs) do
-                vim.fn.sign_define(type, { text = text, texthl = type })
-            end
 
             -- change borders style
             lsp.handlers["textDocument/hover"] = lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
