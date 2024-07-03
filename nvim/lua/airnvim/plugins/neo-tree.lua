@@ -15,6 +15,14 @@ return {
             window = { mappings = {
                 ["<cr>"] = "open_with_window_picker",
             } },
+            event_handlers = {
+                {
+                    event = "after_render",
+                    handler = function()
+                        vim.cmd("wincmd =")
+                    end,
+                },
+            },
         })
     end,
     deactivate = function()
