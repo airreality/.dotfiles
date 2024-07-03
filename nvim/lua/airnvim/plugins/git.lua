@@ -3,9 +3,7 @@ return {
     { "rbong/vim-flog", cmd = "Flog" },
     {
         "lewis6991/gitsigns.nvim",
-        -- TODO: support 0.9.0 version
         lazy = false,
-        version = "v0.8.1",
         opts = {
             signs = {
                 add = { text = "+" },
