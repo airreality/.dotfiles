@@ -1,6 +1,6 @@
 return {
     "ibhagwan/fzf-lua",
-    event = "VeryLazy",
+    cmd = "FzfLua",
     config = function()
         require("fzf-lua")
     end,
