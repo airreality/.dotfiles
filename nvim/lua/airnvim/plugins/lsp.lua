@@ -264,14 +264,7 @@ return {
         "neovim/nvim-lspconfig",
         event = { "BufRead", "BufNewFile" },
         config = function()
-            local venv_path = os.getenv("VIRTUAL_ENV")
-            local py_path = nil
-            if venv_path ~= nil then
-                py_path = venv_path .. "/bin/python3"
-            else
-                py_path = vim.g.python3_host_prog
-            end
-
+            local py_path = utils.python_path()
             init_pylsp(py_path)
             init_ruff(py_path)
             init_lua_language_server()

@@ -23,7 +23,7 @@ keymap.set("n", "<leader>x", "<cmd>windo lclose <bar> cclose <cr>", {
     desc = "Close qf and location list",
 })
 
-keymap.set("n", "<leader>d", "<cmd>bprevious <bar> bdelete #<cr>", {
+keymap.set("n", "<leader>D", "<cmd>bprevious <bar> bdelete #<cr>", {
     silent = true,
     desc = "Delete buffer",
 })
