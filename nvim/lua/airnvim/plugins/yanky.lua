@@ -14,7 +14,6 @@ return {
             enabled = false,
         },
     },
-    -- TODO: remove unused mappings
     keys = {
         { "<leader>y", "<cmd>YankyRingHistory<cr>", desc = "Open yank history" },
         { "y", "<Plug>(YankyYank)", mode = { "n", "x" }, desc = "Yank Text" },
