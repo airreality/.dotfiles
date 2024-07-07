@@ -3,9 +3,12 @@ return {
     event = "InsertEnter",
     config = function()
         require("better_escape").setup({
-            mapping = { "jj" },
-            timout = 150,
-            clear_empty_lines = false,
+            mappings = {
+                i = {
+                    j = { j = "<Esc>" },
+                },
+            },
+            timeout = 150,
         })
     end,
 }
