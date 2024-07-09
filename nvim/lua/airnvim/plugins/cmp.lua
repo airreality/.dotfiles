@@ -84,11 +84,11 @@ return {
                 ["<C-f>"] = cmp.mapping.scroll_docs(4),
             }),
             sources = {
-                { name = "buffer", keyword_length = 2 },
                 { name = "nvim_lsp" },
                 { name = "nvim_lsp_signature_help" },
                 { name = "path" },
                 { name = "snippets" },
+                { name = "buffer", keyword_length = 2 },
             },
             view = {
                 entries = "custom",
