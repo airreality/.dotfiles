@@ -24,7 +24,15 @@ return {
             end
         end,
         keys = {
-            { "<space>h", "<cmd>CopilotChatToggle<cr>", mode = { "n", "v" }, desc = "Copilot chat" },
+            {
+                "<space>h",
+                function()
+                    vim.cmd("CopilotChatToggle")
+                    vim.cmd("wincmd =")
+                end,
+                mode = { "n", "v" },
+                desc = "Copilot chat",
+            },
         },
     },
 }
