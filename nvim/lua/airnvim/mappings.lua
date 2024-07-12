@@ -37,6 +37,14 @@ keymap.set("n", "<space>O", "printf('m`%sO<ESC>``', v:count1)", {
     desc = "Insert line above",
 })
 
+-- move Lines
+keymap.set("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move Down" })
+keymap.set("n", "<A-k>", "<cmd>m .-2<cr>==", { desc = "Move Up" })
+keymap.set("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down" })
+keymap.set("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
+keymap.set("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move Down" })
+keymap.set("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move Up" })
+
 -- do not include white space characters when using $ in visual mode
 keymap.set("x", "$", "g_")
 
@@ -45,10 +53,10 @@ keymap.set({ "n", "x" }, "L", "g_")
 
 keymap.set("n", "<leader>cd", "<cmd>lcd %:p:h<cr><cmd>pwd<cr>", { desc = "Change cwd" })
 
-keymap.set("t", "<Esc>", [[<c-\><c-n>]])
+keymap.set("t", "<Esc>", [[<C-\><C-n>]])
 
 keymap.set("n", "<F11>", "<cmd>set spell!<cr>", { desc = "Toggle spell" })
-keymap.set("i", "<F11>", "<c-o><cmd>set spell!<cr>", { desc = "Toggle spell" })
+keymap.set("i", "<F11>", "<C-o><cmd>set spell!<cr>", { desc = "Toggle spell" })
 
 -- change text without putting it into the vim register
 keymap.set("n", "c", '"_c')
@@ -64,7 +72,7 @@ keymap.set("n", "[b", "<cmd>bprevious>", { desc = "Open previous buffer" })
 keymap.set("n", "]b", "<cmd>bnext<cr>", { desc = "Open next buffer" })
 
 -- switch windows
-keymap.set("n", "<left>", "<c-w>h")
+keymap.set("n", "<left>", "<C-w>h")
 keymap.set("n", "<Right>", "<C-W>l")
 keymap.set("n", "<Up>", "<C-W>k")
 keymap.set("n", "<Down>", "<C-W>j")
@@ -72,7 +80,7 @@ keymap.set("n", "<Down>", "<C-W>j")
 -- break inserted text into smaller undo units when we insert some punctuation chars
 local undo_ch = { ",", ".", "!", "?", ";", ":" }
 for _, ch in ipairs(undo_ch) do
-    keymap.set("i", ch, ch .. "<c-g>u")
+    keymap.set("i", ch, ch .. "<C-g>u")
 end
 
 -- go to the beginning and end of current line in insert mode quickly
