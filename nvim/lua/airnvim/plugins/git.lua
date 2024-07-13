@@ -12,6 +12,13 @@ return {
                 topdelete = { text = "‾" },
                 changedelete = { text = "│" },
             },
+            signs_staged = {
+                add = { text = "+" },
+                change = { text = "~" },
+                delete = { text = "_" },
+                topdelete = { text = "‾" },
+                changedelete = { text = "│" },
+            },
             word_diff = false,
             on_attach = function(_)
                 vim.api.nvim_create_autocmd("ColorScheme", {
