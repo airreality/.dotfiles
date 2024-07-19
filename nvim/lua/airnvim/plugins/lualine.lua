@@ -67,6 +67,11 @@ return {
                         sources = { "nvim_diagnostic" },
                         symbols = { error = " ", warn = " ", info = " ", hint = " " },
                     },
+                    {
+                        require("noice").api.statusline.mode.get,
+                        cond = require("noice").api.statusline.mode.has,
+                        color = { fg = "pink" },
+                    },
                 },
                 lualine_x = {
                     "encoding",
