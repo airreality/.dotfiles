@@ -281,7 +281,7 @@ return {
             -- change borders style
             lsp.handlers["textDocument/hover"] = lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
             lsp.handlers["textDocument/signatureHelp"] =
-                lsp.with(vim.lsp.handlers.signatureHelp, { border = "rounded" })
+                lsp.with(vim.lsp.handlers.signatureHelp, { border = "rounded", silent = true, focusable = false })
             require("lspconfig.ui.windows").default_options.border = "rounded"
         end,
     },
