@@ -162,7 +162,21 @@ local function init_ruff(py_path)
     require("lspconfig").ruff.setup({
         on_attach = custom_attach,
         init_options = {
-            settings = { interpreter = { py_path } },
+            settings = {
+                interpreter = { py_path },
+                fixAll = true,
+                organizeImports = true,
+                showSyntaxErrors = true,
+                logLevel = "warn",
+                codeAction = {
+                    disableRuleComment = { enable = true },
+                    fixViolation = { enable = true },
+                },
+                lint = {
+                    enable = true,
+                    preview = false,
+                },
+            },
         },
     })
 end
