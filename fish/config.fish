@@ -25,6 +25,7 @@ abbr -a gbr "git branch --remotes"
 abbr -a gbm "git branch -m"
 abbr -a rc "ruff check --output-format=concise"
 abbr -a rf "ruff format"
+abbr -a mp "mypy --install-types --non-interactive ."
 
 if env | grep -q "^WSLENV="
     set -x DISPLAY $(grep nameserver /etc/resolv.conf | awk '{print $2}'):0
