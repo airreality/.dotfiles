@@ -36,4 +36,5 @@ else if [ $(uname) = "Darwin" ]
     set -x PATH "/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
 end
 
+fzf --fish | source
 pyenv init - | source
