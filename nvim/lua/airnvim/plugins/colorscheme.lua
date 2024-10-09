@@ -3,6 +3,10 @@ return {
     lazy = false,
     priority = 52,
     init = function()
-        require("onenord").setup({})
+        require("onenord").setup({
+            styles = {
+                comments = "italic",
+            },
+        })
     end,
 }
