@@ -6,20 +6,25 @@ return {
         lazy = false,
         opts = {
             signs = {
-                add = { text = "+" },
-                change = { text = "~" },
+                add = { text = "┃" },
+                change = { text = "┃" },
                 delete = { text = "_" },
                 topdelete = { text = "‾" },
-                changedelete = { text = "│" },
+                changedelete = { text = "~" },
+                untracked = { text = "┆" },
             },
             signs_staged = {
-                add = { text = "+" },
-                change = { text = "~" },
+                add = { text = "┃" },
+                change = { text = "┃" },
                 delete = { text = "_" },
                 topdelete = { text = "‾" },
-                changedelete = { text = "│" },
+                changedelete = { text = "~" },
+                untracked = { text = "┆" },
             },
+            signs_staged_enable = true,
+            signcolumn = true,
             word_diff = false,
+            max_file_length = 4000,
             on_attach = function(_)
                 vim.api.nvim_create_autocmd("ColorScheme", {
                     pattern = "*",
