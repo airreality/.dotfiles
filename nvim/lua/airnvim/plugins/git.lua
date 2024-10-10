@@ -32,5 +32,5 @@ return {
             end,
         },
     },
-    { "akinsho/git-conflict.nvim", event = "VeryLazy" },
+    { "akinsho/git-conflict.nvim", event = "VeryLazy", config = true },
 }
