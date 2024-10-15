@@ -1,5 +1,4 @@
 return {
-    { "Vimjas/vim-python-pep8-indent", ft = "python" },
     -- TODO wait fzf-lua support https://github.com/linux-cultist/venv-selector.nvim/issues/142
     -- {
     --     "linux-cultist/venv-selector.nvim",
