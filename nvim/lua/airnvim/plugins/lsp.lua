@@ -125,7 +125,6 @@ local function init_pylsp(py_path)
         return
     end
 
-    local capabilities = require("cmp_nvim_lsp").default_capabilities()
     require("lspconfig").pylsp.setup({
         on_attach = custom_attach,
         settings = {
@@ -150,7 +149,7 @@ local function init_pylsp(py_path)
             },
         },
         flags = { debounce_text_changes = 200 },
-        capabilities = capabilities,
+        capabilities = require("blink.cmp").get_lsp_capabilities(),
     })
 end
 
@@ -210,7 +209,7 @@ local function init_lua_language_server()
                 },
             },
         },
-        capabilities = require("cmp_nvim_lsp").default_capabilities(),
+        capabilities = require("blink.cmp").get_lsp_capabilities(),
     })
 end
 
