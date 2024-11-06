@@ -3,7 +3,7 @@
   "FixCursorHold.nvim": { "branch": "master", "commit": "1900f89dc17c603eec29960f57c00bd9ae696495" },
   "aerial.nvim": { "branch": "master", "commit": "247df216704cbe3cfa68e2ae5515c3485e281364" },
   "better-escape.nvim": { "branch": "master", "commit": "199dcc2643dec5d8dbdab4ec672cf405224dcb3b" },
-  "blink.cmp": { "branch": "main", "commit": "18e4438c9cfe8e9497e2dffd935627ba5d00198a" },
+  "blink.cmp": { "branch": "main", "commit": "75cadbcd2657ed01326ca2b0e5e4d78a77127ca3" },
   "blink.compat": { "branch": "main", "commit": "03ac4fc279e5bb74b7b8254334eac6941ecaf00a" },
   "conform.nvim": { "branch": "master", "commit": "d28ccf945374edd9f1c34a82f6c22261dbd8ab98" },
   "copilot.lua": { "branch": "master", "commit": "f8d8d872bb319f640d5177dad5fbf01f7a16d7d0" },
