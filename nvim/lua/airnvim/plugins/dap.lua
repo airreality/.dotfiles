@@ -13,6 +13,7 @@ end
 return {
     {
         "mfussenegger/nvim-dap",
+        enabled = false,
         dependencies = {
             "rcarriga/nvim-dap-ui",
             {
@@ -191,6 +192,7 @@ return {
 
     {
         "rcarriga/nvim-dap-ui",
+        enabled = false,
         dependencies = { "nvim-neotest/nvim-nio" },
         keys = {
             {
