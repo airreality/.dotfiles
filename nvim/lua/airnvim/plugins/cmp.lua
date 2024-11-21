@@ -17,7 +17,7 @@ return {
             ["<C-k>"] = { "select_prev" },
         },
         accept = {
-            auto_brackets = { enabled = true },
+            auto_brackets = { enabled = false },
             create_undo_point = true,
         },
         highligh = {
