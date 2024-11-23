@@ -8,14 +8,15 @@ alias p1="ping 1.1.1.1"
 alias p8="ping 8.8.8.8"
 
 cheat() {
-    curl cheat.sh/$1
+    curl "cheat.sh/$1"
 }
 
 vfzf() {
+    local file
     if [[ $# -ne 0 ]]; then
-        local file=$(fzf -q "$*")
+        file=$(fzf -q "$*")
     else
-        local file=$(fzf)
+        file=$(fzf)
     fi
     if [[ -n "$file" ]]; then
         vim "$file"

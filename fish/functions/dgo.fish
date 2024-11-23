@@ -1,6 +1,6 @@
 function dgo
     set -l container (dcheck $argv)
-    or begin 
+    or begin
         echo $container
         return 1
     end

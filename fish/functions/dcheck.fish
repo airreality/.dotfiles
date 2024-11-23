@@ -1,5 +1,5 @@
 function dcheck
-    if not count $argv > /dev/null
+    if not count $argv >/dev/null
         echo "No args"
         return 1
     end

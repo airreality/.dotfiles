@@ -23,7 +23,8 @@ colors() {
             printf " ${seq0}TEXT\e[m"
             printf " \e[${vals:+${vals+$vals;}}1mBOLD\e[m"
         done
-        echo; echo
+        echo
+        echo
     done
 }
 
@@ -37,6 +38,6 @@ export HISTTIMEFORMAT="%d-%m-%y %T    "
 export FZF_DEFAULT_COMMAND="rg --color auto --files"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-if [ $(uname) = "Darwin" ]; then
+if [ "$(uname)" = Darwin ]; then
     export FZF_BASE="/opt/homebrew/opt/fzf"
 fi
