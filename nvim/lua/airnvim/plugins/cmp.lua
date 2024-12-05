@@ -24,16 +24,17 @@ return {
             use_nvim_cmp_as_default = true,
         },
         nerd_font_variant = "mono",
+        completion = {
+            menu = {
+                winblend = vim.o.pumblend,
+                draw = { treesitter = true },
+            },
+        },
         trigger = {
             signature_help = { enabled = true },
         },
-        windows = {
-            autocomplete = {
-                draw = "reversed",
-            },
-            ghost_text = {
-                enabled = true,
-            },
+        ghost_text = {
+            enabled = true,
         },
     },
     sources = {
