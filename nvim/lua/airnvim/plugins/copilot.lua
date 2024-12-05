@@ -17,7 +17,6 @@ return {
     {
         "CopilotC-Nvim/CopilotChat.nvim",
         cmd = "CopilotChatToggle",
-        branch = "canary",
         config = function()
             if utils.executable("node") then
                 require("CopilotChat").setup({})
