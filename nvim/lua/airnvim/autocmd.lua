@@ -170,19 +170,33 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     end,
 })
 
-vim.api.nvim_create_autocmd("BufReadPre", {
-    group = augroup("handle_large_file"),
-    desc = "Handle large file",
-    callback = function()
-        local large_file_size = 1 * 1024 * 1024 -- 1MB
-        local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf()))
-        if not (ok and stats and stats.size < large_file_size) then
-            vim.o.relativenumber = false
-            vim.o.eventignore = vim.o.eventignore .. "all"
-            vim.api.nvim_buf_set_option(0, "swapfile", false)
-            vim.api.nvim_buf_set_option(0, "bufhidden", "unload")
-            vim.api.nvim_buf_set_option(0, "buftype", "nowrite")
-            vim.api.nvim_buf_set_option(0, "undolevels", -1)
-        end
+vim.filetype.add({
+    pattern = {
+        [".*"] = {
+            function(path, buf)
+                local large_file_size = 1 * 1024 * 1024 -- 1MB
+                return vim.bo[buf]
+                        and vim.bo[buf].filetype ~= "bigfile"
+                        and path
+                        and vim.fn.getfsize(path) > large_file_size
+                        and "bigfile"
+                    or nil
+            end,
+        },
+    },
+})
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+    group = vim.api.nvim_create_augroup("handle_large_file", { clear = true }),
+    pattern = "bigfile",
+    callback = function(ev)
+        local path = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(ev.buf), ":p:~:.")
+        vim.notify(("Big file detected: `%s`"):format(path), vim.log.levels.INFO, { title = "Big File" })
+
+        vim.api.nvim_set_option_value("relativenumber", false, { scope = "local" })
+        vim.api.nvim_set_option_value("swapfile", false, { scope = "local" })
+        vim.api.nvim_set_option_value("bufhidden", "unload", { scope = "local" })
+        vim.api.nvim_set_option_value("buftype", "nowrite", { scope = "local" })
+        vim.api.nvim_set_option_value("undolevels", -1, { scope = "local" })
     end,
 })
