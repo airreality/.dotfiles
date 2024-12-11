@@ -24,6 +24,7 @@ return {
                 "query",
                 "regex",
                 "rst",
+                "rust",
                 "toml",
                 "typescript",
                 "vim",
