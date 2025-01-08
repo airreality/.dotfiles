@@ -1,3 +1,3 @@
 function venv
-    poetry shell
+    poetry env activate | source
 end
