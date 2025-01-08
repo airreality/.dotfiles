@@ -16,30 +16,26 @@ return {
             ["<C-j>"] = { "select_next" },
             ["<C-k>"] = { "select_prev" },
         },
-        accept = {
-            auto_brackets = { enabled = false },
-            create_undo_point = true,
-        },
-        highligh = {
+        appearance = {
             use_nvim_cmp_as_default = true,
+            nerd_font_variant = "mono",
         },
-        nerd_font_variant = "mono",
+        sources = {
+            default = { "lsp", "path", "snippets", "buffer" },
+        },
         completion = {
+            accept = {
+                auto_brackets = { enabled = false },
+                create_undo_point = true,
+            },
             menu = {
                 winblend = vim.o.pumblend,
-                draw = { treesitter = true },
+                draw = { treesitter = { "lsp" } },
+            },
+            ghost_text = {
+                enabled = false,
             },
         },
-        trigger = {
-            signature_help = { enabled = true },
-        },
-        ghost_text = {
-            enabled = true,
-        },
-    },
-    sources = {
-        completion = {
-            enabled_providers = { "lsp", "path", "snippets", "buffer" },
-        },
+        signature = { enabled = true },
     },
 }
