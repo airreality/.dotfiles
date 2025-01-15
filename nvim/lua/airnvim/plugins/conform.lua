@@ -20,6 +20,7 @@ return {
                 json = { "jq" },
                 lua = { "stylua" },
                 python = { "ruff_format", "ruff_organize_imports" },
+                rust = { "rustfmt" },
                 sh = { "shfmt" },
                 yaml = { "yq" },
             },
