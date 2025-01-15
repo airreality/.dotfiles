@@ -37,6 +37,6 @@ else if [ $(uname) = Darwin ]
     set -x PATH "/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
     set -x PATH "/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
 end
+set -x PATH "$HOME/.local/bin:$PATH"
 
 fzf --fish | source
-pyenv init - | source
