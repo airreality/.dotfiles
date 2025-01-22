@@ -39,4 +39,10 @@ else if [ $(uname) = Darwin ]
 end
 set -x PATH "$HOME/.local/bin:$PATH"
 
+set -l SENSITIVE_CONFIG "$HOME/.config/fish/config_hidden.fish"
+
+if test -f "$SENSITIVE_CONFIG"
+    source "$SENSITIVE_CONFIG"
+end
+
 fzf --fish | source
