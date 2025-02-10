@@ -1,3 +1,3 @@
 function venv
-    poetry env activate | source
+    source .venv/bin/activate.fish
 end
