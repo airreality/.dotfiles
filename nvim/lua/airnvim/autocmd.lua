@@ -167,6 +167,7 @@ vim.api.nvim_create_autocmd("ColorScheme", {
             { cterm = { bold = true, underline = true }, bold = true, underline = true }
         )
         vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#A3BE8C" })
+        vim.api.nvim_set_hl(0, "CmpGhostText", { fg = "#6C7A96" })
     end,
 })
 

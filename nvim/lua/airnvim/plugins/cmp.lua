@@ -33,9 +33,20 @@ return {
                 draw = { treesitter = { "lsp" } },
             },
             ghost_text = {
-                enabled = false,
+                enabled = true,
             },
         },
         signature = { enabled = true },
+        cmdline = {
+            enabled = true,
+            completion = {
+                ghost_text = {
+                    enabled = true,
+                },
+                menu = {
+                    auto_show = true,
+                },
+            },
+        },
     },
 }
