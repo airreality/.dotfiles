@@ -17,9 +17,12 @@ return {
     {
         "CopilotC-Nvim/CopilotChat.nvim",
         cmd = "CopilotChatToggle",
-        config = function()
+        opts = {
+            model = "gpt-4-o-preview",
+        },
+        config = function(_, opts)
             if utils.executable("node") then
-                require("CopilotChat").setup({})
+                require("CopilotChat").setup(opts)
             end
         end,
         keys = {
