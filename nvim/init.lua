@@ -19,13 +19,12 @@ require("airnvim/autocmd")
 require("airnvim/mappings")
 require("airnvim/options")
 
-require("lazy").setup(
-    "airnvim/plugins",
-    { ui = {
+require("lazy").setup("airnvim/plugins", {
+    ui = {
         border = "rounded",
         title = "Plugin Manager",
         title_pos = "center",
-    } }
-)
+    },
+})
 
 require("airnvim/commands")
