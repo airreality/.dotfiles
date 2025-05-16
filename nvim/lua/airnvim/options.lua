@@ -1,7 +1,7 @@
 local opt = vim.opt
 
 opt.clipboard = "unnamedplus"
-opt.completeopt = "menu,menuone,noselect"
+opt.completeopt = "menu,menuone,noselect,fuzzy"
 opt.confirm = true
 opt.cursorline = true
 opt.errorbells = false
