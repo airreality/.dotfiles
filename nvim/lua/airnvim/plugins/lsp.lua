@@ -125,7 +125,7 @@ local function init_pylsp(py_path)
         return
     end
 
-    require("lspconfig").pylsp.setup({
+    vim.lsp.config("pylsp", {
         on_attach = custom_attach,
         settings = {
             pylsp = {
@@ -151,6 +151,7 @@ local function init_pylsp(py_path)
         flags = { debounce_text_changes = 200 },
         capabilities = require("blink.cmp").get_lsp_capabilities(),
     })
+    vim.lsp.enable("pylsp")
 end
 
 local function init_ruff(py_path)
@@ -158,7 +159,7 @@ local function init_ruff(py_path)
         notify_executable_not_found("ruff")
         return
     end
-    require("lspconfig").ruff.setup({
+    vim.lsp.config("ruff", {
         on_attach = custom_attach,
         init_options = {
             settings = {
@@ -178,6 +179,7 @@ local function init_ruff(py_path)
             },
         },
     })
+    vim.lsp.enable("ruff")
 end
 
 local function init_lua_language_server()
@@ -185,7 +187,7 @@ local function init_lua_language_server()
         notify_executable_not_found("lua-language-server")
         return
     end
-    require("lspconfig").lua_ls.setup({
+    vim.lsp.config("lua_ls", {
         on_attach = custom_attach,
         settings = {
             Lua = {
@@ -211,6 +213,7 @@ local function init_lua_language_server()
         },
         capabilities = require("blink.cmp").get_lsp_capabilities(),
     })
+    vim.lsp.enable("lua_ls")
 end
 
 local function init_bash_language_server()
@@ -218,9 +221,10 @@ local function init_bash_language_server()
         notify_executable_not_found("bash-language-server")
         return
     end
-    require("lspconfig").bashls.setup({
+    vim.lsp.config("bashls", {
         on_attach = custom_attach,
     })
+    vim.lsp.enable("bashls")
 end
 
 local function init_json_language_server()
@@ -228,7 +232,7 @@ local function init_json_language_server()
         notify_executable_not_found("vscode-json-language-server")
         return
     end
-    require("lspconfig").jsonls.setup({
+    vim.lsp.config("jsonls", {
         on_attach = custom_attach,
         settings = {
             json = {
@@ -237,6 +241,7 @@ local function init_json_language_server()
             },
         },
     })
+    vim.lsp.enable("jsonls")
 end
 
 local function init_yaml_language_server()
@@ -244,7 +249,7 @@ local function init_yaml_language_server()
         notify_executable_not_found("yaml-language-server")
         return
     end
-    require("lspconfig").yamlls.setup({
+    vim.lsp.config("yamlls", {
         on_attach = custom_attach,
         settings = {
             yaml = {
@@ -254,6 +259,7 @@ local function init_yaml_language_server()
             },
         },
     })
+    vim.lsp.enable("yamlls")
 end
 
 local function init_docker_language_server()
@@ -261,9 +267,10 @@ local function init_docker_language_server()
         notify_executable_not_found("docker-langserver")
         return
     end
-    require("lspconfig").dockerls.setup({
+    vim.lsp.config("dockerls", {
         on_attach = custom_attach,
     })
+    vim.lsp.enable("dockerls")
 end
 
 local function init_markdown_language_server()
@@ -271,9 +278,10 @@ local function init_markdown_language_server()
         notify_executable_not_found("marksman")
         return
     end
-    require("lspconfig").marksman.setup({
+    vim.lsp.config("marksman", {
         on_attach = custom_attach,
     })
+    vim.lsp.enable("marksman")
 end
 
 return {
@@ -292,10 +300,7 @@ return {
             init_markdown_language_server()
 
             -- change borders style
-            lsp.handlers["textDocument/hover"] = lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
-            lsp.handlers["textDocument/signatureHelp"] =
-                lsp.with(vim.lsp.handlers.signatureHelp, { border = "rounded", silent = true, focusable = false })
-            require("lspconfig.ui.windows").default_options.border = "rounded"
+            vim.o.winborder = "rounded"
         end,
     },
     {
