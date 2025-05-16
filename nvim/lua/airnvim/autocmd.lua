@@ -1,10 +1,12 @@
+local api = vim.api
+
 local function augroup(name)
-    return vim.api.nvim_create_augroup(name, { clear = true })
+    return api.nvim_create_augroup(name, { clear = true })
 end
 
 local number_toggle_group = augroup("number_toggle")
 
-vim.api.nvim_create_autocmd({ "BufEnter", "FocusGained", "InsertLeave", "WinEnter" }, {
+api.nvim_create_autocmd({ "BufEnter", "FocusGained", "InsertLeave", "WinEnter" }, {
     group = number_toggle_group,
     desc = "Toggle on line numbers",
     callback = function()
@@ -13,7 +15,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "FocusGained", "InsertLeave", "WinEnte
         end
     end,
 })
-vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost", "InsertEnter", "WinLeave" }, {
+api.nvim_create_autocmd({ "BufLeave", "FocusLost", "InsertEnter", "WinLeave" }, {
     group = number_toggle_group,
     desc = "Toggle off line numbers",
     callback = function()
@@ -27,21 +29,21 @@ vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost", "InsertEnter", "WinLeave"
 
 local highlight_yank_group = augroup("highlight_yank")
 
-vim.api.nvim_create_autocmd("TextYankPost", {
+api.nvim_create_autocmd("TextYankPost", {
     group = highlight_yank_group,
     callback = function()
         vim.highlight.on_yank({ higroup = "YankColor", timeout = 300 })
     end,
 })
 
-vim.api.nvim_create_autocmd("CursorMoved", {
+api.nvim_create_autocmd("CursorMoved", {
     group = highlight_yank_group,
     callback = function()
         vim.g.current_cursor_pos = vim.fn.getcurpos()
     end,
 })
 
-vim.api.nvim_create_autocmd("TextYankPost", {
+api.nvim_create_autocmd("TextYankPost", {
     group = highlight_yank_group,
     callback = function()
         if vim.v.event.operator == "y" then
@@ -50,7 +52,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     end,
 })
 
-vim.api.nvim_create_autocmd("BufReadPost", {
+api.nvim_create_autocmd("BufReadPost", {
     group = augroup("open_last_position"),
     desc = "Go to last position when opening a buffer",
     callback = function(event)
@@ -60,15 +62,15 @@ vim.api.nvim_create_autocmd("BufReadPost", {
             return
         end
         vim.b[buf].last_loc = true
-        local mark = vim.api.nvim_buf_get_mark(buf, '"')
-        local lcount = vim.api.nvim_buf_line_count(buf)
+        local mark = api.nvim_buf_get_mark(buf, '"')
+        local lcount = api.nvim_buf_line_count(buf)
         if mark[1] > 0 and mark[1] <= lcount then
-            pcall(vim.api.nvim_win_set_cursor, 0, mark)
+            pcall(api.nvim_win_set_cursor, 0, mark)
         end
     end,
 })
 
-vim.api.nvim_create_autocmd("BufWritePre", {
+api.nvim_create_autocmd("BufWritePre", {
     group = augroup("auto_create_dir"),
     desc = "Create dir if not exists on file saving",
     callback = function(event)
@@ -85,14 +87,14 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 -- line before executing this command, see also https://vi.stackexchange.com/a/20397/15292 .
 local auto_reload_group = augroup("auto_reload_group")
 
-vim.api.nvim_create_autocmd("FileChangedShellPost", {
+api.nvim_create_autocmd("FileChangedShellPost", {
     group = auto_reload_group,
     callback = function()
         vim.notify("File changed on disk", vim.log.levels.WARN, { title = "Buffer reloaded" })
     end,
 })
 
-vim.api.nvim_create_autocmd({ "FocusGained", "CursorHold" }, {
+api.nvim_create_autocmd({ "FocusGained", "CursorHold" }, {
     group = auto_reload_group,
     callback = function()
         if vim.fn.getcmdwintype() == "" then
@@ -101,7 +103,7 @@ vim.api.nvim_create_autocmd({ "FocusGained", "CursorHold" }, {
     end,
 })
 
-vim.api.nvim_create_autocmd("VimResized", {
+api.nvim_create_autocmd("VimResized", {
     group = augroup("auto_resize_tabs"),
     desc = "Resize all tabs on vim resizing",
     command = "wincmd =",
@@ -109,42 +111,42 @@ vim.api.nvim_create_autocmd("VimResized", {
 
 local disable_cmd_smartcase_group = augroup("disable_cmd_smartcase_group")
 
-vim.api.nvim_create_autocmd("CmdlineEnter", {
+api.nvim_create_autocmd("CmdlineEnter", {
     group = disable_cmd_smartcase_group,
     desc = "Disable smartcase in cmd line mode",
     command = "set nosmartcase",
 })
 
-vim.api.nvim_create_autocmd("CmdlineLeave", {
+api.nvim_create_autocmd("CmdlineLeave", {
     group = disable_cmd_smartcase_group,
     desc = "Disable smartcase in cmd line mode",
     command = "set smartcase",
 })
 
-vim.api.nvim_create_autocmd("TermOpen", {
+api.nvim_create_autocmd("TermOpen", {
     group = augroup("disable_term_numbers"),
     desc = "Disable numbers in terminal",
     command = "setlocal norelativenumber nonumber",
 })
 
-vim.api.nvim_create_autocmd("TermOpen", {
+api.nvim_create_autocmd("TermOpen", {
     group = augroup("open_term_in_insert_mode"),
     desc = "Open terminal in insert mode",
     command = "startinsert",
 })
 
-vim.api.nvim_create_autocmd({ "VimEnter", "DirChanged" }, {
+api.nvim_create_autocmd({ "VimEnter", "DirChanged" }, {
     group = augroup("check_is_git_repo"),
     desc = "Trigger custom event if in git repo",
     callback = function()
         local output = vim.fn.system({ "git", "rev-parse", "--is-inside-work-tree" })
         if string.match(output, "true") then
-            vim.api.nvim_command("doautocmd User GitRepoIn")
+            api.nvim_command("doautocmd User GitRepoIn")
         end
     end,
 })
 
-vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
     group = augroup("check_is_dockerfile"),
     desc = "Set Dockerfile filetype",
     pattern = "Dockerfile*",
@@ -153,21 +155,17 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
     end,
 })
 
-vim.api.nvim_create_autocmd("ColorScheme", {
+api.nvim_create_autocmd("ColorScheme", {
     group = augroup("set_custom_colors"),
     desc = "Set custom colors",
     callback = function()
-        vim.api.nvim_set_hl(0, "YankColor", { ctermfg = 59, ctermbg = 41, fg = "#34495E", bg = "#8EBD6B" })
-        vim.api.nvim_set_hl(0, "Cursor", { cterm = { bold = true }, bold = true, bg = "#8EBD6B", fg = "#34495E" })
-        vim.api.nvim_set_hl(0, "Cursor2", { fg = "#E55561", bg = "#E55561" })
-        vim.api.nvim_set_hl(0, "FloatBorder", { fg = "LightGreen", bg = "NONE" })
-        vim.api.nvim_set_hl(
-            0,
-            "MatchParen",
-            { cterm = { bold = true, underline = true }, bold = true, underline = true }
-        )
-        vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#A3BE8C" })
-        vim.api.nvim_set_hl(0, "CmpGhostText", { fg = "#6C7A96" })
+        api.nvim_set_hl(0, "YankColor", { ctermfg = 59, ctermbg = 41, fg = "#34495E", bg = "#8EBD6B" })
+        api.nvim_set_hl(0, "Cursor", { cterm = { bold = true }, bold = true, bg = "#8EBD6B", fg = "#34495E" })
+        api.nvim_set_hl(0, "Cursor2", { fg = "#E55561", bg = "#E55561" })
+        api.nvim_set_hl(0, "FloatBorder", { fg = "LightGreen", bg = "NONE" })
+        api.nvim_set_hl(0, "MatchParen", { cterm = { bold = true, underline = true }, bold = true, underline = true })
+        api.nvim_set_hl(0, "CursorLineNr", { fg = "#A3BE8C" })
+        api.nvim_set_hl(0, "CmpGhostText", { fg = "#6C7A96" })
     end,
 })
 
@@ -187,17 +185,17 @@ vim.filetype.add({
     },
 })
 
-vim.api.nvim_create_autocmd({ "FileType" }, {
-    group = vim.api.nvim_create_augroup("handle_large_file", { clear = true }),
+api.nvim_create_autocmd({ "FileType" }, {
+    group = api.nvim_create_augroup("handle_large_file", { clear = true }),
     pattern = "bigfile",
     callback = function(ev)
-        local path = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(ev.buf), ":p:~:.")
+        local path = vim.fn.fnamemodify(api.nvim_buf_get_name(ev.buf), ":p:~:.")
         vim.notify(("Big file detected: `%s`"):format(path), vim.log.levels.INFO, { title = "Big File" })
 
-        vim.api.nvim_set_option_value("relativenumber", false, { scope = "local" })
-        vim.api.nvim_set_option_value("swapfile", false, { scope = "local" })
-        vim.api.nvim_set_option_value("bufhidden", "unload", { scope = "local" })
-        vim.api.nvim_set_option_value("buftype", "nowrite", { scope = "local" })
-        vim.api.nvim_set_option_value("undolevels", -1, { scope = "local" })
+        api.nvim_set_option_value("relativenumber", false, { scope = "local" })
+        api.nvim_set_option_value("swapfile", false, { scope = "local" })
+        api.nvim_set_option_value("bufhidden", "unload", { scope = "local" })
+        api.nvim_set_option_value("buftype", "nowrite", { scope = "local" })
+        api.nvim_set_option_value("undolevels", -1, { scope = "local" })
     end,
 })
