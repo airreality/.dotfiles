@@ -19,7 +19,6 @@ abbr -a weather "curl wttr.in"
 abbr -a d docker
 abbr -a dls "docker image ls --format='table {{.ID}}\t{{.Repository}}\t{{.Tag}}'"
 abbr -a dirm "docker image rm"
-abbr -a cr "colima start"
 abbr -a cs "colima stop"
 abbr -a gpf "git push --force"
 abbr -a gb "git branch"

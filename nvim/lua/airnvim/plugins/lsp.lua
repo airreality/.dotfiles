@@ -119,7 +119,7 @@ local custom_attach = function(client, bufnr)
     end
 end
 
-local function init_pylsp(py_path)
+local function init_pylsp()
     if not utils.executable("pylsp") then
         notify_executable_not_found("pylsp")
         return
@@ -137,12 +137,7 @@ local function init_pylsp(py_path)
                     ruff = { enabled = false },
                     pyflakes = { enabled = false },
                     pycodestyle = { enabled = false },
-                    pylsp_mypy = {
-                        enabled = true,
-                        overrides = { "--follow-imports", "skip", "--python-executable", py_path, true },
-                        report_progress = true,
-                        live_mode = false,
-                    },
+                    pylsp_mypy = { enabled = false },
                     jedi_completion = { fuzzy = true },
                     isort = { enabled = false },
                 },
@@ -180,6 +175,21 @@ local function init_ruff(py_path)
         },
     })
     vim.lsp.enable("ruff")
+end
+
+local function init_ty(py_path)
+    if not utils.executable("ty") then
+        notify_executable_not_found("ty")
+        return
+    end
+    vim.lsp.config("ty", {
+        settings = {
+            ty = {
+                interpreter = { py_path },
+            },
+        },
+    })
+    vim.lsp.enable("ty")
 end
 
 local function init_lua_language_server()
@@ -290,8 +300,9 @@ return {
         event = { "BufRead", "BufNewFile" },
         config = function()
             local py_path = utils.python_path()
-            init_pylsp(py_path)
+            init_pylsp()
             init_ruff(py_path)
+            init_ty(py_path)
             init_lua_language_server()
             init_bash_language_server()
             init_json_language_server()
