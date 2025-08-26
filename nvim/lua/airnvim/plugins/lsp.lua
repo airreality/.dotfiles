@@ -119,36 +119,6 @@ local custom_attach = function(client, bufnr)
     end
 end
 
-local function init_pylsp()
-    if not utils.executable("pylsp") then
-        notify_executable_not_found("pylsp")
-        return
-    end
-
-    vim.lsp.config("pylsp", {
-        on_attach = custom_attach,
-        settings = {
-            pylsp = {
-                plugins = {
-                    black = { enabled = false },
-                    autopep8 = { enabled = false },
-                    yapf = { enabled = false },
-                    pylint = { enabled = false },
-                    ruff = { enabled = false },
-                    pyflakes = { enabled = false },
-                    pycodestyle = { enabled = false },
-                    pylsp_mypy = { enabled = false },
-                    jedi_completion = { fuzzy = true },
-                    isort = { enabled = false },
-                },
-            },
-        },
-        flags = { debounce_text_changes = 200 },
-        capabilities = require("blink.cmp").get_lsp_capabilities(),
-    })
-    vim.lsp.enable("pylsp")
-end
-
 local function init_ruff(py_path)
     if not utils.executable("ruff") then
         notify_executable_not_found("ruff")
@@ -300,7 +270,6 @@ return {
         event = { "BufRead", "BufNewFile" },
         config = function()
             local py_path = utils.python_path()
-            init_pylsp()
             init_ruff(py_path)
             init_ty(py_path)
             init_lua_language_server()
