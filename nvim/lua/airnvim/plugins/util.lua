@@ -1,7 +1,7 @@
 return {
     { "nvim-lua/plenary.nvim", lazy = true },
     {
-        "echasnovski/mini.icons",
+        "nvim-mini/mini.icons",
         lazy = true,
         opts = {},
         init = function()

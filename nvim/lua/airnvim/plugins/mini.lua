@@ -1,13 +1,13 @@
 return {
     {
-        "echasnovski/mini.starter",
+        "nvim-mini/mini.starter",
         opts = {},
         config = function(_, opts)
             require("mini.starter").setup(opts)
         end,
     },
     {
-        "echasnovski/mini.pairs",
+        "nvim-mini/mini.pairs",
         event = "VeryLazy",
         opts = {
             modes = { insert = true, command = true, terminal = false },
@@ -55,7 +55,7 @@ return {
         end,
     },
     {
-        "echasnovski/mini.surround",
+        "nvim-mini/mini.surround",
         event = "VeryLazy",
         init = function()
             require("mini.surround").setup()
