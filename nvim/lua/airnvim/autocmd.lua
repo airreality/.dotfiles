@@ -160,10 +160,10 @@ api.nvim_create_autocmd("ColorScheme", {
     desc = "Set custom colors",
     callback = function()
         api.nvim_set_hl(0, "YankColor", { ctermfg = 59, ctermbg = 41, fg = "#34495E", bg = "#8EBD6B" })
-        api.nvim_set_hl(0, "Cursor", { cterm = { bold = true }, bold = true, bg = "#8EBD6B", fg = "#34495E" })
+        api.nvim_set_hl(0, "Cursor", { bold = true, bg = "#8EBD6B", fg = "#34495E" })
         api.nvim_set_hl(0, "Cursor2", { fg = "#E55561", bg = "#E55561" })
         api.nvim_set_hl(0, "FloatBorder", { fg = "LightGreen", bg = "NONE" })
-        api.nvim_set_hl(0, "MatchParen", { cterm = { bold = true, underline = true }, bold = true, underline = true })
+        api.nvim_set_hl(0, "MatchParen", { bold = true, underline = true })
         api.nvim_set_hl(0, "CursorLineNr", { fg = "#A3BE8C" })
         api.nvim_set_hl(0, "CmpGhostText", { fg = "#6C7A96" })
     end,
