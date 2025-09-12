@@ -9,6 +9,7 @@ return {
             dependencies = { "rafamadriz/friendly-snippets" },
         },
         "saghen/blink.compat",
+        "xzbdmw/colorful-menu.nvim",
     },
     opts = {
         keymap = {
@@ -30,7 +31,20 @@ return {
             },
             menu = {
                 winblend = vim.o.pumblend,
-                draw = { treesitter = { "lsp" } },
+                draw = {
+                    treesitter = { "lsp" },
+                    columns = { { "kind_icon" }, { "label", gap = 1 } },
+                    components = {
+                        label = {
+                            text = function(ctx)
+                                return require("colorful-menu").blink_components_text(ctx)
+                            end,
+                            highlight = function(ctx)
+                                return require("colorful-menu").blink_components_highlight(ctx)
+                            end,
+                        },
+                    },
+                },
             },
             ghost_text = {
                 enabled = true,
