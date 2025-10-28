@@ -2,7 +2,6 @@ return {
     {
         "linux-cultist/venv-selector.nvim",
         ft = "python",
-        branch = "regexp",
         cmd = "VenvSelect",
         opts = {
             settings = {
