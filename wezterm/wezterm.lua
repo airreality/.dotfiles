@@ -7,7 +7,7 @@ config.webgpu_power_preference = "HighPerformance"
 config.cursor_blink_ease_in = "Constant"
 config.cursor_blink_ease_out = "Constant"
 
-config.color_scheme = "OneNord"
+config.color_scheme = "tokyonight_moon"
 
 config.use_fancy_tab_bar = false
 config.show_new_tab_button_in_tab_bar = false

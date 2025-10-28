@@ -1,12 +1,15 @@
 return {
-    "rmehri01/onenord.nvim",
+    "folke/tokyonight.nvim",
     lazy = false,
-    priority = 52,
-    init = function()
-        require("onenord").setup({
-            styles = {
-                comments = "italic",
-            },
+    priority = 1000,
+    opts = { style = "moon" },
+    config = function()
+        local tokyonight = require("tokyonight")
+        tokyonight.setup({
+            on_highlights = function(hl, c)
+                hl.YankColor = { bg = c.green, fg = c.bg_dark }
+            end,
         })
+        tokyonight.load()
     end,
 }
