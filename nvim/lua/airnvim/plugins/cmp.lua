@@ -1,7 +1,7 @@
 return {
     "saghen/blink.cmp",
     version = "*",
-    event = "InsertEnter",
+    event = { "InsertEnter", "CmdlineEnter" },
     dependencies = {
         {
             "garymjr/nvim-snippets",
@@ -54,16 +54,11 @@ return {
         cmdline = {
             enabled = true,
             completion = {
-                ghost_text = {
-                    enabled = true,
-                },
-                menu = {
-                    auto_show = true,
-                },
+                ghost_text = { enabled = true },
+                list = { selection = { preselect = false } },
+                menu = { auto_show = true },
             },
-            keymap = {
-                preset = "inherit",
-            },
+            keymap = { preset = "inherit" },
         },
     },
 }
