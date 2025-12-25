@@ -26,7 +26,7 @@ abbr -a gbr "git branch --remotes"
 abbr -a gbm "git branch -m"
 abbr -a rc "ruff check --output-format=concise"
 abbr -a rf "ruff format"
-abbr -a mp "mypy --install-types ."
+abbr -a tc "ty check --output-format concise"
 abbr -a hurl "hurl --verbose --error-format long"
 
 if env | grep -q "^WSLENV="
