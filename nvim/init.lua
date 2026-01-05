@@ -20,6 +20,9 @@ require("airnvim/mappings")
 require("airnvim/options")
 
 require("lazy").setup("airnvim/plugins", {
+    rocks = {
+        enabled = false,
+    },
     ui = {
         border = "rounded",
         title = "Plugin Manager",
