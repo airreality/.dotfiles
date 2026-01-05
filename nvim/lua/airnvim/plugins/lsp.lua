@@ -40,7 +40,7 @@ local custom_attach = function(client, bufnr)
     end
 
     map("n", "<leader>g", vim.lsp.buf.definition, { desc = "Go to definition" })
-    map("n", "<leader>k", vim.lsp.buf.hover, { desc = "Hover" })
+    map("n", "<leader>h", vim.lsp.buf.hover, { desc = "Hover" })
     map("n", "<leader>rr", vim.lsp.buf.rename, { desc = "Rename variable" })
     map("n", "<leader>e", vim.lsp.buf.references, { desc = "Show references" })
     map("n", "[d", function()
