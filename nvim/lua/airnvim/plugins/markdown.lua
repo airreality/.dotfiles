@@ -9,10 +9,11 @@ return {
         end,
         config = function()
             vim.g.mkdp_auto_close = 0
+            vim.g.mkdp_theme = "light"
         end,
     },
     {
-        "MeanderingProgrammer/markdown.nvim",
+        "MeanderingProgrammer/render-markdown.nvim",
         ft = { "markdown" },
         dependencies = "nvim-treesitter/nvim-treesitter",
         opts = {},
