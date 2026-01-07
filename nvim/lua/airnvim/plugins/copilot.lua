@@ -18,7 +18,7 @@ return {
         "CopilotC-Nvim/CopilotChat.nvim",
         cmd = "CopilotChatToggle",
         opts = {
-            model = "claude-3.7-sonnet",
+            model = "claude-sonnet-4.5",
         },
         config = function(_, opts)
             if utils.executable("node") then
