@@ -22,7 +22,6 @@ return {
                 python = { "ruff_format", "ruff_organize_imports" },
                 rust = { "rustfmt" },
                 sh = { "shfmt" },
-                yaml = { "yq" },
             },
             notify_on_error = true,
         })

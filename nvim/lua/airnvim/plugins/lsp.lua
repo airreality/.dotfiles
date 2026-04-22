@@ -233,7 +233,13 @@ local function init_yaml_language_server()
         on_attach = custom_attach,
         settings = {
             yaml = {
-                format = { enable = false },
+                format = {
+                    enable = true,
+                    singleQuote = false,
+                    bracketSpacing = true,
+                    proseWrap = "preserve",
+                    printWidth = 120,
+                },
                 validate = true,
                 completion = true,
             },
