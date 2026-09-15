@@ -32,6 +32,7 @@ abbr -a rc "ruff check --output-format=concise --preview"
 abbr -a rf "ruff format --preview"
 abbr -a tc "ty check --output-format concise"
 abbr -a hurl "hurl --verbose --error-format long"
+abbr -a hhurl 'hurl --verbose --error-format long --variable token_type=$token_type --variable access_token=$access_token'
 
 if env | grep -q "^WSLENV="
     set -x DISPLAY $(grep nameserver /etc/resolv.conf | awk '{print $2}'):0
