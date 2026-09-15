@@ -12,7 +12,6 @@ return {
                 "html",
                 "javascript",
                 "json",
-                "jsonc",
                 "dockerfile",
                 "fish",
                 "hurl",
