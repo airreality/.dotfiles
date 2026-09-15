@@ -23,12 +23,18 @@ return {
                 rust = { "rustfmt" },
                 sh = { "shfmt" },
             },
+            formatters = {
+                ruff_format = {
+                    append_args = { "--preview" },
+                },
+                ruff_organize_imports = {
+                    append_args = { "--preview" },
+                },
+            },
             notify_on_error = true,
         })
         conform.formatters.shfmt = {
-            prepend_args = function(_, _)
-                return { "-i", 4 }
-            end,
+            prepend_args = { "-i", 4 },
         }
     end,
 }
