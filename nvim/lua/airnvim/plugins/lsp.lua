@@ -39,6 +39,7 @@ local custom_attach = function(client, bufnr)
         vim.keymap.set(mode, l, r, opts)
     end
 
+    -- map("n", "<leader>f", vim.lsp.buf.format)
     map("n", "<leader>g", vim.lsp.buf.definition, { desc = "Go to definition" })
     map("n", "<leader>h", vim.lsp.buf.hover, { desc = "Hover" })
     map("n", "<leader>rr", vim.lsp.buf.rename, { desc = "Rename variable" })
@@ -139,7 +140,11 @@ local function init_ruff(py_path)
                 },
                 lint = {
                     enable = true,
-                    preview = false,
+                    preview = true,
+                },
+                format = {
+                    enable = false,
+                    preview = true,
                 },
             },
         },
