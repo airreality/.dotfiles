@@ -27,12 +27,12 @@ config.scrollback_lines = 10000
 
 config.hyperlink_rules = wezterm.default_hyperlink_rules()
 table.insert(config.hyperlink_rules, {
-    regex = [[(WCCA|WEBCC|SA|ENV|CCC|CCBE|CCAC|CBCT|IDS|CWS|CCBA|DA|ATD|MDS|TCHL|APPSEC|CM)-\d+]],
-    format = "https://jira.aligntech.com/browse/$0",
+    regex = [[(WCCA|WEBCC|SA|ENV|CCC|CCBE|CCAC|CBCT|IDS|CWS|CCBA|DA|ATD|MDS|TCHL|APPSEC|CM|TRT|TPS)-\d+]],
+    format = "https://cloud.jira.aligntech.com/browse/$0",
 })
 table.insert(config.hyperlink_rules, {
-    regex = [[(WCCA|WEBCC|SA|ENV|CCC|CCBE|CCAC|CBCT|IDS|CWS|CCBA|DA|ATD|MDS|TCHL|APPSEC|CM)-T\d+]],
-    format = "https://jira.aligntech.com/secure/Tests.jspa#/testCase/$0",
+    regex = [[(WCCA|WEBCC|SA|ENV|CCC|CCBE|CCAC|CBCT|IDS|CWS|CCBA|DA|ATD|MDS|TCHL|APPSEC|CM|TRT|TPS)-T\d+]],
+    format = "https://cloud.jira.aligntech.com/jira/software/projects/$1/apps/3feb7ced-1450-4676-aded-099c99bf534b/2baaeb69-15ac-4955-8eb6-e346aa1567aa#/v2/testCase/$0",
 })
 
 return config
