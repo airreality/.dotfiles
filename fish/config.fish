@@ -13,6 +13,7 @@ set -x BAT_THEME ansi
 set -x EDITOR nvim
 set -x TERM xterm-256color # to avoid wezterm "WARNING: terminal is not fully functional"
 set -x FZF_DEFAULT_COMMAND "rg --color auto --files"
+set -x DO_NOT_TRACK true
 
 abbr -a vim nvim
 abbr -a weather "curl wttr.in"
