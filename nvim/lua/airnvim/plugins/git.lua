@@ -3,7 +3,7 @@ return {
     { "rbong/vim-flog", cmd = "Flog" },
     {
         "lewis6991/gitsigns.nvim",
-        lazy = false,
+        event = { "BufReadPre", "BufNewFile" },
         opts = {
             signs = {
                 add = { text = "┃" },

@@ -296,9 +296,7 @@ return {
     },
     {
         "j-hui/fidget.nvim",
-        event = "VeryLazy",
-        init = function()
-            require("fidget")
-        end,
+        event = "LspAttach",
+        opts = {},
     },
 }

@@ -6,7 +6,9 @@ return {
         timeout = 3000,
         background_colour = "#2E3440",
     },
-    init = function()
-        vim.notify = require("notify")
+    config = function(_, opts)
+        local notify = require("notify")
+        notify.setup(opts)
+        vim.notify = notify
     end,
 }
